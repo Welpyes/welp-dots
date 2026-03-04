@@ -16,14 +16,14 @@
 
 (defwidget bar []
   (box
-    :class "bar" 
-    :orientation "h" 
-    :vexpand "false" 
-    :hexpand "false"
-		:space-evenly true
-  (left)
-  (middle)
-  (right)
+   :class "bar" 
+   :orientation "h" 
+   :vexpand "false" 
+   :hexpand "false"
+   :space-evenly true
+   (left)
+   (middle)
+   (right)
   )
 )
 
@@ -34,9 +34,12 @@
     :space-evenly false
     :spacing 5
   (launcher)
+  (workspaces)
+  (packages)
   (weather)
   )
 )
+
 (defwidget middle []
 	(box
     :orientation "h" 
@@ -139,6 +142,44 @@
       (label
          :class "weather-temp"
          :text "${weather-temp}"
+      )
+   )
+)
+
+(deflisten workspaces :initial "[]"
+  `./scripts/workspaces.py`
+)
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly false
+       :halign "start"
+       :spacing 0
+    (for ws in workspaces
+      (button :onclick "bspc desktop -f ${ws.name}"
+              :class "workspaces-${ws.status} ${ws.focused ? 'workspaces-focused' : ''}"
+        (label :text "${ws.name}")
+      )
+    )
+  )
+)
+
+(defpoll packages-data :initial "100" :interval "1h"
+   `pacman -Qe | wc -l`
+)
+
+(defwidget packages []
+   (box
+      :class "packages"
+      :space-evenly false
+      :spacing 0
+      (label
+         :class "packages-icon"
+         :text "P"
+      )
+      (label
+         :class "packages-text"
+         :text "${packages-data}"
       )
    )
 )

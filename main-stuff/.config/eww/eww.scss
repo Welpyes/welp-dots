@@ -29,6 +29,7 @@ $selection-fg: #e5c9a0;
 
 .bar {
   background-color: $background;
+  font-weight: bold;
   color: $foreground;
   font-size: 10px;
   padding: 4 10px;
@@ -80,5 +81,48 @@ $selection-fg: #e5c9a0;
     border-radius: 0px;
     background-color: $blue;
     color: $background;
+  }
+}
+
+.workspaces {
+  background-color: $background;
+  font-size: 10px;
+  font-weight: bold;
+  margin: 0px;
+  &-empty {
+    padding: 0 0px;
+    margin: 0 0px;
+    font-size: 0px;
+    background-color: transparent;
+    color: transparent;
+  }
+  &-occupied {
+    font-weight: bold;
+    padding: 0 10px;
+    margin: 0 2px;
+    font-size: 11px;
+    background-color: $selection-bg;
+    color: $background;
+  }
+  &-focused {
+    font-weight: bold;
+    padding: 0 10px;
+    margin: 0 2px;
+    font-size: 11px;
+    background-color: $foreground;
+    color: $background;
+  }
+}
+
+.packages {
+  &-text {
+    background-color: $selection-bg;
+    padding: 0 10px;
+    margin: 0 0px;
+  }
+  &-icon {
+    background-color: $yellow;
+    color: $background;
+    padding: 0 12px;
   }
 }
