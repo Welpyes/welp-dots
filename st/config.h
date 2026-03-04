@@ -5,12 +5,13 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Ioskeley Mono:pixelsize=16:antialias=true:autohint=true";
+static char *font = "Ioskeley Mono:pixelsize=14:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
-/*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
+	"Symbols Nerd Font Mono:pixelsize=16:antialias=true:autohint=true",
 };
+
+
 
 static int borderpx = 5;
 
@@ -124,7 +125,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 3;
 
 /* bg opacity */
-float alpha = 0.92;
+float alpha = 0.98;
 
 /*
  * drag and drop escape characters
