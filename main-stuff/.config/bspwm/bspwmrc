@@ -1,0 +1,56 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+display(){
+  bspc monitor -d 1 2 3 4 5
+  xsetroot -cursor_name left_ptr
+}
+
+gaps(){
+  bspc config window_gap 10
+  bspc config top_padding 10
+  bspc config bottom_padding 10
+  bspc config right_padding 100
+  bspc config left_padding 100
+}
+
+clients(){
+  bspc rule -a "Xfce4-taskmanager" state=floating layer=above
+  bspc rule -a "eww" state=floating layer=below
+  bspc rule -a scratchpad state=floating
+  bspc config pointer_follows_focus false
+  bspc config focus_follows_pointer true
+}
+
+compositor(){
+  killall fastcompmgr
+  sleep 1
+  fastcompmgr \
+    -r 10 \
+    -t -15 \
+    -l -15 \
+    -o 0.7 \
+    -m 1 \
+    -c \
+    -C \
+    -i 0.8 \
+    --corner-radius 10 \
+    --blur-sigma 15 \
+    --border-width 2 \
+    --border-color '#e0af68' \
+    --inactive-border-color '#1a1b26' &
+}
+
+autostart(){
+  kill -9 $(pgrep -x "sxhkd") > /dev/null 
+  sxhkd -c ~/.config/bspwm/sxhkdrc &
+  feh --bg-fill /sdcard/Documents/wallpapers/fancykazoos1.jpg &
+}
+
+__main__(){
+  display
+  gaps
+  clients
+  compositor &
+  autostart
+}
+__main__
