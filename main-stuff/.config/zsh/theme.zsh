@@ -1,40 +1,40 @@
 ##
-## Rose Pine Colorscheme
+## Kintsukuroi Colorscheme
 ##
 # special
-background='#191724'
-foreground='#e0def4'
+background='#141210'
+foreground='#e5c9a0'
 
 # black
-color0='#191724'
-color8='#403d52'
+color0='#322d28'
+color8='#4d463e'
 
 # red
-color1='#eb6f92'
-color9='#eb6f92'
+color1='#c06c5c'
+color9='#d97a68'
 
 # green
-color2='#9ccfd8'
-color10='#9ccfd8'
+color2='#78997a'
+color10='#85b695'
 
 # yellow
-color3='#f6c177'
-color11='#f6c177'
+color3='#c09d59'
+color11='#d8b164'
 
 # blue
-color4='#31748f'
-color12='#31748f'
+color4='#7f91b2'
+color12='#a3a9ce'
 
 # magenta
-color5='#c4a7e7'
-color13='#c4a7e7'
+color5='#b380b0'
+color13='#cf9bc2'
 
 # cyan
-color6='#ebbcba'
-color14='#ebbcba'
+color6='#7b9695'
+color14='#89b3b6'
 
 # white
-color7='#e0def4'
-color15='#e0def4'
+color7='#d8be97'
+color15='#f2d5a9'
 
 # vim: filetype=zsh

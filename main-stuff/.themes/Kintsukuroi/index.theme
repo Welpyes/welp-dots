@@ -1,0 +1,12 @@
+Type=X-GNOME-Metatheme
+[Desktop Entry]
+Name=Kintsukuroi
+Comment=Kintsukuroi (金繕い) — “Golden Repair” Warm neutral colorscheme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Kintsukuroi
+MetacityTheme=Kintsukuroi
+IconTheme=Tela-circle-Dark
+CursorTheme=Tokyonight-cursors
+ButtonLayout=close,minimize,maximize:menu

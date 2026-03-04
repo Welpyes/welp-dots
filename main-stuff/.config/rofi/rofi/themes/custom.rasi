@@ -1,16 +1,16 @@
 * {
     /* Colors */
-    bg: #16161e; /* rose-pine base */
-    bg-alt: #1a1b26; /* rose-pine surface */
-    fg: #c0caf5; /* rose-pine text */
-    fg-alt: #787c99; /* rose-pine muted */
+    bg: #141210; 
+    bg-alt: #322d28; 
+    fg: #e5c9a0; 
+    fg-alt: #d8be97; 
 
-    accent: #73daca; /* rose-pine iris */
-    urgent: #f7768e; /* rose-pine love */
+    accent: #c09d59; 
+    urgent: #c06c5c; 
 
-    border: #414868; /* rose-pine overlay */
-    selected: #787c99; /* rose-pine surface */
-    comment: #414868; /* rose-pine subtle */
+    border: #4d463e; 
+    selected: #4d463e; 
+    comment: #4d463e; 
 
     background-color: transparent;
     text-color: @fg;

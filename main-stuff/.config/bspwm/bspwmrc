@@ -36,8 +36,8 @@ compositor(){
     --corner-radius 10 \
     --blur-sigma 15 \
     --border-width 2 \
-    --border-color '#e0af68' \
-    --inactive-border-color '#1a1b26' &
+    --border-color '#c09d59' \
+    --inactive-border-color '#322d28' &
 }
 
 autostart(){

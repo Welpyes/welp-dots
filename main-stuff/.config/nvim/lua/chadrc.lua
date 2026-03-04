@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "tokyodark",  -- Sticks with built-in Rose Pine (dark variant by default)
+  theme = "kintsukuroi", 
 
   hl_override = {
     -- Italics for comments (your original)
