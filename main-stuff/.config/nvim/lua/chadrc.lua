@@ -11,14 +11,14 @@ M.base46 = {
   hl_override = {
     -- Italics for comments (your original)
     Comment = { italic = true },
-    ["@comment"] = { italic = true },
+    ["@comment"] = { italic = false },
 
     -- Transparency: Make these groups fully transparent (bg = "NONE")
     Normal = { bg = "NONE" },
     NormalNC = { bg = "NONE" },
     NormalFloat = { bg = "NONE" },
     FloatBorder = { bg = "NONE" },
-    StatusLine = { bg = "NONE" },
+    StatusLine = { bg = "#d8be97" },
     StatusLineNC = { bg = "NONE" },
     TabLine = { bg = "NONE" },
     TabLineSel = { bg = "NONE" },

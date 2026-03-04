@@ -1,0 +1,107 @@
+(defwindow bar
+   :wm-ignore false
+   :monitor 0
+   :windowtype "normal"
+   :stacking "bg"
+   :geometry
+      (geometry 
+         :x "0"
+         :y "0"
+         :height "40px"
+         :width "100%"
+         :anchor "top center"
+       )
+   (bar)
+)
+
+(defwidget bar []
+  (box
+    :class "bar" 
+    :orientation "h" 
+    :vexpand "false" 
+    :hexpand "false"
+		:space-evenly true
+  (left)
+  (middle)
+  (right)
+  )
+)
+
+(defwidget left []
+	(box
+    :orientation "h" 
+    :halign "start" 
+    :space-evenly false
+    :spacing 10
+  (spacer)
+  )
+)
+(defwidget middle []
+	(box
+    :orientation "h" 
+		:halign "center" 
+		:space-evenly false
+  (spacer)
+  )
+)
+(defwidget right []
+	(box
+    :orientation "h" 
+		:halign "end" 
+		:space-evenly false
+      :spacing 20
+  (clock)
+  )
+)
+
+(defwidget spacer []
+  (box 
+    :class "spacer"
+    :orientation "h"
+  )
+)
+
+(deflisten time
+  :initial "00:00 AM"
+  `bash -c 'while true; do date "+%I:%M %p"; sleep $(( 60 - $(date "+%S") )); done'`
+)
+
+(defwidget clock []
+   (box
+      :class "clock-widget"
+      :space-evenly false
+      (button
+         :class "clock-widget-button"
+         :onclick "scripts/toggle_calendar.sh"
+         (label :text "")
+      )
+      (label 
+         :text "${time}"
+         :class "clock-widget-time"
+      )
+   )
+)
+(defwindow simple-calendar
+   :wm-ignore false
+   :monitor 0
+   :windowtype "dock"
+   :stacking "fg"
+   :geometry
+   (geometry 
+      :x "-10"
+      :y "50"
+      :height "60px"
+      :width "220px"
+      :anchor "top right"
+   )
+   (simple-calendar)
+)
+(defpoll cal-info :interval "1h"
+   `./scripts/cal_script.py`
+)
+(defwidget simple-calendar[]
+   (box
+      :class "simple-calendar-widget"
+      (label :text "${cal-info}" :justify "left")
+   )
+)

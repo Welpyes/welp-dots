@@ -1,0 +1,57 @@
+* {
+  all: unset;
+  border-radius: 0px;
+}
+
+$background: #141210;
+$foreground: #e5c9a0;
+
+$black: #322d28;
+$red: #c06c5c;
+$green: #78997a;
+$yellow: #c09d59;
+$blue: #7f91b2;
+$magenta: #b380b0;
+$cyan: #7b9695;
+$white: #d8be97;
+
+$br-black: #4d463e;
+$br-red: #d97a68;
+$br-green: #85b695;
+$br-yellow: #d8b164;
+$br-blue: #a3a9ce;
+$br-magenta: #cf9bc2;
+$br-cyan: #89b3b6;
+$br-white: #f2d5a9;
+
+$selection-bg: #4d463e;
+$selection-fg: #e5c9a0;
+
+.bar {
+  background-color: $background;
+  color: $foreground;
+  padding: 4 10px;
+}
+
+.simple-calendar-widget {
+  background-color: $background;
+  margin: 10px;
+  border: 2px solid $yellow;
+  padding: 10px;
+}
+
+.clock-widget {
+  &-time {
+    background-color: $black;
+    padding-left: 5px;
+  }
+  &-button {
+    padding: 0 5px;
+    padding-top: 0px;
+    font-size: 18px;
+    margin: 0 0px;
+    border-radius: 0px;
+    background-color: $foreground;
+    color: $background;
+  }
+}

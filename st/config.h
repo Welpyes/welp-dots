@@ -125,7 +125,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 3;
 
 /* bg opacity */
-float alpha = 0.98;
+float alpha = 0.92;
 
 /*
  * drag and drop escape characters

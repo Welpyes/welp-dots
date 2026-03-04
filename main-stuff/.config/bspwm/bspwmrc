@@ -7,7 +7,7 @@ display(){
 
 gaps(){
   bspc config window_gap 10
-  bspc config top_padding 10
+  bspc config top_padding 50
   bspc config bottom_padding 10
   bspc config right_padding 100
   bspc config left_padding 100
@@ -15,10 +15,14 @@ gaps(){
 
 clients(){
   bspc rule -a "Xfce4-taskmanager" state=floating layer=above
-  bspc rule -a "eww" state=floating layer=below
+  bspc rule -a "Eww" state=floating layer=below rectangle=1480x40+0+0 border=off focus=off
   bspc rule -a scratchpad state=floating
   bspc config pointer_follows_focus false
   bspc config focus_follows_pointer true
+  bspc config border_width 2
+  bspc config normal_border_color '#322d28'
+  bspc config active_border_color '#c09d59'
+  bspc config focused_border_color '#c09d59'
 }
 
 compositor(){
@@ -32,18 +36,20 @@ compositor(){
     -m 1 \
     -c \
     -C \
-    -i 0.8 \
-    --corner-radius 10 \
-    --blur-sigma 15 \
-    --border-width 2 \
-    --border-color '#c09d59' \
-    --inactive-border-color '#322d28' &
+    -i 1 \
+    --corner-radius 0 \
+    --blur-sigma 0 \
+    # --border-width 2 \
+    # --border-color '#c09d59' \
+    # --inactive-border-color '#322d28' &
 }
 
 autostart(){
   kill -9 $(pgrep -x "sxhkd") > /dev/null 
   sxhkd -c ~/.config/bspwm/sxhkdrc &
-  feh --bg-fill /sdcard/Documents/wallpapers/fancykazoos1.jpg &
+  feh --bg-fill /sdcard/Pictures/gowall/138841147_p0.png &
+  kill -9 $(pgrep -x "eww") > /dev/null
+  eww open bar &
 }
 
 __main__(){
