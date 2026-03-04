@@ -27,37 +27,12 @@ window {
     padding: 15px;
     width: 20%;
     height: 350px;
-    font: "Maple Mono NF SemiBold 12";
+    font: "Ioskeley Mono Semibold 12";
 }
-
-mainbox {
-    border: 0;
-    padding: 0;
-    spacing: 0px;
-}
-
-message {
-    border: 0;
-    background-color: @bg-alt;
-    padding: 0px;
-    border-radius: 0px;
-}
-
-textbox {
-    text-color: @fg;
-}
-
-inputbar {
-    children: [prompt, textbox-prompt-colon, entry, case-indicator];
-    spacing: 10px;
-    background-color: @bg;
-    border-radius: 0px;
-    padding: 5px;
-}
-
+...
 prompt {
     text-color: @accent;
-    font: "Maple Mono NF Bold 12";
+    font: "Ioskeley Mono Bold 12";
 }
 
 textbox-prompt-colon {

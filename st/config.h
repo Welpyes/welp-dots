@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Maple Mono NF:pixelsize=16:antialias=true:autohint=true";
+static char *font = "Ioskeley Mono:pixelsize=16:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
 /*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
@@ -136,32 +136,32 @@ char *xdndescchar = " !\"#$&'()*;<>?[\\]^`{|}~";
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"#1A1B26", /* black   */
-	"#F7768E", /* red     */
-	"#9ECE6A", /* green   */
-	"#E0AF68", /* yellow  */
-	"#7AA2F7", /* blue    */
-	"#BB9AF7", /* magenta */
-	"#7DCFFF", /* cyan    */
-	"#A9B1D6", /* white   */
+	"#322d28", /* black   */
+	"#c06c5c", /* red     */
+	"#78997a", /* green   */
+	"#c09d59", /* yellow  */
+	"#7f91b2", /* blue    */
+	"#b380b0", /* magenta */
+	"#7b9695", /* cyan    */
+	"#d8be97", /* white   */
 
 	/* 8 bright colors */
-	"#414868", /* bright black   */
-	"#F7768E", /* bright red     */
-	"#9ECE6A", /* bright green   */
-	"#E0AF68", /* bright yellow  */
-	"#7AA2F7", /* bright blue    */
-	"#BB9AF7", /* bright magenta */
-	"#7DCFFF", /* bright cyan    */
-	"#C0CAF5", /* bright white   */
+	"#4d463e", /* bright black   */
+	"#d97a68", /* bright red     */
+	"#85b695", /* bright green   */
+	"#d8b164", /* bright yellow  */
+	"#a3a9ce", /* bright blue    */
+	"#cf9bc2", /* bright magenta */
+	"#89b3b6", /* bright cyan    */
+	"#f2d5a9", /* bright white   */
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	"#C0CAF5", /* cursor */
-	"#33467C", /* reverse cursor */
-	"#A9B1D6", /* default foreground colour */
-	"#1A1B26", /* default background colour */
+	"#e5c9a0", /* cursor */
+	"#141210", /* reverse cursor */
+	"#e5c9a0", /* default foreground colour */
+	"#141210", /* default background colour */
 };
 
 /*

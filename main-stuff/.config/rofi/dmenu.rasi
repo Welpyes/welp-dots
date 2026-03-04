@@ -1,19 +1,19 @@
 * {
-  bg: #1a1b26;
-  bg-alt: #16161e;
-  fg: #c0caf5;
-  fg-alt: #787c99;
+  bg: #141210;
+  bg-alt: #322d28;
+  fg: #e5c9a0;
+  fg-alt: #d8be97;
 
-  red: #f7768e;
-  green: #9ece6a;
-  yellow: #e0af68;
-  blue: #7aa2f7;
-  purple: #bb9af7;
-  cyan: #73daca;
+  red: #c06c5c;
+  green: #78997a;
+  yellow: #c09d59;
+  blue: #7f91b2;
+  purple: #b380b0;
+  cyan: #7b9695;
 
   background-color: transparent;
   text-color: @fg;
-  font: "Maple Mono NF SemiBold 12";
+  font: "Ioskeley Mono Semibold 12";
 }
 
 window {
@@ -45,7 +45,7 @@ textbox {
 
 prompt {
     text-color: @yellow;
-    font: "Maple Mono NF Bold 12";
+    font: "Ioskeley Mono Bold 12";
 }
 
 textbox-prompt-colon {
@@ -164,4 +164,3 @@ error-message {
     border-radius: 0px;
     background-color: @bg;
 }
-
