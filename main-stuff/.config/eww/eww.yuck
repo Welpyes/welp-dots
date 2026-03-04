@@ -1,7 +1,7 @@
 (defwindow bar
    :wm-ignore false
    :monitor 0
-   :windowtype "normal"
+   :windowtype "dock"
    :stacking "bg"
    :geometry
       (geometry 
@@ -32,8 +32,9 @@
     :orientation "h" 
     :halign "start" 
     :space-evenly false
-    :spacing 10
-  (spacer)
+    :spacing 5
+  (launcher)
+  (weather)
   )
 )
 (defwidget middle []
@@ -103,5 +104,41 @@
    (box
       :class "simple-calendar-widget"
       (label :text "${cal-info}" :justify "left")
+   )
+)
+
+(defwidget launcher[]
+   (box
+      (button 
+         :class "launcher"
+         :onclick "bash ~/.config/rofi/launch.sh drun"
+         (label :text "󰄛")
+      )
+   )
+)
+
+(deflisten weather-icon
+  :initial "󰖙"
+  `bash -c 'while true; do ~/.config/eww/scripts/weather.sh icon; sleep 1500 ; done'`
+)
+(deflisten weather-temp
+  :initial "25°C"
+  `bash -c 'while true; do ~/.config/eww/scripts/weather.sh temp; sleep 1500 ; done'`
+)
+
+(defwidget weather[]
+   (box
+      :class "weather"
+      :space-evenly false
+      :spacing 0
+      (button
+         :class "weather-button"
+         :onclick "./scripts/weather.sh reset"
+         (label :text "${weather-icon}")
+      )
+      (label
+         :class "weather-temp"
+         :text "${weather-temp}"
+      )
    )
 )

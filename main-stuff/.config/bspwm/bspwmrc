@@ -15,7 +15,7 @@ gaps(){
 
 clients(){
   bspc rule -a "Xfce4-taskmanager" state=floating layer=above
-  bspc rule -a "Eww" state=floating layer=below rectangle=1480x40+0+0 border=off focus=off
+  bspc rule -a "firefox-default" desktop='^2'
   bspc rule -a scratchpad state=floating
   bspc config pointer_follows_focus false
   bspc config focus_follows_pointer true

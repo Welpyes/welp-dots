@@ -1,8 +1,8 @@
 #!/bin/bash
 
-LAT="9.3068
+LAT="9.3068"
 LON="123.3080"
-CACHE_DIR="$HOME/.cache/eww"
+CACHE_DIR="${TMPDIR}"
 CACHE_FILE="$CACHE_DIR/weather.json"
 CACHE_TTL=900
 
@@ -62,6 +62,9 @@ case $1 in
         ;;
     desc)
         get_desc "$(jq -r '.current.weather_code' "$CACHE_FILE")"
+        ;;
+    reset)
+        rm $CACHE_FILE 
         ;;
     all)
         # Output everything as JSON for efficient eww polling
