@@ -35,8 +35,10 @@
     :spacing 5
   (launcher)
   (workspaces)
+  (control-panel)
   (packages)
   (weather)
+  (pallete-button)
   )
 )
 
@@ -49,13 +51,16 @@
   )
 )
 (defwidget right []
-	(box
-    :orientation "h" 
-		:halign "end" 
-		:space-evenly false
-      :spacing 20
-  (clock)
-  )
+   (box
+      :orientation "h"
+      :halign "end"
+      :space-evenly false
+      :spacing 2
+      (volume)
+      (battery)
+      (clock)
+      (notification-button)
+   )
 )
 
 (defwidget spacer []
@@ -173,13 +178,103 @@
       :class "packages"
       :space-evenly false
       :spacing 0
-      (label
+      (button
          :class "packages-icon"
-         :text "P"
+         (label :text "")
       )
       (label
          :class "packages-text"
          :text "${packages-data}"
+      )
+   )
+)
+
+(defwidget control-panel[]
+   (box
+      (button
+         :onclick "echo yes"
+         :class "control-panel"
+         (label :text "󰨚")
+      )
+   )
+)
+
+(defwidget pallete-button []
+   (box
+      (button
+         :class "pallete-button"
+         :onclick "bash ./scripts/toggle_pallete.sh"
+         (label :text "󰉦")
+      )
+   )
+)
+
+(defwindow pallete
+   :wm-ignore false
+   :monitor 0
+   :windowtype "dock"
+   :stacking "fg"
+   :geometry
+   (geometry 
+      :x "-10"
+      :y "50"
+      :height "60px"
+      :width "150px"
+      :anchor "top right"
+   )
+   (pallete)
+)
+(defpoll pallete-info :interval "1h"
+   `gowall list -p -t Kintsukuroi | pastel format hex`
+)
+(defwidget pallete[]
+   (box
+      :class "simple-calendar-widget"
+      (label :text "${pallete-info}" :justify "left")
+   )
+)
+
+(defwidget notification-button []
+   (box
+      (button
+         :class "notification-button"
+         :onclick "echo yes"
+         (label :text "")
+      )
+   )
+)
+
+(defpoll battery-data :initial "100" :interval "30m"
+   `termux-battery-status | jq .level`
+)
+(defwidget battery []
+   (box
+      :class "battery"
+      (button
+         :class "battery-button"
+         (label :text "")
+      )
+      (label
+         :class "battery-text"
+         :text "${battery-data}%"
+      )
+   )
+)
+
+
+(defpoll volume-data :initial "100%" :interval "30m"
+   `pactl get-sink-volume OpenSL_ES_sink | awk '{print $5}'`
+)
+(defwidget volume []
+   (box
+      :class "volume"
+      (button
+         :class "volume-button"
+         (label :text "")
+      )
+      (label
+         :class "volume-text"
+         :text "${volume-data}"
       )
    )
 )
