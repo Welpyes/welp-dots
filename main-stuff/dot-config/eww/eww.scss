@@ -1,217 +1,158 @@
-* {
-  all: unset;
-  border-radius: 0px;
-}
+* { all: unset; }
+
+// ── Palette ──────────────────────────────────────────────────────────────────
 
 $background: #141210;
 $foreground: #e5c9a0;
 
-$black: #322d28;
-$red: #c06c5c;
-$green: #78997a;
-$yellow: #c09d59;
-$blue: #7f91b2;
+$black:   #322d28;
+$red:     #c06c5c;
+$green:   #78997a;
+$yellow:  #c09d59;
+$blue:    #7f91b2;
 $magenta: #b380b0;
-$cyan: #7b9695;
-$white: #d8be97;
+$cyan:    #7b9695;
+$white:   #d8be97;
 
-$br-black: #4d463e;
-$br-red: #d97a68;
-$br-green: #85b695;
-$br-yellow: #d8b164;
-$br-blue: #a3a9ce;
+$br-black:   #4d463e;
+$br-red:     #d97a68;
+$br-green:   #85b695;
+$br-yellow:  #d8b164;
+$br-blue:    #a3a9ce;
 $br-magenta: #cf9bc2;
-$br-cyan: #89b3b6;
-$br-white: #f2d5a9;
+$br-cyan:    #89b3b6;
+$br-white:   #f2d5a9;
 
 $selection-bg: #4d463e;
 $selection-fg: #e5c9a0;
 
+// ── Mixins ───────────────────────────────────────────────────────────────────
+
+// Coloured icon button with a hover variant
+@mixin icon-button($bg, $bg-hover, $fg: $background, $size: 16px, $pad: 0 6px) {
+  font-family: "Symbols Nerd Font Mono";
+  font-size: $size;
+  background-color: $bg;
+  color: $fg;
+  padding: $pad;
+  &:hover { background-color: $bg-hover; }
+}
+
+// Plain text readout sitting next to a button
+@mixin readout($size: 12px, $pad: 0 5px) {
+  font-size: $size;
+  background-color: $black;
+  color: $foreground;
+  padding: $pad;
+}
+
+// ── Bar ──────────────────────────────────────────────────────────────────────
+
 .bar {
   font-family: "Ioskeley Mono";
-  background-color: $background;
-  font-weight: bold;
-  color: $foreground;
   font-size: 10px;
-  padding: 4 2px;
+  font-weight: bold;
+  background-color: $background;
+  color: $foreground;
+  padding: 4px 2px;
 }
+
+// ── Calendar ─────────────────────────────────────────────────────────────────
 
 .simple-calendar-widget {
   background-color: $background;
-  margin: 10px;
   border: 2px solid $yellow;
   padding: 10px;
+  margin: 10px;
 }
+
+// ── Clock ────────────────────────────────────────────────────────────────────
 
 .clock-widget {
-  &-time {
-    background-color: $black;
-    padding: 0 5px;
-  }
-  &-button {
-    font-family: "Symbols Nerd Font Mono";
-    padding: 0 6px;
-    padding-top: 0px;
-    font-size: 16px;
-    margin: 0 0px;
-    border-radius: 0px;
-    background-color: $white;
-    color: $black;
-    &:hover {
-      background-color: $br-white;
-    }
-  }
+  &-time   { @include readout($size: 10px, $pad: 0 5px); }
+  &-button { @include icon-button($white, $br-white, $black, 16px, 0 6px); }
 }
 
-.launcher {
-  font-family: "Symbols Nerd Font Mono";
-  padding: 0 5px;
-  padding-top: 0px;
-  font-size: 25px;
-  margin: 0 0px;
-  border-radius: 0px;
-  background-color: $green;
-  color: $background;
-  &:hover{
-    background-color: $br-green;
-  }
-}
+// ── Launcher ─────────────────────────────────────────────────────────────────
+
+.launcher { @include icon-button($green, $br-green, $background, 25px, 0 5px); }
+
+// ── Weather ──────────────────────────────────────────────────────────────────
 
 .weather {
-  padding: 0 0px;
-  &-temp {
-    background-color: $black;
-    padding: 0 5px;
-  }
-  &-button {
-    font-family: "Symbols Nerd Font Mono";
-    padding: 0 7px;
-    font-size: 18px;
-    margin: 0 0px;
-    border-radius: 0px;
-    background-color: $blue;
-    color: $background;
-    &:hover{
-      background-color: $br-blue;
-    }
-  }
+  &-temp   { @include readout($size: 10px, $pad: 0 5px); }
+  &-button { @include icon-button($blue, $br-blue, $background, 18px, 0 7px); }
+}
+
+// ── Workspaces ───────────────────────────────────────────────────────────────
+
+%workspace-button {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 0 10px;
+  margin: 0 2px;
 }
 
 .workspaces {
   background-color: $background;
+
   &-empty {
-    padding: 0 0px;
-    margin: 0 0px;
-    font-size: 0px;
+    font-size: 0;
     background-color: transparent;
     color: transparent;
   }
+
   &-occupied {
-    font-weight: bold;
-    padding: 0 10px;
-    margin: 0 2px;
-    font-size: 11px;
+    @extend %workspace-button;
     background-color: $black;
     color: $foreground;
-    &:hover{
-      background-color: $br-black;
-    }
+    &:hover { background-color: $br-black; }
   }
+
   &-focused {
-    font-weight: bold;
-    padding: 0 10px;
-    margin: 0 2px;
-    font-size: 11px;
+    @extend %workspace-button;
     background-color: $white;
     color: $background;
-    &:hover{
-      background-color: $br-white;
-    }
+    &:hover { background-color: $br-white; }
   }
 }
+
+// ── Packages ─────────────────────────────────────────────────────────────────
 
 .packages {
-  &-text {
-    background-color: $black;
-    padding: 0 10px;
-    margin: 0 0px;
-  }
-  &-icon {
-    font-family: "Symbols Nerd Font Mono";
-    font-size: 20px;
-    background-color: $yellow;
-    color: $background;
-    padding: 0 8px;
-    &:hover {
-      background-color: $br-yellow;
-    }
-  }
+  &-text { @include readout($size: 10px, $pad: 0 10px); }
+  &-icon { @include icon-button($yellow, $br-yellow, $background, 20px, 0 8px); }
 }
 
-.control-panel {
-  background-color: $black;
-  color: $red;
-  padding: 0 6px;
-  font-family: "Symbols Nerd Font Mono";
-  font-size: 14px;
-  &:hover {
-    background-color: $br-black;
-  }
-}
+// ── Control panel ────────────────────────────────────────────────────────────
+
+.control-panel { @include icon-button($black, $br-black, $red, 14px, 0 6px); }
+
+// ── Palette button ───────────────────────────────────────────────────────────
 
 .pallete-button {
   font-family: "Symbols Nerd Font Mono";
-  background-color: $black;
-  color: $background; 
   font-size: 20px;
+  background-color: $black;
+  color: $background;
   padding: 0 6px;
-  &:hover {
-    color: $foreground;
-  }
+  &:hover { color: $foreground; }
 }
+
+// ── Notifications ────────────────────────────────────────────────────────────
 
 .notification-button {
-  font-family: "Symbols Nerd Font Mono";
-  font-size: 16px;
+  @include icon-button($magenta, $br-magenta, $background, 16px, 0 6px);
   margin: 0 2px;
-  background-color: $magenta;
-  padding: 0 6px;
-  color: $background;
-  &:hover{
-    background-color: $br-magenta;
-  }
 }
 
-.battery {
+// ── Shared: battery & volume ─────────────────────────────────────────────────
+
+@mixin indicator {
   margin: 0 2px;
-  &-button {
-    font-family: "Symbols Nerd Font Mono";
-    background-color: $white;
-    padding: 0 6px;
-    color: $background;
-    font-size: 16px;
-  }
-  &-text {
-    background-color: $black;
-    font-size: 12px;
-    padding: 0 5px;
-    color: $foreground;
-  }
+  &-button { @include icon-button($white, $white, $background, 16px, 0 6px); }
+  &-text   { @include readout(12px, 0 5px); }
 }
 
-.volume {
-  margin: 0 2px;
-  &-button {
-    font-family: "Symbols Nerd Font Mono";
-    background-color: $white;
-    padding: 0 6px;
-    color: $background;
-    font-size: 16px;
-  }
-  &-text {
-    background-color: $black;
-    font-size: 12px;
-    padding: 0 5px;
-    color: $foreground;
-  }
-}
+.battery { @include indicator; }
+.volume  { @include indicator; }
