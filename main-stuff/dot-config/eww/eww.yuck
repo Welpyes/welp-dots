@@ -247,15 +247,6 @@
   )
 )
 
-; ── Notifications ──────────────────────────────────────────────────
-
-(defwidget notification-button []
-  (button
-    :class "notification-button"
-    :onclick "echo yes"
-    (label :text "󰅸")
-  )
-)
 
 ; ── Battery ────────────────────────────────────────────────────────
 
@@ -292,3 +283,14 @@
     )
   )
 )
+
+; ── Notifications ──────────────────────────────────────────────────
+
+(defwidget notification-button []
+  (button
+    :class "notification-button"
+    :onclick "echo yes"
+    (label :text "󰅸")
+  )
+)
+
