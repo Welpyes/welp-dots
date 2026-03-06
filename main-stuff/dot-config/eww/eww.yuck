@@ -1,4 +1,4 @@
-; ── Windows ──────────────────────────────────────────────────────────────────
+; ── Windows ────────────────────────────────────────────────────────
 
 (defwindow bar
   :wm-ignore false
@@ -45,7 +45,7 @@
   (pallete)
 )
 
-; ── Bar layout ────────────────────────────────────────────────────────────────
+; ── Bar layout ─────────────────────────────────────────────────────
 
 (defwidget bar []
   (box
@@ -101,7 +101,7 @@
   (box :class "spacer" :orientation "h")
 )
 
-; ── Clock & Calendar ──────────────────────────────────────────────────────────
+; ── Clock & Calendar ───────────────────────────────────────────────
 
 (deflisten time
   :initial "00:00 AM"
@@ -134,7 +134,7 @@
   )
 )
 
-; ── Launcher ──────────────────────────────────────────────────────────────────
+; ── Launcher ───────────────────────────────────────────────────────
 
 (defwidget launcher []
   (button
@@ -144,7 +144,7 @@
   )
 )
 
-; ── Weather ───────────────────────────────────────────────────────────────────
+; ── Weather ────────────────────────────────────────────────────────
 
 (deflisten weather-icon
   :initial "󰖙"
@@ -173,7 +173,7 @@
   )
 )
 
-; ── Workspaces ────────────────────────────────────────────────────────────────
+; ── Workspaces ─────────────────────────────────────────────────────
 
 (deflisten workspaces :initial "[]"
   `./scripts/workspaces.py`
@@ -196,7 +196,7 @@
   )
 )
 
-; ── Packages ──────────────────────────────────────────────────────────────────
+; ── Packages ───────────────────────────────────────────────────────
 
 (defpoll packages-data :initial "100" :interval "1h"
   `pacman -Qe | wc -l`
@@ -217,7 +217,7 @@
   )
 )
 
-; ── Control panel ─────────────────────────────────────────────────────────────
+; ── Control panel ──────────────────────────────────────────────────
 
 (defwidget control-panel []
   (button
@@ -227,7 +227,7 @@
   )
 )
 
-; ── Palette ───────────────────────────────────────────────────────────────────
+; ── Palette ────────────────────────────────────────────────────────
 
 (defwidget pallete-button []
   (button
@@ -247,7 +247,7 @@
   )
 )
 
-; ── Notifications ─────────────────────────────────────────────────────────────
+; ── Notifications ──────────────────────────────────────────────────
 
 (defwidget notification-button []
   (button
@@ -257,7 +257,7 @@
   )
 )
 
-; ── Battery ───────────────────────────────────────────────────────────────────
+; ── Battery ────────────────────────────────────────────────────────
 
 (defpoll battery-data :initial "100" :interval "30m"
   `termux-battery-status | jq .level`
@@ -275,15 +275,15 @@
   )
 )
 
-; ── Volume ────────────────────────────────────────────────────────────────────
+; ── Volume ─────────────────────────────────────────────────────────
 
-(defpoll volume-data :initial "100%" :interval "30m"
-  `pactl get-sink-volume OpenSL_ES_sink | awk '{print $5}'`
+(deflisten volume-data :initial "100%"
+  `./scripts/get-vol.sh`
 )
 
 (defwidget volume []
   (box :class "volume"
-    (button :class "volume-button"
+    (button :class "volume-button" :onclick "pavucontrol"
       (label :text "")
     )
     (label
