@@ -2,10 +2,12 @@
 # Display
 monitor = 1
 origin = top-right
-offset = (60, 60)
+offset = (10, 60)
 width = (300, 300)
 height = (100, 100)
 gap_size = 5
+stack_duplicates = false
+indicate_hidden = false
 notification_limit = 5
 script = /data/data/com.termux/files/home/.config/dunst/dunst-log.py
 

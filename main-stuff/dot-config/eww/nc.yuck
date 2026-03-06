@@ -136,6 +136,8 @@
     :y "60px"
     :width "320px"
     :anchor "top right")
+  :windowtype "normal"
+  :wm-ignore true
   :stacking "fg"
   :exclusive false
   :focusable true
