@@ -293,4 +293,4 @@
     (label :text "󰅸")
   )
 )
-
+(include "./nc.yuck")

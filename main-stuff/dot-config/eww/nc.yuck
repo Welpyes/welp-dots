@@ -1,0 +1,140 @@
+; ─── Notification Center Widget ───────────────────────────────────────────────
+; Reads from $TMPDIR/notifications.jsonl (written by dunst hook)
+; Shows all notifications in a scrollable list, newest first
+
+; ── Poll the jsonl file via external script (avoids eww bash parsing issues) ───
+(defpoll notifications
+  :interval "2s"
+  :initial "[]"
+  `python3 ~/.config/eww/scripts/nc-read-notifs.py`)
+
+; ── Urgency icon helper ────────────────────────────────────────────────────────
+; CRITICAL → red dot, LOW → dim dot, NORMAL → accent dot
+(defwidget urgency-dot [urgency]
+  (box
+    :class {urgency == "CRITICAL" ? "urgency-dot critical"
+          : urgency == "LOW"      ? "urgency-dot low"
+          :                         "urgency-dot normal"}
+    :width 7
+    :height 7))
+
+; ── Single notification card ───────────────────────────────────────────────────
+(defwidget notif-card [appname summary body icon urgency timestamp]
+  (eventbox
+    :class "notif-card"
+    :cursor "pointer"
+    (box
+      :class "notif-inner"
+      :orientation "h"
+      :space-evenly false
+      :spacing 10
+
+      ; left accent bar (urgency color)
+      (box :class {"notif-accent " + urgency} :width 3)
+
+      ; app icon (if present)
+      (box
+        :class "notif-icon-wrap"
+        :halign "center"
+        :valign "center"
+        (image
+          :path {icon != "" ? icon : ""}
+          :image-width 22
+          :image-height 22))
+
+      ; text content
+      (box
+        :orientation "v"
+        :space-evenly false
+        :hexpand true
+        :valign "center"
+        :spacing 2
+        (box
+          :orientation "h"
+          :space-evenly false
+          (label
+            :class "notif-summary"
+            :text summary
+            :limit-width 28
+            :halign "start"
+            :hexpand true)
+          (label
+            :class "notif-time"
+            :text {formattime(timestamp, "%H:%M")}
+            :halign "end"))
+        (label
+          :class "notif-body"
+          :text {body != "" ? body : appname}
+          :limit-width 34
+          :halign "start"
+          :wrap true)))))
+
+; ── Empty state ────────────────────────────────────────────────────────────────
+(defwidget nc-empty []
+  (box
+    :class "nc-empty"
+    :orientation "v"
+    :valign "center"
+    :halign "center"
+    :spacing 8
+    (label :class "nc-empty-icon" :text "")
+    (label :class "nc-empty-text" :text "no notifications")))
+
+; ── Notification list (scrollable) ────────────────────────────────────────────
+(defwidget nc-list []
+  (scroll
+    :vscroll true
+    :hscroll false
+    :height 420
+    (box
+      :orientation "v"
+      :space-evenly false
+      :spacing 4
+      :class "nc-list"
+      (for notif in notifications
+        (notif-card
+          :appname   {notif.appname}
+          :summary   {notif.summary}
+          :body      {notif.body}
+          :icon      {notif.icon}
+          :urgency   {notif.urgency}
+          :timestamp {notif.timestamp})))))
+
+; ── Header bar ────────────────────────────────────────────────────────────────
+(defwidget nc-header []
+  (box
+    :class "nc-header"
+    :orientation "h"
+    :space-evenly false
+    (label :class "nc-title" :text " notifications" :hexpand true :halign "start")
+    (eventbox
+      :class "nc-clear-btn"
+      :cursor "pointer"
+      :onclick "bash -c 'rm -f $TMPDIR/notifications.jsonl && touch $TMPDIR/notifications.jsonl'"
+      (label :text "󰆴 clear"))))
+
+; ── Root notification center widget ───────────────────────────────────────────
+(defwidget notification-center []
+  (box
+    :class "notification-center"
+    :orientation "v"
+    :space-evenly false
+    :spacing 0
+    (nc-header)
+    (box :class "nc-divider")
+    (if {arraylength(notifications) == 0}
+      (nc-empty)
+      (nc-list))))
+
+; ── Window definition ──────────────────────────────────────────────────────────
+(defwindow notification-center
+  :monitor 0
+  :geometry (geometry
+    :x "-10px"
+    :y "40px"
+    :width "320px"
+    :anchor "top right")
+  :stacking "overlay"
+  :exclusive false
+  :focusable true
+  (notification-center))

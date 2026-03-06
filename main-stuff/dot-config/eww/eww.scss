@@ -145,6 +145,7 @@ $selection-fg: #e5c9a0;
   @include icon-button($magenta, $br-magenta, $background, 16px, 0 6px);
   margin: 0 2px;
 }
+@import "./nc";
 
 // ── Shared: battery & volume ─────────────────────────────────────────────────
 

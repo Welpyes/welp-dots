@@ -1,0 +1,191 @@
+// ─── nc.scss — Notification Center ────────────────────────────────────────────
+// Colour scheme: warm dark gruvbox-ish palette
+
+$background:    #141210;
+$foreground:    #e5c9a0;
+
+$black:         #322d28;
+$red:           #c06c5c;
+$green:         #78997a;
+$yellow:        #c09d59;
+$blue:          #7f91b2;
+$magenta:       #b380b0;
+$cyan:          #7b9695;
+$white:         #d8be97;
+
+$br-black:      #4d463e;
+$br-red:        #d97a68;
+$br-green:      #85b695;
+$br-yellow:     #d8b164;
+$br-blue:       #a3a9ce;
+$br-magenta:    #cf9bc2;
+$br-cyan:       #89b3b6;
+$br-white:      #f2d5a9;
+
+$selection-bg:  #4d463e;
+$selection-fg:  #e5c9a0;
+
+// ── Derived tokens ─────────────────────────────────────────────────────────────
+$surface:       #1c1916;   // slightly lifted background for the panel
+$surface-2:     #231f1b;   // card background
+$surface-hover: #2b261f;   // card hover
+$border:        #2e2823;   // subtle borders
+$muted:         #7a6e62;   // timestamps, secondary text
+$radius:        8px;
+$radius-sm:     5px;
+
+// ── Root window ────────────────────────────────────────────────────────────────
+.notification-center {
+  background-color: $surface;
+  border-radius:    $radius;
+  border:           1px solid $border;
+  padding:          0;
+  min-width:        320px;
+
+  // subtle shadow for depth
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.55),
+              0 1px 4px  rgba(0, 0, 0, 0.4);
+}
+
+// ── Header ─────────────────────────────────────────────────────────────────────
+.nc-header {
+  padding:       10px 14px 8px;
+  background:    transparent;
+}
+
+.nc-title {
+  font-family:   "JetBrainsMono Nerd Font", monospace;
+  font-size:     13px;
+  font-weight:   700;
+  color:         $br-white;
+  letter-spacing: 0.04em;
+}
+
+.nc-clear-btn {
+  border-radius: $radius-sm;
+  padding:       3px 8px;
+  transition:    background 0.15s ease;
+
+  label {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size:   11px;
+    color:       $muted;
+  }
+
+  &:hover label {
+    color: $br-red;
+  }
+}
+
+// ── Divider ────────────────────────────────────────────────────────────────────
+.nc-divider {
+  background:  $border;
+  min-height:  1px;
+  margin:      0 10px 6px;
+}
+
+// ── Scrollable list ────────────────────────────────────────────────────────────
+.nc-list {
+  padding: 0 8px 8px;
+}
+
+// scrollbar style (GTK)
+scrolledwindow {
+  &> scrollbar {
+    background:   transparent;
+    border:       none;
+    min-width:    4px;
+
+    slider {
+      background:   $br-black;
+      border-radius: 4px;
+      min-width:    4px;
+      min-height:   24px;
+
+      &:hover { background: $muted; }
+    }
+  }
+
+  // hide the trough
+  &> scrollbar.vertical trough { background: transparent; }
+}
+
+// ── Notification card ──────────────────────────────────────────────────────────
+.notif-card {
+  border-radius: $radius-sm;
+  transition:    background 0.12s ease;
+
+  &:hover .notif-inner {
+    background: $surface-hover;
+  }
+}
+
+.notif-inner {
+  background:    $surface-2;
+  border-radius: $radius-sm;
+  border:        1px solid $border;
+  padding:       8px 10px 8px 0;
+  transition:    background 0.12s ease;
+}
+
+// ── Urgency accent bar ─────────────────────────────────────────────────────────
+.notif-accent {
+  border-radius: 2px 0 0 2px;
+  min-width:     3px;
+
+  &.NORMAL   { background: $blue; }
+  &.LOW      { background: $br-black; }
+  &.CRITICAL { background: $br-red; }
+}
+
+// ── App icon ───────────────────────────────────────────────────────────────────
+.notif-icon-wrap {
+  min-width:  30px;
+  min-height: 30px;
+
+  image {
+    // tint icons to match fg; GTK CSS color works on symbolic icons
+    color:   $muted;
+    opacity: 0.85;
+  }
+}
+
+// ── Text ───────────────────────────────────────────────────────────────────────
+.notif-summary {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size:   12px;
+  font-weight: 600;
+  color:       $br-white;
+}
+
+.notif-body {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size:   11px;
+  color:       $white;
+  opacity:     0.75;
+}
+
+.notif-time {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size:   10px;
+  color:       $muted;
+  padding-left: 6px;
+}
+
+// ── Empty state ────────────────────────────────────────────────────────────────
+.nc-empty {
+  padding:    40px 20px;
+
+  .nc-empty-icon {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size:   28px;
+    color:       $br-black;
+  }
+
+  .nc-empty-text {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size:   12px;
+    color:       $muted;
+    letter-spacing: 0.08em;
+  }
+}
