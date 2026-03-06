@@ -114,7 +114,7 @@
     :space-evenly false
     (button
       :class "clock-widget-button"
-      :onclick "scripts/toggle_calendar.sh"
+      :onclick "eww open --toggle simple-calendar"
       (label :text "")
     )
     (label
@@ -232,7 +232,7 @@
 (defwidget pallete-button []
   (button
     :class "pallete-button"
-    :onclick "bash ./scripts/toggle_pallete.sh"
+    :onclick "eww open --toggle pallete"
     (label :text "󰉦")
   )
 )
@@ -289,7 +289,7 @@
 (defwidget notification-button []
   (button
     :class "notification-button"
-    :onclick "echo yes"
+    :onclick "eww open --toggle notification-center"
     (label :text "󰅸")
   )
 )

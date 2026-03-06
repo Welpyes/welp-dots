@@ -1,6 +1,7 @@
 ; ─── Notification Center Widget ───────────────────────────────────────────────
 ; Reads from $TMPDIR/notifications.jsonl (written by dunst hook)
 ; Shows all notifications in a scrollable list, newest first
+; Right-click a card to dismiss it individually
 
 ; ── Poll the jsonl file via external script (avoids eww bash parsing issues) ───
 (defpoll notifications
@@ -8,21 +9,12 @@
   :initial "[]"
   `python3 ~/.config/eww/scripts/nc-read-notifs.py`)
 
-; ── Urgency icon helper ────────────────────────────────────────────────────────
-; CRITICAL → red dot, LOW → dim dot, NORMAL → accent dot
-(defwidget urgency-dot [urgency]
-  (box
-    :class {urgency == "CRITICAL" ? "urgency-dot critical"
-          : urgency == "LOW"      ? "urgency-dot low"
-          :                         "urgency-dot normal"}
-    :width 7
-    :height 7))
-
 ; ── Single notification card ───────────────────────────────────────────────────
 (defwidget notif-card [appname summary body icon urgency timestamp]
   (eventbox
     :class "notif-card"
     :cursor "pointer"
+    :onrightclick "python3 ~/.config/eww/scripts/nc-remove-notifs.py ${timestamp}"
     (box
       :class "notif-inner"
       :orientation "h"
@@ -62,12 +54,21 @@
             :class "notif-time"
             :text {formattime(timestamp, "%H:%M")}
             :halign "end"))
-        (label
-          :class "notif-body"
-          :text {body != "" ? body : appname}
-          :limit-width 34
-          :halign "start"
-          :wrap true)))))
+        (box
+          :orientation "h"
+          :space-evenly false
+          (label
+            :class "notif-body"
+            :text {body != "" ? body : appname}
+            :limit-width 34
+            :halign "start"
+            :hexpand true
+            :wrap true)
+          (label
+            :class "notif-dismiss-hint"
+            :text "󰅖"
+            :halign "end"
+            :valign "end"))))))
 
 ; ── Empty state ────────────────────────────────────────────────────────────────
 (defwidget nc-empty []
@@ -77,6 +78,7 @@
     :valign "center"
     :halign "center"
     :spacing 8
+    :visible {arraylength(notifications) == 0}
     (label :class "nc-empty-icon" :text "")
     (label :class "nc-empty-text" :text "no notifications")))
 
@@ -86,6 +88,7 @@
     :vscroll true
     :hscroll false
     :height 420
+    :visible {arraylength(notifications) != 0}
     (box
       :orientation "v"
       :space-evenly false
@@ -122,19 +125,18 @@
     :spacing 0
     (nc-header)
     (box :class "nc-divider")
-    (if {arraylength(notifications) == 0}
-      (nc-empty)
-      (nc-list))))
+    (nc-empty)
+    (nc-list)))
 
 ; ── Window definition ──────────────────────────────────────────────────────────
 (defwindow notification-center
   :monitor 0
   :geometry (geometry
     :x "-10px"
-    :y "40px"
+    :y "60px"
     :width "320px"
     :anchor "top right")
-  :stacking "overlay"
+  :stacking "fg"
   :exclusive false
   :focusable true
   (notification-center))

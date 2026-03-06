@@ -2,12 +2,12 @@
 # Display
 monitor = 1
 origin = top-right
-offset = (15, 25)
+offset = (60, 60)
 width = (300, 300)
 height = (100, 100)
 gap_size = 5
 notification_limit = 5
-script = /data/data/com.termux/files/home/.local/bin/dunst-log.py
+script = /data/data/com.termux/files/home/.config/dunst/dunst-log.py
 
 # Appearance
 font = "Ioskeley Mono 11"
@@ -26,7 +26,7 @@ idle_threshold = 120
 
 # Icons
 max_icon_size = 64
-icon_path = /data/data/com.termux/files/usr/share/icons/Papirus-Dark/48x48/apps:/data/data/com.termux/files/usr/share/icons/Papirus-Dark/48x48/status:/usr/share/icons/hicolor/48x48/apps:/data/data/com.termux/files/home/.icons
+icon_path = /data/data/com.termux/files/home/.icons/Gruvbox-Plus-Dark/actions/16/:/data/data/com.termux/files/home/.icons/Gruvbox-Plus-Dark/apps/16/
 enable_recursive_icon_lookup = true
 
 # Behavior
@@ -48,18 +48,18 @@ format = "<b>%a</b>\n%s\n<i>%b</i>"
     foreground = "#d8be97"
     frame_color = "#322d28"
     timeout = 3
-    default_icon = "~/.icons/Gruvbox-Plus-Dark/actions/scalable/bell.svg"
+    default_icon = "/data/data/com.termux/files/home/.icons/Gruvbox-Plus-Dark/apps/16/bell.svg"
 
 [urgency_normal]
     background = "#141210"
     foreground = "#e5c9a0"
     frame_color = "#c09d59"
     timeout = 5
-    default_icon = "~/.icons/Gruvbox-Plus-Dark/actions/scalable/bell.svg"
+    default_icon = "/data/data/com.termux/files/home/.icons/Gruvbox-Plus-Dark/apps/16/bell.svg"
 
 [urgency_critical]
     background = "#141210"
     foreground = "#f2d5a9"
     frame_color = "#c06c5c"
     timeout = 0
-    default_icon = "~/.icons/Gruvbox-Plus-Dark/panel/24/weather-severe-alert.svg"
+    default_icon = "/data/data/com.termux/files/home/.icons/Gruvbox-Plus-Dark/apps/16/bell.svg"
