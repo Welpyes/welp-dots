@@ -50,6 +50,7 @@ autostart(){
   feh --bg-fill /sdcard/Pictures/gowall/138841147_p0.png &
   kill -9 $(pgrep -x "eww") > /dev/null
   eww open bar &
+  dunst &
 }
 
 __main__(){
