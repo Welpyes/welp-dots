@@ -19,29 +19,31 @@ clients(){
   bspc rule -a scratchpad state=floating
   bspc config pointer_follows_focus false
   bspc config focus_follows_pointer true
-  bspc config border_width 2
+  bspc config border_width 1
   bspc config normal_border_color '#322d28'
-  bspc config active_border_color '#c09d59'
-  bspc config focused_border_color '#c09d59'
+  bspc config active_border_color '#e5c9a0'
+  bspc config focused_border_color '#e5c9a0'
 }
 
 compositor(){
-  killall fastcompmgr
-  sleep 1
-  fastcompmgr \
-    -r 10 \
-    -t -15 \
-    -l -15 \
-    -o 0.7 \
-    -m 1 \
-    -c \
-    -C \
-    -i 1 \
-    --corner-radius 0 \
-    --blur-sigma 20 \
-    --border-width 0 
-    # --border-color '#c09d59' \
-    # --inactive-border-color '#322d28' \
+  (
+    killall fastcompmgr
+    sleep 1
+    fastcompmgr \
+      -r 18 \
+      -t -22 \
+      -l -22 \
+      -o 1 \
+      -m 1 \
+      -c \
+      -C \
+      -i 1 \
+      --corner-radius 0 \
+      --blur-sigma 20 \ 
+      # --border-width 0 \
+      # --border-color '#c09d59' \
+      # --inactive-border-color '#322d28'
+  ) &
 }
 
 autostart(){

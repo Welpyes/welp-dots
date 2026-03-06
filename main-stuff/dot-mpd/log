@@ -2741,3 +2741,6 @@ Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fu
 2026-03-04T14:32:15 player: played "main/TUYU - 羨望.opus"
 2026-03-04T14:34:44 player: played "main/ヒロセコミ - Promise.mp3"
 2026-03-04T14:39:05 player: played "main/Plastic_Smile.MP3"
+2026-03-06T18:43:34 player: played "main/03 - Honesty.ogg"
+2026-03-06T18:43:40 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-03-06T18:43:52 player: played "main/Starry Night.mp3"

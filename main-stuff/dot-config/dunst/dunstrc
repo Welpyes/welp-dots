@@ -44,13 +44,22 @@ mouse_middle_click = context_all
 format = "<b>%a</b>\n%s\n<i>%b</i>"
 
 [urgency_low]
-timeout = 3
-default_icon = "~/.config/dunst/icons/bell-badge-low.svg"
+    background = "#141210"
+    foreground = "#d8be97"
+    frame_color = "#322d28"
+    timeout = 3
+    default_icon = "~/.icons/Gruvbox-Plus-Dark/actions/scalable/bell.svg"
 
 [urgency_normal]
-timeout = 5
-default_icon = "~/.config/dunst/icons/bell-badge.svg"
+    background = "#141210"
+    foreground = "#e5c9a0"
+    frame_color = "#c09d59"
+    timeout = 5
+    default_icon = "~/.icons/Gruvbox-Plus-Dark/actions/scalable/bell.svg"
 
 [urgency_critical]
-timeout = 0
-default_icon = "~/.config/dunst/icons/alert-decagram.svg"
+    background = "#141210"
+    foreground = "#f2d5a9"
+    frame_color = "#c06c5c"
+    timeout = 0
+    default_icon = "~/.icons/Gruvbox-Plus-Dark/panel/24/weather-severe-alert.svg"
