@@ -2,6 +2,12 @@
 #   Applications   #
 ####################
 
+# calendar
+alt + shift + c
+  eww open --toggle simple-calendar
+# notification center
+alt + shift + n
+  eww open --toggle notification-center
 # Terminal
 alt + Return
   st &> /dev/null
@@ -131,3 +137,5 @@ ctrl + alt + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# vim: ft=sh

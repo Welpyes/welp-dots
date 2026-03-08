@@ -26,6 +26,17 @@ $br-white:   #f2d5a9;
 $selection-bg: #4d463e;
 $selection-fg: #e5c9a0;
 
+// ── Derived tokens ─────────────────────────────────────────────────────────────
+// $surface:       #1c1916;   // slightly lifted background for the panel
+$surface:       rgba(28, 25, 22, 0.98);   // slightly lifted background for the panel
+$surface-2:     #231f1b;   // card background
+$surface-hover: #2b261f;   // card hover
+$border:        $yellow;   // subtle borders
+$muted:         #7a6e62;   // timestamps, secondary text
+$radius:        0px;
+$radius-sm:     0px;
+
+
 // ── Mixins ───────────────────────────────────────────────────────────────────
 
 // Coloured icon button with a hover variant
@@ -59,11 +70,13 @@ $selection-fg: #e5c9a0;
 
 // ── Calendar ─────────────────────────────────────────────────────────────────
 
-.simple-calendar-widget {
-  background-color: $background;
-  border: 2px solid $yellow;
-  padding: 10px;
-  margin: 10px;
+.simple-calendar {
+  background-color: $surface;
+  border: 1px solid $yellow;
+  padding: 20 0px;
+  &-widget {
+    background-color: transparent;
+  }
 }
 
 // ── Clock ────────────────────────────────────────────────────────────────────
@@ -130,13 +143,18 @@ $selection-fg: #e5c9a0;
 
 // ── Palette button ───────────────────────────────────────────────────────────
 
-.pallete-button {
-  font-family: "Symbols Nerd Font Mono";
-  font-size: 20px;
-  background-color: $black;
-  color: $background;
-  padding: 0 6px;
-  &:hover { color: $foreground; }
+.pallete {
+  background-color: $surface;
+  border: 1px solid $yellow;
+  padding: 10 0px;
+  &-button {
+    font-family: "Symbols Nerd Font Mono";
+    font-size: 20px;
+    background-color: $black;
+    color: $background;
+    padding: 0 6px;
+    &:hover { color: $foreground; }
+  }
 }
 
 // ── Notifications ────────────────────────────────────────────────────────────

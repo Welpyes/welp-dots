@@ -133,7 +133,7 @@
   :monitor 0
   :geometry (geometry
     :x "-10px"
-    :y "60px"
+    :y "50px"
     :width "320px"
     :anchor "top right")
   :windowtype "normal"

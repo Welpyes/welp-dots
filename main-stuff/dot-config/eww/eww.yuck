@@ -16,9 +16,9 @@
 )
 
 (defwindow simple-calendar
-  :wm-ignore false
+  :wm-ignore true
   :monitor 0
-  :windowtype "dock"
+  :windowtype "normal"
   :stacking "fg"
   :geometry (geometry
     :x "-10"
@@ -36,11 +36,11 @@
   :windowtype "dock"
   :stacking "fg"
   :geometry (geometry
-    :x "-10"
+    :x "225"
     :y "50"
     :height "60px"
-    :width "150px"
-    :anchor "top right"
+    :width "100px"
+    :anchor "top left"
   )
   (pallete)
 )
