@@ -1,0 +1,22 @@
+
+themes:
+  - name: "Kintsukuroi"
+    colors:
+    - "#141210" # background
+    - "#e5c9a0" # foreground
+    - "#322d28" # black
+    - "#c06c5c" # red
+    - "#78997a" # green
+    - "#c09d59" # yellow
+    - "#7f91b2" # blue
+    - "#b380b0" # magenta
+    - "#7b9695" # cyan
+    - "#d8be97" # white
+    - "#4d463e" # bright black
+    - "#d97a68" # bright red
+    - "#85b695" # bright green
+    - "#d8b164" # bright yellow
+    - "#a3a9ce" # bright blue
+    - "#cf9bc2" # bright magenta
+    - "#89b3b6" # bright cyan
+    - "#f2d5a9" # bright white

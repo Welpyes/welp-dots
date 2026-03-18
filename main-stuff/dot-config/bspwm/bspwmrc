@@ -1,0 +1,62 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+display(){
+  bspc monitor -d 1 2 3 4 5
+  xsetroot -cursor_name left_ptr
+}
+
+gaps(){
+  bspc config window_gap 10
+  bspc config top_padding 50
+  bspc config bottom_padding 10
+  bspc config right_padding 10
+  bspc config left_padding 10
+}
+
+clients(){
+  bspc rule -a "Xfce4-taskmanager" state=floating layer=above
+  bspc rule -a "firefox-default" desktop='^2'
+  bspc rule -a scratchpad state=floating
+  bspc config pointer_follows_focus false
+  bspc config focus_follows_pointer true
+  bspc config border_width 0
+  bspc config normal_border_color '#322d28'
+  bspc config active_border_color '#e5c9a0'
+  bspc config focused_border_color '#e5c9a0'
+}
+
+compositor(){
+  (
+  killall xcompmgr
+  sleep 1
+  xcompmgr \
+    -r 12 \
+    -l -15 \
+    -t -15 \
+    -o 0.6 \
+    -D 8 \
+    -R 20 \
+    -e 0.3 \
+    -q 20 \
+    --no-dock-shadow \
+    -cFfb &
+  ) &
+}
+
+autostart(){
+  kill -9 $(pgrep -x "sxhkd") > /dev/null 
+  sxhkd -c ~/.config/bspwm/sxhkdrc &
+  feh --bg-fill /sdcard/Documents/pixelLab/20260314_192335.png &
+  kill -9 $(pgrep -x "eww") > /dev/null
+  eww open bar &
+  dunst &
+}
+
+__main__(){
+  display
+  gaps
+  clients
+  compositor
+  autostart
+}
+__main__

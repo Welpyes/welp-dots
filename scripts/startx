@@ -1,0 +1,46 @@
+#!/bin/bash
+
+presetup(){
+  pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1 port=8080" --exit-idle-time=-1
+  export PULSE_SERVER=tcp:127.0.0.1:8080
+  pactl load-module module-sles-source
+  # virgl_test_server_android &
+}
+
+exports(){
+  cd $HOME
+  export XDG_RUNTIME_DIR=$TMPDIR
+  export DISPLAY=:0
+  export VK_ICD_FILENAMES=$PREFIX/share/vulkan/icd.d/wrapper_icd.aarch64.json
+  export GALLIUM_DRIVER=zink
+}
+
+xorg-startup(){
+  termux-x11 :0 +extension COMPOSITE +extension GLX +iglx  & > /dev/null 2>&1
+  am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity > /dev/null 2>&1
+}
+
+__main__(){
+  exports
+  xorg-startup
+  presetup
+
+  FILE=$HOME/.xinitrc
+
+  if [[ ! -f "$FILE" ]]; then
+      echo "Error: '$FILE' not found."
+      exit 1
+  fi
+
+  while IFS= read -r line; do
+      [[ -z "$line" || "$line" =~ ^# ]] && continue
+      eval "dbus-launch $line" &
+  done < "$FILE"
+    
+  read -r 
+
+  kill -9 $(pgrep --list-name /system/bin/app_process | awk '{print $1}') > /dev/null &
+  kill -9 $(pgrep -x "pulseaudio")
+}
+__main__
+

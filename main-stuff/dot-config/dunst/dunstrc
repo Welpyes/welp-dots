@@ -1,0 +1,67 @@
+[global]
+# Display
+monitor = 1
+origin = top-right
+offset = (10, 60)
+width = (300, 300)
+height = (100, 100)
+gap_size = 5
+stack_duplicates = false
+indicate_hidden = false
+notification_limit = 5
+script = /data/data/com.termux/files/home/.config/dunst/dunst-log.py
+
+# Appearance
+font = "Ioskeley Mono 11"
+frame_width = 1
+separator_color = frame
+corner_radius = 0
+corners = top-left,bottom
+progress_bar_corner_radius = 0
+progress_bar_corners = top-left,bottom-right
+
+# Colors loaded from theme via dunstrc.d/00-colors.conf
+
+# Timing
+timeout = 5
+idle_threshold = 120
+
+# Icons
+max_icon_size = 64
+icon_path = /data/data/com.termux/files/home/.icons/Gruvbox-Plus-Dark/actions/16/:/data/data/com.termux/files/home/.icons/Gruvbox-Plus-Dark/apps/16/
+enable_recursive_icon_lookup = true
+
+# Behavior
+dmenu = ~/.config/rofi/launch.sh
+show_indicators = yes
+sticky_history = yes
+history_length = 20
+
+# Mouse actions
+mouse_left_click = close_current
+mouse_right_click = close_all
+mouse_middle_click = context_all
+
+# Format
+format = "<b>%a</b>\n%s\n<i>%b</i>"
+
+[urgency_low]
+    background = "#141210"
+    foreground = "#d8be97"
+    frame_color = "#322d28"
+    timeout = 3
+    default_icon = "/data/data/com.termux/files/home/.icons/Gruvbox-Plus-Dark/apps/16/bell.svg"
+
+[urgency_normal]
+    background = "#141210"
+    foreground = "#e5c9a0"
+    frame_color = "#c09d59"
+    timeout = 5
+    default_icon = "/data/data/com.termux/files/home/.icons/Gruvbox-Plus-Dark/apps/16/bell.svg"
+
+[urgency_critical]
+    background = "#141210"
+    foreground = "#f2d5a9"
+    frame_color = "#c06c5c"
+    timeout = 0
+    default_icon = "/data/data/com.termux/files/home/.icons/Gruvbox-Plus-Dark/apps/16/bell.svg"
