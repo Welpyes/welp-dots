@@ -2783,3 +2783,529 @@ Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fu
 2026-03-18T20:04:54 player: played "英語/ABBA - Dancing Queen.mp3"
 2026-03-18T20:04:54 exception: Failed to decode "/sdcard/Music/英語/ABBA - Dancing Queen.mp3"; Failed to open "/sdcard/Music/英語/ABBA - Dancing Queen.mp3": No such file or directory
 2026-03-18T20:09:14 player: played "英語/Michael Bolton - How Am I Supposed to Live Without You.mp3"
+2026-03-22T13:25:01 player: played "英語/Whitney Houston - I Wanna Dance with Somebody (Who Loves Me).mp3"
+2026-03-22T13:26:34 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-03-22T13:26:39 player: played "英語/Earth Wind & Fire - Boogie Wonderland.mp3"
+2026-03-23T11:58:18 player: played "main/11 忘れてやらない.mp3"
+2026-03-23T12:00:42 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-24T07:12:20 player: played "main/03 - 八月、某、月明かり.mp3"
+2026-03-24T07:13:45 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-26T10:15:07 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-26T10:22:04 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-26T10:23:53 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-26T10:24:04 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:24:15 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:24:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:29:39 player: played "main/03 - 八月、某、月明かり.mp3"
+2026-03-26T10:33:42 player: played "main/14 - だから僕は音楽を辞めた.ogg"
+2026-03-26T10:35:25 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-26T10:35:35 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:35:46 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:35:57 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:36:07 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:36:18 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:36:28 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:36:39 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:36:49 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:37:00 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:37:10 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:37:13 player: played "main/03 September.ogg"
+2026-03-26T10:37:13 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:37:23 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:37:34 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:37:44 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:37:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:38:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:38:15 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:38:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:38:36 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:38:46 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:38:56 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:39:35 player: played "main/random.ogg"
+2026-03-26T10:41:18 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-26T10:41:28 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:41:39 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:41:50 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:42:01 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:42:12 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:42:23 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:42:57 player: played "main/Sendan Life.mp3"
+2026-03-26T10:46:21 player: played "main/01 青春コンプレックス.mp3"
+2026-03-26T10:46:46 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-26T10:46:56 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T10:47:49 player: played "main/11-FEEEEVER TIME.ogg"
+2026-03-26T10:51:01 player: played "main/Midnight Grand Orchestra - Igniter.ogg"
+2026-03-26T10:56:35 player: played "main/Kou! - ShigaisenUV.mp3"
+2026-03-26T10:59:47 player: played "main/泥の分際で私だけの大切を奪おうだなんて.MP3"
+2026-03-26T11:01:52 player: played "main/SEGA SOUND TEAM - 恋のディスコクイーン.ogg"
+2026-03-26T11:07:05 player: played "main/Sunglow.mp3"
+2026-03-26T11:08:04 player: played "main/Shiganaikoukousei - Moonlight.opus"
+2026-03-26T11:10:57 player: played "main/Theme_47.mp3"
+2026-03-26T11:14:50 player: played "main/charon - Seventeen RPG .mp3"
+2026-03-26T11:17:28 player: played "main/101 - スイちゃんのメンテナンスソング.mp3"
+2026-03-26T11:20:16 player: played "main/unwelcome school -jazz-.mp3"
+2026-03-26T11:23:45 player: played "main/11 - Remote Control.ogg"
+2026-03-26T11:27:36 player: played "main/WALKURE - Ikenai Borderline (Speed Up Ver.).mp3"
+2026-03-26T11:31:05 player: played "main/Ave Mujica - KiLLKiSS.mp3"
+2026-03-26T11:34:29 player: played "main/Kotoha - God-ish.mp3"
+2026-03-26T11:37:52 player: played "main/Avril Lavigne - I Love You (Sped Up Ver.).mp3"
+2026-03-26T11:41:12 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-26T11:41:23 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T11:41:34 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T11:41:45 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T11:41:52 player: played "main/A-One feat. Shihori - Magic Girl !!.mp3"
+2026-03-26T11:41:52 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T11:42:02 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T11:50:10 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-26T14:33:11 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-26T14:33:22 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T14:33:33 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T14:33:44 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T14:33:55 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T14:33:57 player: played "main/A-One feat. Shihori - Magic Girl !!.mp3"
+2026-03-26T14:33:57 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T14:34:08 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T14:34:19 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T14:34:53 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-26T15:34:33 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-26T15:34:37 player: played "main/A-One feat. Shihori - Magic Girl !!.mp3"
+2026-03-26T16:12:05 player: played "main/40oz.mp3"
+2026-03-26T16:15:34 player: played "main/11 - Remote Control.ogg"
+2026-03-26T16:18:27 player: played "main/Theme_47.mp3"
+2026-03-26T16:32:16 player: played "main/101 - スイちゃんのメンテナンスソング.mp3"
+2026-03-26T16:34:49 player: played "main/101 - スイちゃんのメンテナンスソング.mp3"
+2026-03-26T16:35:33 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-26T16:35:44 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T16:35:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T16:36:04 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T16:36:14 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T16:36:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T16:36:35 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T16:36:45 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T16:36:55 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T16:37:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T16:37:15 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T16:37:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-26T16:37:49 player: played "main/phony.mp3"
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+2026-03-26T16:48:56 player: played "main/phony.mp3"
+2026-03-26T17:05:08 player: played "main/phony.mp3"
+2026-03-26T19:25:15 player: played "main/phony.mp3"
+2026-03-26T19:27:13 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-26T22:52:06 player: played "main/Ave Mujica - KiLLKiSS.mp3"
+2026-03-26T23:05:12 player: played "main/Ave Mujica - KiLLKiSS.mp3"
+2026-03-26T23:09:03 player: played "main/Dadadadadadada.mp3"
+2026-03-26T23:18:55 player: played "main/202 - Theme 202 - Blue Archive OST- Off The Tracks!.ogg"
+2026-03-26T23:19:09 player: played "main/Marcin feat. Tim Henson - Classical Dragon.mp3"
+2026-03-26T23:19:21 player: played "main/random.ogg"
+2026-03-26T23:25:05 player: played "main/Theme_179_Inst2.mp3"
+2026-03-26T23:30:17 player: played "main/Theme_47.mp3"
+2026-03-26T23:33:25 player: played "main/phony.mp3"
+2026-03-26T23:35:58 player: played "main/Silver Forest - Yami no Mahou Shoujo.mp3"
+2026-03-26T23:41:09 player: played "main/01 - 真夜中のドア - Stay With Me.mp3"
+2026-03-26T23:44:09 player: played "main/01. ムーンライト.ogg"
+2026-03-26T23:45:52 player: played "main/Theme_198.mp3"
+2026-03-26T23:51:54 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-03-26T23:52:12 player: played "main/Theme_149.mp3"
+2026-03-26T23:53:49 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-27T11:47:52 player: played "英語/Michael Jackson - Billie Jean (Long Version).mp3"
+2026-03-27T11:49:08 player: played "英語/Michael Jackson - Billie Jean (Long Version).mp3"
+2026-03-27T11:53:38 player: played "英語/Michael Jackson - Billie Jean (Long Version).mp3"
+2026-03-27T11:56:01 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-03-27T11:56:30 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-03-27T11:57:17 player: played "英語/Rick Astley - Never Gonna Give You Up.mp3"
+2026-03-27T12:01:55 player: played "英語/Whitney Houston - Where Do Broken Hearts Go.mp3"
+2026-03-27T12:06:29 player: played "英語/Frank Sinatra - My Way (2008 Remastered).mp3"
+2026-03-27T12:10:20 player: played "英語/Chicago - You're the Inspiration.mp3"
+2026-03-27T12:10:20 player: played "英語/Michael Jackson - Beat It.mp3"
+2026-03-27T16:54:33 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-03-27T20:45:19 player: played "英語/Britney Spears - ... Baby One More Time.mp3"
+2026-03-27T20:45:34 update: added christler/Wham! - Last Christmas.mp3
+2026-03-27T20:45:34 update: added christler/spotifydown.com - Let It Snow.mp3
+2026-03-27T20:45:34 update: added christler/【Maid Mint Fantome】 - Mint sings Santa Baby .opus
+2026-03-27T20:45:34 update: added christler/jschlatt - Santa Claus Is Coming To Town.mp3
+2026-03-27T20:45:34 update: added album covers/YouCut_20240819_171651408.mp4
+2026-03-27T20:45:34 update: added main/03 - Honesty.ogg
+2026-03-27T20:45:34 update: added main/Linaria.mp3
+2026-03-27T20:45:34 update: added main/Dadadadadadada.mp3
+2026-03-27T20:45:34 update: added main/Masayuki Suzuki - Love Dramatic.mp3
+2026-03-27T20:45:34 update: added main/10-After School Dessert.mp3
+2026-03-27T20:45:34 update: added main/Act my Age.mp3
+2026-03-27T20:45:34 update: added main/DECO＊27 - チェリーポップ.mp3
+2026-03-27T20:45:34 update: added main/sumika - Fiction.mp3
+2026-03-27T20:45:34 update: added main/AngryParkRanger - ＂Sweden＂ from Minecraft but it's actually Pink Floyd (UPDATE- check description).mp3
+2026-03-27T20:45:34 update: added main/Rolling beat.mp3
+2026-03-27T20:45:34 update: added main/ブルーアーカイブ Blue Archive OST 133. Goal Wo Nerae! (Get Set, Go! ～キヴォトス晄輪大祭～ Event BGM) [dOH0dXpDbaU].mp3
+2026-03-27T20:45:34 update: added main/泥の分際で私だけの大切を奪おうだなんて.MP3
+2026-03-27T20:45:34 update: added main/SEGA SOUND TEAM - Friday Night.mp3
+2026-03-27T20:45:34 update: added main/春擬き.MP3
+2026-03-27T20:45:34 update: added main/Uso No Hibana.mp3
+2026-03-27T20:45:34 update: added main/ロックな君とはお別れだ.MP3
+2026-03-27T20:45:34 update: added main/01. ムーンライト.ogg
+2026-03-27T20:45:34 update: added main/BAND-MAID - BAND-MAID ⧸ Ready to Rock (Official Music Video)  TVアニメ「ロックは淑女の嗜みでして」オープニングテーマソング.opus
+2026-03-27T20:45:34 update: added main/Kotoha - God-ish.mp3
+2026-03-27T20:45:34 update: added main/usagi flap.mp3
+2026-03-27T20:45:34 update: added main/Sendan Life.mp3
+2026-03-27T20:45:34 update: added main/Euphoria.mp3
+2026-03-27T20:45:34 update: added main/05 - Tofubeats - First Album Remixes - Cand¥¥¥Land (Pa's Lam System Remix).mp3
+2026-03-27T20:45:34 update: added main/PSYQUI - Raise Your Hands feat. Such.mp3
+2026-03-27T20:45:34 update: added main/Theme_15.mp3
+2026-03-27T20:45:34 update: added main/2.02.  - GET BACK.mp3
+2026-03-27T20:45:34 update: added main/01 - Yorushika - Sunny.mp3
+2026-03-27T20:45:34 update: added main/11 - Remote Control.ogg
+2026-03-27T20:45:34 update: added main/01. 優しさの記憶.mp3
+2026-03-27T20:45:34 update: added main/03. Guruguru Usagi.mp3
+2026-03-27T20:45:34 update: added main/Camellia, Nanahira - 気づいたら春夏秋冬.mp3
+2026-03-27T20:45:34 update: added main/Starry Night.mp3
+2026-03-27T20:45:34 update: added main/14. 花に亡霊.ogg
+2026-03-27T20:45:34 update: added main/0101 - もうどうなってもいいや.ogg
+2026-03-27T20:45:34 update: added main/No Title.ogg
+2026-03-27T20:45:34 update: added main/Plastic_Smile.MP3
+2026-03-27T20:45:34 update: added main/220 - (Saiba Midori (Maid ver.) L2D Theme) - Blue Archive OST- Off The Tracks!.ogg
+2026-03-27T20:45:34 update: added main/mafumafu - Onnanoko Ni Naritai.mp3
+2026-03-27T20:45:34 update: added main/Theme_149.mp3
+2026-03-27T20:45:34 update: added main/Sunglow.mp3
+2026-03-27T20:45:34 update: added main/冷蔵庫見たらプリンがない.mp3
+2026-03-27T20:45:34 update: added main/01. もういいかい？.mp3
+2026-03-27T20:45:34 update: added main/11-FEEEEVER TIME.ogg
+2026-03-27T20:45:34 update: added main/WALKURE - Ikenai Borderline (Speed Up Ver.).mp3
+2026-03-27T20:45:34 update: added main/koi_no_yukue.MP3
+2026-03-27T20:45:34 update: added main/藍月なくる - Marshall Maximizer.mp3
+2026-03-27T20:45:34 update: added main/goodbounce.mp3
+2026-03-27T20:45:34 update: added main/A-One feat. Shihori - Magic Girl !!.mp3
+2026-03-27T20:45:34 update: added main/namirin - The Noise of Rain.mp3
+2026-03-27T20:45:34 update: added main/きゅうくらりん 歌ってみた ⧸ ナナヲアカリ [QMRDrG_4dic].mp3
+2026-03-27T20:45:34 update: added main/Ave Mujica - KiLLKiSS.mp3
+2026-03-27T20:45:34 update: added main/01_01_Stella-rium_鹿乃.mp3
+2026-03-27T20:45:34 update: added main/02 - Playing God.mp3
+2026-03-27T20:45:34 update: added main/Cinnamons & Evening Cinema - Summertime.mp3
+2026-03-27T20:45:34 update: added main/14 - だから僕は音楽を辞めた.ogg
+2026-03-27T20:45:34 update: added main/01 - 真夜中のドア - Stay With Me.mp3
+2026-03-27T20:45:34 update: added main/40oz.mp3
+2026-03-27T20:45:34 update: added main/はいよろこんで（第75回 NHK紅白歌合戦 歌唱曲⧸第66回 輝く！日本レコード大賞最優秀新人賞） ⧸ こっちのけんと MV [jzi6RNVEOtA].mp3
+2026-03-27T20:45:34 update: added main/1.19.  - ReI.mp3
+2026-03-27T20:45:34 update: added main/158.1 - Gregorius _ Symphony (All) - Blue Archive OST- Off The Tracks!.mp3
+2026-03-27T20:45:34 update: added main/Theme_21.mp3
+2026-03-27T20:45:34 update: added main/10 ソワレ.mp3
+2026-03-27T20:45:34 update: added main/ツユ - ツユ - やっぱり雨は降るんだね MV.mp3
+2026-03-27T20:45:34 update: added main/Chronostasis.mp3
+2026-03-27T20:45:34 update: added main/004-Koi is Love.mp3
+2026-03-27T20:45:34 update: added main/05. World's End, Girl's Rondo(Asterisk DnB Remix).mp3
+2026-03-27T20:45:34 update: added main/Elton John - I'm Still Standing.mp3
+2026-03-27T20:45:34 update: added main/kotoha - cat loving .mp3
+2026-03-27T20:45:34 update: added main/Marcin feat. Tim Henson - Classical Dragon.mp3
+2026-03-27T20:45:34 update: added main/Theme_198.mp3
+2026-03-27T20:45:34 update: added main/BookMaker.mp3
+2026-03-27T20:45:34 update: added main/Release - ふわふわ時間.opus
+2026-03-27T20:45:34 update: added main/MO2 - ブルーアーカイブ Blue Archive OST 299.mp3
+2026-03-27T20:45:34 update: added main/01_02_Walk This Way!_鹿乃.mp3
+2026-03-27T20:45:34 update: added main/Theme_47.mp3
+2026-03-27T20:45:34 update: added main/ヒロセコミ - Promise.mp3
+2026-03-27T20:45:34 update: added main/01 青春コンプレックス.mp3
+2026-03-27T20:45:34 update: added main/84 - PRST Marching - Blue Archive OST- Off The Tracks!.mp3
+2026-03-27T20:45:34 update: added main/ここで生きてる.MP3
+2026-03-27T20:45:34 update: added main/Avril Lavigne - I Love You (Sped Up Ver.).mp3
+2026-03-27T20:45:34 update: added main/unwelcome school -jazz-.mp3
+2026-03-27T20:45:34 update: added main/Silver Forest - Yami no Mahou Shoujo.mp3
+2026-03-27T20:45:34 update: added main/Zekk - Libertas (Extended Mix).mp3
+2026-03-27T20:45:34 update: added main/【MV】_鹿乃_「ディアブレイブ」__【OFFICIAL】.MP3
+2026-03-27T20:45:34 update: added main/02 Your voice so.ogg
+2026-03-27T20:45:34 update: added main/lullaby.mp3
+2026-03-27T20:45:34 update: added main/Unwelcome School.mp3
+2026-03-27T20:45:34 update: added main/04 - Mazare Party (feat. Nanahira, Yukacco).ogg
+2026-03-27T20:45:34 update: added main/ZUTOMAYO - Humanoid.mp3
+2026-03-27T20:45:34 update: added main/24-RE Aoharu.mp3
+2026-03-27T20:45:34 update: added main/1.13.  - 5150.mp3
+2026-03-27T20:45:34 update: added main/USAO - Quick Charge (Speed Up Ver.).mp3
+2026-03-27T20:45:34 update: added main/17 - K'Naan feat. Adam Levine - Bang Bang.mp3
+2026-03-27T20:45:34 update: added main/Rubik's Cube.mp3
+2026-03-27T20:45:34 update: added main/Yoshida Yasei - オーバーライド.mp3
+2026-03-27T20:45:34 update: added main/アンダーキッズ(256k).mp3
+2026-03-27T20:45:34 update: added main/Kou! - ShigaisenUV.mp3
+2026-03-27T20:45:34 update: added main/02. PSYQUI - hype feat. Such (lapix Remix).mp3
+2026-03-27T20:45:34 update: added main/Can't Stop Playing Among Us, I Love Among Us.mp3
+2026-03-27T20:45:34 update: added main/麹町養蚕館 - マストダイ - 03 ドレッドノート.ogg
+2026-03-27T20:45:34 update: added main/Evan Call - Zoltraak.mp3
+2026-03-27T20:45:34 update: added main/Midnight Grand Orchestra - Igniter.ogg
+2026-03-27T20:45:34 update: added main/03 - 八月、某、月明かり.mp3
+2026-03-27T20:45:35 update: added main/PSYQUI feat. ぷにぷに電機 - Still in my heart.ogg
+2026-03-27T20:45:35 update: added main/05. t+pazolite — Oshama Scramble! (uncut edition).mp3
+2026-03-27T20:45:35 update: added main/02 - ツキナミ.mp3
+2026-03-27T20:45:35 update: added main/NOMELON NOLEMON - ミッドナイト・リフレクション.opus
+2026-03-27T20:45:35 update: added main/yuikonnu_-_Yume_Chizu.MP3
+2026-03-27T20:45:35 update: added main/09. MONOGATARI Series - Platinum Disco.ogg
+2026-03-27T20:45:35 update: added main/Theme_179_Inst2.mp3
+2026-03-27T20:45:35 update: added main/01. ツユ — Under Mentality.mp3
+2026-03-27T20:45:35 update: added main/Yorushika_-_Just_a_Sunny_Day_for_You_(Music_Video).MP3
+2026-03-27T20:45:35 update: added main/Charlie Darker & Far Too Loud + Kagetora. - Nail Gun + Crazy Banger.mp3
+2026-03-27T20:45:35 update: added main/godofspeed.mp3
+2026-03-27T20:45:35 update: added main/Nanahoshi Kangengakudan feat. Matsushita - Dance Number o Tomo ni.mp3
+2026-03-27T20:45:35 update: added main/random.ogg
+2026-03-27T20:45:35 update: added main/01. 恋哀Fantasy.mp3
+2026-03-27T20:45:35 update: added main/Ayase Rie - Hijitsuzaikei Joshitachi wa Dou Surya Ii Desu ka.mp3
+2026-03-27T20:45:35 update: added main/07. USAO — Extra Mode.mp3
+2026-03-27T20:45:35 update: added main/06 あの世行きのバスに乗ってさらば.mp3
+2026-03-27T20:45:35 update: added main/高橋恵子 - サンセット・ロード.opus
+2026-03-27T20:45:35 update: added main/Ave Mujica - Symbol I  Fire.ogg
+2026-03-27T20:45:35 update: added main/charon - Seventeen RPG .mp3
+2026-03-27T20:45:35 update: added main/Shiganaikoukousei - Moonlight.opus
+2026-03-27T20:45:35 update: added main/chill_test.mp3
+2026-03-27T20:45:35 update: added main/Lukrembo - Bread (freetouse.com).mp3
+2026-03-27T20:45:35 update: added main/) feat. KAFU - Ren'ai Heiki! Lethal Weapon-chan.mp3
+2026-03-27T20:45:35 update: added main/ Mami Kawada  Contrail ~Kiseki~ (Epsilon Remix).mp3
+2026-03-27T20:45:35 update: added main/165 - Up to 21°C - Blue Archive OST- Off The Tracks!.mp3
+2026-03-27T20:45:35 update: added main/TUYU - 羨望.opus
+2026-03-27T20:45:35 update: added main/1.17.  - ONE'S AGAIN.mp3
+2026-03-27T20:45:35 update: added main/THE DU - CRAZY NOISY BIZARRE TOWN.mp3
+2026-03-27T20:45:35 update: added main/phony.mp3
+2026-03-27T20:45:35 update: added main/Ata - I'm Not Crazy.mp3
+2026-03-27T20:45:35 update: added main/Fire in the phoenix.mp3
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+2026-03-27T20:45:35 update: added main/19. Hoshimachi Suisei - Bibbidiba.mp3
+2026-03-27T20:45:35 update: added main/05 - ギターと孤独と蒼い惑星 (Guitar, Loneliness and Blue Planet).mp3
+2026-03-27T20:45:35 update: added main/EGOIST - Lovely Icecream Princess Sweetie.mp3
+2026-03-27T20:45:35 update: added main/ants kask - Mai Yamane (山根麻衣) - (You And Me Still Keep On) Fall In Love - 1981 - Japan.mp3
+2026-03-27T20:45:35 update: added main/04-Hifumi Daisuki.mp3
+2026-03-27T20:45:35 update: added main/Nanahira - Ange du Blanc Pur.mp3
+2026-03-27T20:45:35 update: added main/SEGA SOUND TEAM - 恋のディスコクイーン.ogg
+2026-03-27T20:45:35 update: added main/11 忘れてやらない.mp3
+2026-03-27T20:45:35 update: added main/202 - Theme 202 - Blue Archive OST- Off The Tracks!.ogg
+2026-03-27T20:45:35 update: added main/04 - PSYQUI -  ヒステリックナイトガール (feat.Such) .ogg
+2026-03-27T20:45:35 update: added main/101 - スイちゃんのメンテナンスソング.mp3
+2026-03-27T20:45:35 update: added main/03 September.ogg
+2026-03-27T20:45:35 update: added 英語/Ricky Martin - Livin' la Vida Loca.mp3
+2026-03-27T20:45:35 update: added 英語/A1 - Like A Rose (Valentine Mix).mp3
+2026-03-27T20:45:35 update: added 英語/Frank Sinatra - My Way (2008 Remastered).mp3
+2026-03-27T20:45:35 update: added 英語/Earth Wind & Fire - Boogie Wonderland.mp3
+2026-03-27T20:45:35 update: added 英語/Lou Bega Official - Mambo No. 5 (a Little Bit of...).mp3
+2026-03-27T20:45:35 update: added 英語/Queen - I Want To Break Free (Single Remix).mp3
+2026-03-27T20:45:35 update: added 英語/Earth Wind & Fire - September.mp3
+2026-03-27T20:45:35 update: added 英語/Michael Jackson - Don't Stop 'Til You Get Enough.mp3
+2026-03-27T20:45:35 update: added 英語/05 - ABC (feat. Sophia Black).mp3
+2026-03-27T20:45:35 update: added 英語/Celine Dion - Because You Loved Me (Theme from ＂Up Close and Personal＂).mp3
+2026-03-27T20:45:35 update: added 英語/Redbone - Come and Get Your Love.mp3
+2026-03-27T20:45:35 update: added 英語/Air Supply - Two Less Lonely People In the World.mp3
+2026-03-27T20:45:35 update: added 英語/Madonna - Material Girl.mp3
+2026-03-27T20:45:35 update: added 英語/Celine Dion - All By Myself.mp3
+2026-03-27T20:45:35 update: added 英語/Green Day - Wake Me up When September Ends.mp3
+2026-03-27T20:45:35 update: added 英語/Elvin Bishop - Fooled Around And Fell In Love.mp3
+2026-03-27T20:45:35 update: added 英語/The Corrs - Breathless.mp3
+2026-03-27T20:45:35 update: added 英語/SilverVEVO - Silver - Wham Bam Shang-A-Lang (Audio).mp3
+2026-03-27T20:45:35 update: added 英語/Marvin Gaye - Ain't No Mountain High Enough.mp3
+2026-03-27T20:45:35 update: added 英語/Westlife  - My Love.mp3
+2026-03-27T20:45:35 update: added 英語/Michael Jackson - Beat It.mp3
+2026-03-27T20:45:35 update: added 英語/Rick Astley - Together Forever.mp3
+2026-03-27T20:45:35 update: added 英語/Jeffrey Osborne - On The Wings Of Love.mp3
+2026-03-27T20:45:35 update: added 英語/Celine Dion - I Love You.mp3
+2026-03-27T20:45:35 update: added 英語/hotncold.mp3
+2026-03-27T20:45:35 update: added 英語/Grover Washington, Jr. - Just the Two of Us.mp3
+2026-03-27T20:45:35 update: added 英語/JustDance.mp3
+2026-03-27T20:45:35 update: added 英語/The Police - Every Breath You Take.mp3
+2026-03-27T20:45:35 update: added 英語/Air Supply - Making Love Out of Nothing at All.mp3
+2026-03-27T20:45:35 update: added 英語/The Jets - You Got It All.mp3
+2026-03-27T20:45:35 update: added 英語/George Benson - Nothing's Gonna Change My Love for You.mp3
+2026-03-27T20:45:35 update: added 英語/Michael Jackson - Rock with You.mp3
+2026-03-27T20:45:35 update: added 英語/WHAM! - Wake Me Up Before You Go-Go (Remastered).mp3
+2026-03-27T20:45:35 update: added 英語/Michael Bolton - How Am I Supposed to Live Without You.mp3
+2026-03-27T20:45:35 update: added 英語/The Beatles - Here Comes The Sun (Remastered 2009).mp3
+2026-03-27T20:45:35 update: added 英語/Air Supply - Come What May.mp3
+2026-03-27T20:45:35 update: added 英語/Celine Dion - It's All Coming Back to Me Now.mp3
+2026-03-27T20:45:35 update: added 英語/Air Supply - Every Woman in the World.mp3
+2026-03-27T20:45:35 update: added 英語/Michael Learns To Rock - Sleeping Child (2014 Remaster).mp3
+2026-03-27T20:45:35 update: added 英語/Bee Gees - Stayin' Alive (From ＂Saturday Night Fever＂ Soundtrack).mp3
+2026-03-27T20:45:35 update: added 英語/Britney Spears - Sometimes.mp3
+2026-03-27T20:45:35 update: added 英語/Britney Spears - ... Baby One More Time.mp3
+2026-03-27T20:45:35 update: added 英語/George Michael - Careless Whisper.mp3
+2026-03-27T20:45:35 update: added 英語/Foreigner - I Want to Know What Love Is (1999 Remaster).mp3
+2026-03-27T20:45:35 update: added 英語/Chicago - You're the Inspiration.mp3
+2026-03-27T20:45:35 update: added 英語/Whitney Houston - One Moment in Time.mp3
+2026-03-27T20:45:35 update: added 英語/Air Supply - Having You Near Me.mp3
+2026-03-27T20:45:35 update: added 英語/a-ha - Take on Me.mp3
+2026-03-27T20:45:35 update: added 英語/David Pomeranz - Got to Believe in Magic.mp3
+2026-03-27T20:45:35 update: added 英語/Michael Jackson - Bad (2012 Remaster).mp3
+2026-03-27T20:45:35 update: added 英語/journey - Open Arms.mp3
+2026-03-27T20:45:35 update: added 英語/Bryan Adams - Heaven (Classic Version).mp3
+2026-03-27T20:45:35 update: added 英語/Rick Astley - Never Gonna Give You Up.mp3
+2026-03-27T20:45:35 update: added 英語/Michael Jackson - Billie Jean (Long Version).mp3
+2026-03-27T20:45:35 update: added 英語/Air Supply - Lonely Is the Night.mp3
+2026-03-27T20:45:35 update: added 英語/Whitney Houston - I Wanna Dance with Somebody (Who Loves Me).mp3
+2026-03-27T20:45:35 update: added 英語/Maroon 5 - Moves Like Jagger ft. Christina Aguilera.mp3
+2026-03-27T20:45:35 update: added 英語/Guns N' Roses - Sweet Child O' Mine.mp3
+2026-03-27T20:45:35 update: added 英語/Whitney Houston - Where Do Broken Hearts Go.mp3
+2026-03-27T20:45:35 update: added 英語/Michael Learns To Rock - 25 Minutes (2014 Remaster).mp3
+2026-03-27T20:45:35 update: added 英語/Air Supply - Without You.mp3
+2026-03-27T20:45:35 update: added 英語/Westlife - Fool Again.mp3
+2026-03-27T20:45:35 update: added 英語/Backstreet Boys - I Want It That Way.mp3
+2026-03-27T20:45:42 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-03-27T20:50:28 player: played "main/ツユ - ツユ - やっぱり雨は降るんだね MV.mp3"
+2026-03-27T21:01:49 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-28T15:47:15 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-03-28T15:47:56 player: played "main/03 - Honesty.ogg"
+2026-03-28T15:48:03 player: played "英語/Michael Learns To Rock - Sleeping Child (2014 Remaster).mp3"
+2026-03-28T15:49:15 player: played "英語/Air Supply - Having You Near Me.mp3"
+2026-03-28T15:53:21 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-28T21:37:51 player: played "main/ZUTOMAYO - Humanoid.mp3"
+2026-03-28T21:48:56 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-28T21:48:59 player: played "main/ZUTOMAYO - Humanoid.mp3"
+2026-03-28T21:50:30 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-28T21:51:30 player: played "main/Kou! - ShigaisenUV.mp3"
+2026-03-29T18:58:21 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-03-29T18:58:33 player: played "main/Kou! - ShigaisenUV.mp3"
+2026-03-29T19:02:41 player: played "英語/Queen - I Want To Break Free (Single Remix).mp3"
+2026-03-29T19:02:57 player: played "main/ants kask - Mai Yamane (山根麻衣) - (You And Me Still Keep On) Fall In Love - 1981 - Japan.mp3"
+2026-03-29T19:04:38 player: played "main/Midnight Grand Orchestra - Igniter.ogg"
+2026-03-29T19:08:52 player: played "main/Evan Call - Zoltraak.mp3"
+2026-03-29T19:10:12 player: played "main/phony.mp3"
+2026-03-31T21:49:02 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-03-31T21:49:13 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:49:23 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:49:33 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:49:44 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:49:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:50:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:50:15 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:50:19 player: played "main/phony.mp3"
+2026-03-31T21:50:19 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:50:30 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:50:41 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:50:52 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:51:03 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:51:14 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:51:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:51:36 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:51:47 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:51:58 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:52:09 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:52:20 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:52:31 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:52:41 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:52:52 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:53:03 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:53:14 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:53:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:53:36 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:53:47 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:53:58 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:54:09 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:54:20 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:54:31 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:54:42 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:54:52 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:54:57 player: played "main/01. 優しさの記憶.mp3"
+2026-03-31T21:54:57 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:55:08 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:55:19 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:55:29 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:55:40 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:55:51 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:56:02 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:56:13 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:56:24 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:56:35 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:56:46 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:56:57 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:57:08 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:57:19 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:57:30 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:57:41 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:57:52 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:58:02 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:58:13 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:58:24 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:58:35 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:58:46 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:58:51 player: played "main/01_02_Walk This Way!_鹿乃.mp3"
+2026-03-31T21:58:51 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:59:02 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:59:12 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:59:22 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:59:33 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:59:44 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T21:59:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:00:04 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:00:15 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:00:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:00:35 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:00:45 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:00:55 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:01:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:01:15 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:01:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:01:35 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:01:45 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:01:55 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:02:06 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:02:15 player: played "main/koi_no_yukue.MP3"
+2026-03-31T22:02:15 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:02:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:02:36 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:02:47 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:02:57 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:03:08 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:03:18 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:03:29 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:03:40 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:03:50 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:04:01 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:04:11 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:04:22 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:04:32 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:04:43 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:04:53 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:05:03 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:05:14 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:05:24 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:05:32 player: played "main/0101 - もうどうなってもいいや.ogg"
+2026-03-31T22:05:32 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:05:43 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:05:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:06:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:06:16 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:06:26 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:06:37 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:06:48 player: played "main/01. ツユ — Under Mentality.mp3"
+2026-03-31T22:06:48 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:06:59 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:07:11 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:07:21 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:07:31 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:07:42 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:07:53 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:08:03 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:08:13 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:08:23 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:08:33 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:08:43 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:08:55 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:09:06 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:09:17 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:09:27 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:09:37 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:09:47 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:09:57 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:10:04 player: played "main/ロックな君とはお別れだ.MP3"
+2026-03-31T22:10:04 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:10:15 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:10:26 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:10:37 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:10:48 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:10:59 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:11:10 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:11:21 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:11:31 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:11:42 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:11:53 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:12:04 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:12:15 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:12:26 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:12:37 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:12:48 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:12:59 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:13:10 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:13:19 exception: Failed to decode "/sdcard/Music/main/Elton John - I'm Still Standing.mp3"; Failed to open "/sdcard/Music/main/Elton John - I'm Still Standing.mp3": No such file or directory
+2026-03-31T22:13:21 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:13:32 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:13:42 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:13:53 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-03-31T22:14:01 player: played "main/Cinnamons & Evening Cinema - Summertime.mp3"
+2026-03-31T22:14:01 player: played "main/Elton John - I'm Still Standing.mp3"

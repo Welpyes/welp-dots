@@ -288,24 +288,11 @@ function _sudo_command_line() {
     # Check if the typed command is really an alias to $EDITOR
 
     # Get the first part of the typed command
-    local cmd="${${(Az)BUFFER}[1]}"
-    # Get the first part of the alias of the same name as $cmd, or $cmd if no alias matches
+    local cmd="${${(Az)BUFFER}[1]}" 
+    
     local realcmd="${${(Az)aliases[$cmd]}[1]:-$cmd}"
-    # Get the first part of the $EDITOR command ($EDITOR may have arguments after it)
     local editorcmd="${${(Az)EDITOR}[1]}"
 
-    # Note: ${var:c} makes a $PATH search and expands $var to the full path
-    # The if condition is met when:
-    # - $realcmd is '$EDITOR'
-    # - $realcmd is "cmd" and $EDITOR is "cmd"
-    # - $realcmd is "cmd" and $EDITOR is "cmd --with --arguments"
-    # - $realcmd is "/path/to/cmd" and $EDITOR is "cmd"
-    # - $realcmd is "/path/to/cmd" and $EDITOR is "/path/to/cmd"
-    # or
-    # - $realcmd is "cmd" and $EDITOR is "cmd"
-    # - $realcmd is "cmd" and $EDITOR is "/path/to/cmd"
-    # or
-    # - $realcmd is "cmd" and $EDITOR is /alternative/path/to/cmd that appears in $PATH
     if [[ "$realcmd" = (\$EDITOR|$editorcmd|${editorcmd:c}) \
       || "${realcmd:c}" = ($editorcmd|${editorcmd:c}) ]] \
       || builtin which -a "$realcmd" | command grep -Fx -q "$editorcmd"; then
@@ -393,4 +380,12 @@ sudo(){
   fi
 }
 
-# vim:ft=sh
+rmpc(){
+  pgrep -x "mpd" || mpd
+  command rmpc
+}
+
+vplay(){
+    SDL_HINT_RENDER_DRIVER=opengl
+    ffplay -vcodec $(ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 $1)_mediacodec $1
+}

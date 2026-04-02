@@ -3,42 +3,32 @@
 ##
 
 alias forcevulkan="VK_ICD_FILENAMES=$PREFIX/share/vulkan/icd.d/wrapper_icd.aarch64.json VK_LOADER_DEVICE_SELECT='13b5:62210010'"
-alias vplay="ffplay -vcodec h264_mediacodec"
-alias ~="cd ~"
+alias nogpu="GALLIUM_DRIVER=llvmpipe MESA_GL_VERSION_OVERRIDE=4.0 "
+alias cdr="cd -"
 alias 777="chmod 777"
 alias xx="chmod +x"
 alias :q="exit"
 alias vim="nvim"
-alias nogpu="GALLIUM_DRIVER=llvmpipe MESA_GL_VERSION_OVERRIDE=4.0 "
-alias icat="timg -p kitty"
+alias icat="chafa"
 alias ff="fastfetch"
-# Pacman aliases
-alias pacu="sudo pacman -Syu"
-alias paci="sudo pacman -S"
-alias pacr="sudo pacman -Rns"
-alias pacs="pacman -Ss"
-alias run='pnpm run'
 alias c="clear"
 alias q="exit"
-alias rt="exec zsh"
-alias cleanram="sudo sh -c 'sync; echo 3 > /proc/sys/vm/drop_caches'"
-alias trim_all="sudo fstrim -va"
-alias mtar='tar -zcvf' # mtar <archive_compress>
-alias utar='XZ_OPT=-9 tar -cvJf' # utar <archive_decompress> <file_list>
-alias sr='source ~/.zshrc'
+alias utar='tar -xvf' # mtar <archive_compress>
+alias mtar='XZ_OPT=-9 tar -cvJf' # utar <archive_decompress> <file_list>
 alias ..="cd .."
-alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias psg="ps aux | rg -v rg | rg -i -e VSZ -e"
+alias sr='source ~/.zshenv'
 alias mkdir="mkdir -p"
 alias ls="eza --color=auto --icons"
 alias l="ls -l"
 alias la="ls -a"
 alias lla="ls -lha --total-size"
 alias lt="ls --tree"
-alias bat="bat --color always --plain"
-alias grep='grep --color=auto'
+alias cat="bat --color always -pp"
+alias grep='rg --color=auto'
 alias mv='mv -v'
 alias cp='cp -rv'
-alias rm='rm -v'
+alias rm='rm -rv'
 
 # Git stuff
 alias commit="git add . && git commit"

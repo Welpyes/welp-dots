@@ -136,7 +136,7 @@
     :y "50px"
     :width "320px"
     :anchor "top right")
-  :windowtype "normal"
+  :windowtype "dock"
   :wm-ignore true
   :stacking "fg"
   :exclusive false

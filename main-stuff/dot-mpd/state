@@ -1,11 +1,10 @@
-sw_volume: 95
+sw_volume: 100
 audio_device_state:1:PulseAudio Output
 audio_device_state:0:OpenSLES output
 audio_device_state:0:OpenAL output
 audio_device_state:1:my_fifo
-state: play
-current: 24
-time: 92.47200000000001
+state: stop
+current: 34
 random: 1
 repeat: 0
 single: 0
@@ -15,61 +14,151 @@ mixrampdb: 0
 mixrampdelay: -1
 lastloadedplaylist: 
 playlist_begin
-0:英語/Britney Spears - ... Baby One More Time.mp3
-1:英語/Michael Learns To Rock - 25 Minutes (2014 Remaster).mp3
-2:英語/05 - ABC (feat. Sophia Black).mp3
-3:英語/Marvin Gaye - Ain't No Mountain High Enough.mp3
-4:英語/Celine Dion - All By Myself.mp3
-5:英語/Michael Jackson - Bad (2012 Remaster).mp3
-6:英語/Michael Jackson - Beat It.mp3
-7:英語/Celine Dion - Because You Loved Me (Theme from ＂Up Close and Personal＂).mp3
-8:英語/Michael Jackson - Billie Jean (Long Version).mp3
-9:英語/Earth Wind & Fire - Boogie Wonderland.mp3
-10:英語/The Corrs - Breathless.mp3
-11:英語/Redbone - Come and Get Your Love.mp3
-12:英語/Air Supply - Come What May.mp3
-13:英語/ABBA - Dancing Queen.mp3
-14:英語/Michael Jackson - Don't Stop 'Til You Get Enough.mp3
-15:英語/The Police - Every Breath You Take.mp3
-16:英語/Westlife - Fool Again.mp3
-17:英語/Elvin Bishop - Fooled Around And Fell In Love.mp3
-18:英語/David Pomeranz - Got to Believe in Magic.mp3
-19:英語/Bryan Adams - Heaven (Classic Version).mp3
-20:英語/The Beatles - Here Comes The Sun (Remastered 2009).mp3
-21:英語/hotncold.mp3
-22:英語/Michael Bolton - How Am I Supposed to Live Without You.mp3
-23:英語/Celine Dion - I Love You.mp3
-24:英語/Whitney Houston - I Wanna Dance with Somebody (Who Loves Me).mp3
-25:英語/Backstreet Boys - I Want It That Way.mp3
-26:英語/Foreigner - I Want to Know What Love Is (1999 Remaster).mp3
-27:英語/Celine Dion - It's All Coming Back to Me Now.mp3
-28:英語/JustDance.mp3
-29:英語/Grover Washington, Jr. - Just the Two of Us.mp3
-30:英語/A1 - Like A Rose (Valentine Mix).mp3
-31:英語/Ricky Martin - Livin' la Vida Loca.mp3
-32:英語/Air Supply - Lonely Is the Night.mp3
-33:英語/Air Supply - Making Love Out of Nothing at All.mp3
-34:英語/Lou Bega Official - Mambo No. 5 (a Little Bit of...).mp3
-35:英語/Madonna - Material Girl.mp3
-36:英語/Maroon 5 - Moves Like Jagger ft. Christina Aguilera.mp3
-37:英語/Westlife  - My Love.mp3
-38:英語/Frank Sinatra - My Way (2008 Remastered).mp3
-39:英語/Rick Astley - Never Gonna Give You Up.mp3
-40:英語/George Benson - Nothing's Gonna Change My Love for You.mp3
-41:英語/Whitney Houston - One Moment in Time.mp3
-42:英語/journey - Open Arms.mp3
-43:英語/Michael Jackson - Rock with You.mp3
-44:英語/Earth Wind & Fire - September.mp3
-45:英語/Maroon 5 - She Will Be Loved.mp3
-46:英語/SilverVEVO - Silver - Wham Bam Shang-A-Lang (Audio).mp3
-47:英語/Britney Spears - Sometimes.mp3
-48:英語/Guns N' Roses - Sweet Child O' Mine.mp3
-49:英語/a-ha - Take on Me.mp3
-50:英語/Rick Astley - Together Forever.mp3
-51:英語/WHAM! - Wake Me Up Before You Go-Go (Remastered).mp3
-52:英語/Green Day - Wake Me up When September Ends.mp3
-53:英語/Whitney Houston - Where Do Broken Hearts Go.mp3
-54:英語/Air Supply - Without You.mp3
-55:英語/The Jets - You Got It All.mp3
-56:英語/Chicago - You're the Inspiration.mp3
+0:main/AngryParkRanger - ＂Sweden＂ from Minecraft but it's actually Pink Floyd (UPDATE- check description).mp3
+1:main/40oz.mp3
+2:main/1.13.  - 5150.mp3
+3:main/Act my Age.mp3
+4:main/10-After School Dessert.mp3
+5:main/Nanahira - Ange du Blanc Pur.mp3
+6:main/BAND-MAID - BAND-MAID ⧸ Ready to Rock (Official Music Video)  TVアニメ「ロックは淑女の嗜みでして」オープニングテーマソング.opus
+7:main/17 - K'Naan feat. Adam Levine - Bang Bang.mp3
+8:main/19. Hoshimachi Suisei - Bibbidiba.mp3
+9:main/220 - (Saiba Midori (Maid ver.) L2D Theme) - Blue Archive OST- Off The Tracks!.ogg
+10:main/BookMaker.mp3
+11:main/Lukrembo - Bread (freetouse.com).mp3
+12:main/05 - Tofubeats - First Album Remixes - Cand¥¥¥Land (Pa's Lam System Remix).mp3
+13:main/kotoha - cat loving .mp3
+14:main/Chronostasis.mp3
+15:main/Marcin feat. Tim Henson - Classical Dragon.mp3
+16:main/ Mami Kawada  Contrail ~Kiseki~ (Epsilon Remix).mp3
+17:main/THE DU - CRAZY NOISY BIZARRE TOWN.mp3
+18:main/Euphoria.mp3
+19:main/07. USAO — Extra Mode.mp3
+20:main/11-FEEEEVER TIME.ogg
+21:main/sumika - Fiction.mp3
+22:main/Fire in the phoenix.mp3
+23:main/SEGA SOUND TEAM - Friday Night.mp3
+24:main/2.02.  - GET BACK.mp3
+25:main/goodbounce.mp3
+26:main/158.1 - Gregorius _ Symphony (All) - Blue Archive OST- Off The Tracks!.mp3
+27:main/03. Guruguru Usagi.mp3
+28:main/春擬き.MP3
+29:main/04-Hifumi Daisuki.mp3
+30:main/03 - Honesty.ogg
+31:main/ZUTOMAYO - Humanoid.mp3
+32:main/02. PSYQUI - hype feat. Such (lapix Remix).mp3
+33:main/Ata - I'm Not Crazy.mp3
+34:main/Elton John - I'm Still Standing.mp3
+35:main/WALKURE - Ikenai Borderline (Speed Up Ver.).mp3
+36:main/Can't Stop Playing Among Us, I Love Among Us.mp3
+37:main/Yorushika_-_Just_a_Sunny_Day_for_You_(Music_Video).MP3
+38:main/Ave Mujica - KiLLKiSS.mp3
+39:main/004-Koi is Love.mp3
+40:main/Kotoha - God-ish.mp3
+41:main/Zekk - Libertas (Extended Mix).mp3
+42:main/Linaria.mp3
+43:main/Masayuki Suzuki - Love Dramatic.mp3
+44:main/EGOIST - Lovely Icecream Princess Sweetie.mp3
+45:main/lullaby.mp3
+46:main/A-One feat. Shihori - Magic Girl !!.mp3
+47:main/ants kask - Mai Yamane (山根麻衣) - (You And Me Still Keep On) Fall In Love - 1981 - Japan.mp3
+48:main/04 - Mazare Party (feat. Nanahira, Yukacco).ogg
+49:main/Shiganaikoukousei - Moonlight.opus
+50:main/No Title.ogg
+51:main/1.17.  - ONE'S AGAIN.mp3
+52:main/mafumafu - Onnanoko Ni Naritai.mp3
+53:main/05. t+pazolite — Oshama Scramble! (uncut edition).mp3
+54:main/phony.mp3
+55:main/Plastic_Smile.MP3
+56:main/02 - Playing God.mp3
+57:main/ヒロセコミ - Promise.mp3
+58:main/84 - PRST Marching - Blue Archive OST- Off The Tracks!.mp3
+59:main/USAO - Quick Charge (Speed Up Ver.).mp3
+60:main/24-RE Aoharu.mp3
+61:main/1.19.  - ReI.mp3
+62:main/11 - Remote Control.ogg
+63:main/Rolling beat.mp3
+64:main/03 September.ogg
+65:main/charon - Seventeen RPG .mp3
+66:main/01_01_Stella-rium_鹿乃.mp3
+67:main/PSYQUI feat. ぷにぷに電機 - Still in my heart.ogg
+68:main/Cinnamons & Evening Cinema - Summertime.mp3
+69:main/Sunglow.mp3
+70:main/01 - Yorushika - Sunny.mp3
+71:main/chill_test.mp3
+72:main/202 - Theme 202 - Blue Archive OST- Off The Tracks!.ogg
+73:main/01. ツユ — Under Mentality.mp3
+74:main/unwelcome school -jazz-.mp3
+75:main/165 - Up to 21°C - Blue Archive OST- Off The Tracks!.mp3
+76:main/01_02_Walk This Way!_鹿乃.mp3
+77:main/05. World's End, Girl's Rondo(Asterisk DnB Remix).mp3
+78:main/02 Your voice so.ogg
+79:main/yuikonnu_-_Yume_Chizu.MP3
+80:main/Evan Call - Zoltraak.mp3
+81:main/【MV】_鹿乃_「ディアブレイブ」__【OFFICIAL】.MP3
+82:main/06 あの世行きのバスに乗ってさらば.mp3
+83:main/きゅうくらりん 歌ってみた ⧸ ナナヲアカリ [QMRDrG_4dic].mp3
+84:main/14 - だから僕は音楽を辞めた.ogg
+85:main/はいよろこんで（第75回 NHK紅白歌合戦 歌唱曲⧸第66回 輝く！日本レコード大賞最優秀新人賞） ⧸ こっちのけんと MV [jzi6RNVEOtA].mp3
+86:main/Release - ふわふわ時間.opus
+87:main/01. もういいかい？.mp3
+88:main/0101 - もうどうなってもいいや.ogg
+89:main/アンダーキッズ(256k).mp3
+90:main/Yoshida Yasei - オーバーライド.mp3
+91:main/05 - ギターと孤独と蒼い惑星 (Guitar, Loneliness and Blue Planet).mp3
+92:main/高橋恵子 - サンセット・ロード.opus
+93:main/101 - スイちゃんのメンテナンスソング.mp3
+94:main/10 ソワレ.mp3
+95:main/Nanahoshi Kangengakudan feat. Matsushita - Dance Number o Tomo ni.mp3
+96:main/DECO＊27 - チェリーポップ.mp3
+97:main/02 - ツキナミ.mp3
+98:main/ツユ - ツユ - やっぱり雨は降るんだね MV.mp3
+99:main/麹町養蚕館 - マストダイ - 03 ドレッドノート.ogg
+100:main/04 - PSYQUI -  ヒステリックナイトガール (feat.Such) .ogg
+101:main/ブルーアーカイブ Blue Archive OST 133. Goal Wo Nerae! (Get Set, Go! ～キヴォトス晄輪大祭～ Event BGM) [dOH0dXpDbaU].mp3
+102:main/MO2 - ブルーアーカイブ Blue Archive OST 299.mp3
+103:main/NOMELON NOLEMON - ミッドナイト・リフレクション.opus
+104:main/01. ムーンライト.ogg
+105:main/Rubik's Cube.mp3
+106:main/01. 優しさの記憶.mp3
+107:main/03 - 八月、某、月明かり.mp3
+108:main/11 忘れてやらない.mp3
+109:main/01. 恋哀Fantasy.mp3
+110:main/Dadadadadadada.mp3
+111:main/Camellia, Nanahira - 気づいたら春夏秋冬.mp3
+112:main/泥の分際で私だけの大切を奪おうだなんて.MP3
+113:main/09. MONOGATARI Series - Platinum Disco.ogg
+114:main/01 - 真夜中のドア - Stay With Me.mp3
+115:main/Kou! - ShigaisenUV.mp3
+116:main/TUYU - 羨望.opus
+117:main/14. 花に亡霊.ogg
+118:main/Silver Forest - Yami no Mahou Shoujo.mp3
+119:main/01 青春コンプレックス.mp3
+120:main/Ayase Rie - Hijitsuzaikei Joshitachi wa Dou Surya Ii Desu ka.mp3
+121:main/Charlie Darker & Far Too Loud + Kagetora. - Nail Gun + Crazy Banger.mp3
+122:main/) feat. KAFU - Ren'ai Heiki! Lethal Weapon-chan.mp3
+123:main/Ave Mujica - Symbol I  Fire.ogg
+124:main/Midnight Grand Orchestra - Igniter.ogg
+125:main/PSYQUI - Raise Your Hands feat. Such.mp3
+126:main/random.ogg
+127:main/SEGA SOUND TEAM - 恋のディスコクイーン.ogg
+128:main/Starry Night.mp3
+129:main/冷蔵庫見たらプリンがない.mp3
+130:main/Avril Lavigne - I Love You (Sped Up Ver.).mp3
+131:main/godofspeed.mp3
+132:main/koi_no_yukue.MP3
+133:main/namirin - The Noise of Rain.mp3
+134:main/Sendan Life.mp3
+135:main/Theme_149.mp3
+136:main/Theme_15.mp3
+137:main/Theme_179_Inst2.mp3
+138:main/Theme_198.mp3
+139:main/Theme_21.mp3
+140:main/Theme_47.mp3
+141:main/Unwelcome School.mp3
+142:main/usagi flap.mp3
+143:main/Uso No Hibana.mp3
+144:main/ここで生きてる.MP3
+145:main/ロックな君とはお別れだ.MP3
+146:main/藍月なくる - Marshall Maximizer.mp3
 playlist_end

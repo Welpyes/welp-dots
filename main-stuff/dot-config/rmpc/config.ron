@@ -24,8 +24,8 @@
     browser_song_sort: [Title, Disc, Track, Artist],
     directories_sort: SortFormat(group_by_type: true, reverse: false),
     album_art: (
-        method: Auto,
-        max_size_px: (width: 200, height: 200),
+        method: Sixel,
+        max_size_px: (width: 400, height: 400),
         disabled_protocols: ["http://", "https://"],
         vertical_align: Center,
         horizontal_align: Center,
@@ -45,7 +45,7 @@
         ),
         smoothing: (
             noise_reduction: 77, // default 77
-            monstercat: true, // default false
+            monstercat: false, // default false
             waves: false, // default false
         ),
         // this is a list of floating point numbers thats directly passed to cava

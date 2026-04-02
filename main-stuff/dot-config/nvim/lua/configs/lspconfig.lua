@@ -21,3 +21,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)  -- Show references
   end,
 })
+
+
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      workspace = {
+        library = {
+          ["/data/data/com.termux/files/home/.config/awesome/.lua"] = true
+        }
+      }
+    }
+  }
+})

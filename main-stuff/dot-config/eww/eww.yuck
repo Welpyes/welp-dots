@@ -16,7 +16,7 @@
 )
 
 (defwindow simple-calendar
-  :wm-ignore false
+  :wm-ignore true
   :monitor 0
   :windowtype "dock"
   :stacking "fg"
@@ -31,7 +31,7 @@
 )
 
 (defwindow pallete
-  :wm-ignore false
+  :wm-ignore true
   :monitor 0
   :windowtype "dock"
   :stacking "fg"
@@ -199,7 +199,7 @@
 ; ── Packages ───────────────────────────────────────────────────────
 
 (defpoll packages-data :initial "100" :interval "1h"
-  `pacman -Qe | wc -l`
+  `(pacman -Qm && pacman -Qn) | wc -l`
 )
 
 (defwidget packages []

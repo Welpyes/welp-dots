@@ -28,13 +28,13 @@ $selection-fg: #e5c9a0;
 
 // ── Derived tokens ─────────────────────────────────────────────────────────────
 // $surface:       #1c1916;   // slightly lifted background for the panel
-$surface:       rgba(28, 25, 22, 0.6);   // slightly lifted background for the panel
+$surface:       $background; //rgba(28, 25, 22, 0.6);   // slightly lifted background for the panel
 $surface-2:     #231f1b;   // card background
 $surface-hover: #2b261f;   // card hover
 $border:        $yellow;   // subtle borders
 $muted:         #7a6e62;   // timestamps, secondary text
-$radius:        0px;
-$radius-sm:     0px;
+$radius:        5px;
+$radius-sm:     5px;
 
 
 // ── Mixins ───────────────────────────────────────────────────────────────────

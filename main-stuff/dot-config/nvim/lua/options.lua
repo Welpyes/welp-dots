@@ -20,6 +20,18 @@ require('render-markdown').setup({
 --     -- ... other treesitter settings
 -- })
 
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*.txt",
+  callback = function()
+    vim.bo.filetype = "markdown"
+  end,
+})
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = { "*.conf", "ini" },
+  callback = function()
+    vim.bo.filetype = "toml"
+  end,
+})
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {"lisp", "fennel", "yuck"},
