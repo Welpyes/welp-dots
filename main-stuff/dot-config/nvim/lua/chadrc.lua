@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "kintsukuroi",
+  theme = "rosepine-dawn",
 
   hl_override = {
     -- Transparency: Make these groups fully transparent (bg = "NONE")
@@ -14,7 +14,7 @@ M.base46 = {
     NormalNC = { bg = "NONE" },
     NormalFloat = { bg = "NONE" },
     FloatBorder = { bg = "NONE" },
-    StatusLine = { bg = "#d8be97" },
+    -- StatusLine = { bg = "#d8be97" },
     StatusLineNC = { bg = "NONE" },
     TabLine = { bg = "NONE" },
     TabLineSel = { bg = "NONE" },

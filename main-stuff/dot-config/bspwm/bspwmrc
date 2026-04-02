@@ -7,7 +7,7 @@ display(){
 
 gaps(){
   bspc config window_gap 10
-  bspc config top_padding 50
+  bspc config top_padding 10
   bspc config bottom_padding 10
   bspc config right_padding 100
   bspc config left_padding 100
@@ -19,21 +19,20 @@ clients(){
   bspc rule -a scratchpad state=floating
   bspc config pointer_follows_focus false
   bspc config focus_follows_pointer true
-  bspc config border_width 0
-  bspc config normal_border_color '#322d28'
-  bspc config active_border_color '#e5c9a0'
-  bspc config focused_border_color '#e5c9a0'
+  bspc config border_width 2
+  bspc config normal_border_color '#eadccf'
+  bspc config active_border_color '#8a8a96'
+  bspc config focused_border_color '#8a8a96'
 }
 
 autostart(){
   kill -9 $(pgrep -x "sxhkd") > /dev/null 
   sxhkd -c ~/.config/bspwm/sxhkdrc &
-  feh --bg-fill /sdcard/Documents/wallpapers/20260331_093511.jpg &
+  feh --bg-fill /sdcard/Documents/wallpapers/Mimi.jpg &
   kill -9 $(pgrep -x "eww") > /dev/null
-  eww open bar &
   dunst &
-  # picom &
-  fastcompmgr -cC -r 1 -o 1 -l 3 -t 3 --shadow-red 0.898 --shadow-blue 0.788 --shadow-green 627 &
+  picom &
+  # fastcompmgr -cC -r 3 -o 1 -l 5 -t 5 --shadow-red 0.541 --shadow-blue 0.541 --shadow-green 0.4 & # '#8a8a96'
 }
 
 __main__(){

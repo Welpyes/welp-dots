@@ -20,3 +20,67 @@ themes:
     - "#cf9bc2" # bright magenta
     - "#89b3b6" # bright cyan
     - "#f2d5a9" # bright white
+  - name: "Blossom-Light"
+    colors:
+    - "#695d57"
+    - "#dfd8d5"
+    - "#e6dfdc"
+    - "#d9d2cf"
+    - "#d0c9c6"
+    - "#c7c0bd"
+    - "#c0b9b6"
+    - "#b9b2af"
+    - "#b2aba8"
+    - "#aaa3a0"
+    - "#a09996"
+    - "#b28069"
+    - "#b7856e"
+    - "#c18f78"
+    - "#d3ccc9"
+    - "#6c805c"
+    - "#899d79"
+    - "#5f7d9b"
+    - "#5e5f65"
+    - "#a9a29f"
+    - "#d38a73"
+    - "#a685a6"
+    - "#9c7b9c"
+    - "#4b6987"
+    - "#cc836c"
+    - "#75998e"
+    - "#dcd5d2"
+    - "#cdc6c3"
+    - "#857e7b"
+    - "#746d6a"
+  - name: "Rosepine-Dawn"
+    colors:
+    - "#faf4ed" # black (bg)
+    - "#f2e9e1" # darker_black
+    - "#EDE1D6" # black2
+    - "#EADCCF" # one_bg
+    - "#E4D2C1" # one_bg2
+    - "#DEC7B3" # one_bg3
+    - "#b0acb9" # grey
+    - "#A39EAD" # grey_fg
+    - "#9893A4" # grey_fg2
+    - "#908B9D" # light_grey
+    - "#b4637a" # red
+    - "#eb6f92" # baby_pink
+    - "#eb6f92" # pink
+    - "#EADCCF" # line
+    - "#286983" # green
+    - "#3e8fb0" # vibrant_green
+    - "#459BBD" # nord_blue
+    - "#56949f" # blue
+    - "#ea9d34" # yellow
+    - "#f6c177" # sun
+    - "#907aa9" # purple
+    - "#c4a7e7" # dark_purple
+    - "#3e8fb0" # teal
+    - "#ea9d34" # orange
+    - "#d7827e" # cyan
+    - "#f2e9e1" # statusline_bg
+    - "#EADCCF" # lightbg
+    - "#907aa9" # pmenu_bg
+    - "#56949f" # folder_bg
+    - "#575279" # white (fg)

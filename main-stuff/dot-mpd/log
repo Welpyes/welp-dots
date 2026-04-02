@@ -3309,3 +3309,5 @@ Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fu
 2026-03-31T22:13:53 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
 2026-03-31T22:14:01 player: played "main/Cinnamons & Evening Cinema - Summertime.mp3"
 2026-03-31T22:14:01 player: played "main/Elton John - I'm Still Standing.mp3"
+2026-04-02T22:43:56 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-04-03T00:16:52 player: played "main/Nanahira - Ange du Blanc Pur.mp3"
