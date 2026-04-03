@@ -1,8 +1,8 @@
 [global]
 # Display
 monitor = 1
-origin = top-right
-offset = (10, 60)
+origin = bottom-left
+offset = (60, 10)
 width = (300, 300)
 height = (100, 100)
 gap_size = 5
@@ -46,22 +46,22 @@ mouse_middle_click = context_all
 format = "<b>%a</b>\n%s\n<i>%b</i>"
 
 [urgency_low]
-    background = "#141210"
-    foreground = "#d8be97"
-    frame_color = "#322d28"
+    background = "#faf4ed"
+    foreground = "#b0acb9"
+    frame_color = "#EDE1D6"
     timeout = 3
     default_icon = "/data/data/com.termux/files/home/.icons/Gruvbox-Plus-Dark/apps/16/bell.svg"
 
 [urgency_normal]
-    background = "#141210"
-    foreground = "#e5c9a0"
-    frame_color = "#c09d59"
+    background = "#faf4ed"
+    foreground = "#575279"
+    frame_color = "#ea9d34"
     timeout = 5
     default_icon = "/data/data/com.termux/files/home/.icons/Gruvbox-Plus-Dark/apps/16/bell.svg"
 
 [urgency_critical]
-    background = "#141210"
-    foreground = "#f2d5a9"
-    frame_color = "#c06c5c"
+    background = "#faf4ed"
+    foreground = "#575279"
+    frame_color = "#b4637a"
     timeout = 0
     default_icon = "/data/data/com.termux/files/home/.icons/Gruvbox-Plus-Dark/apps/16/bell.svg"

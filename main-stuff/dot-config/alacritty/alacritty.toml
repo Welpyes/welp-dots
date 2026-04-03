@@ -1,0 +1,54 @@
+[general]
+working_directory = "~"
+
+[scrolling]
+history = 10000
+
+[font]
+size = 14
+
+[font.normal]
+family = "Ioskeley Mono"
+style = "Regular"
+
+[font.bold]
+family = "Ioskeley Mono"
+style = "Bold"
+
+[font.italic]
+family = "Ioskeley Mono"
+style = "Italic"
+
+# Fallback for nerd font symbols
+# Alacritty doesn't support font2[] directly; use font.offset or rely on
+# fontconfig fallback. Add to your fonts.conf instead:
+# <family>Symbols Nerd Font Mono</family>
+
+
+[colors.primary]
+foreground = "#e5c9a0"
+background = "#141210"
+
+[colors.cursor]
+text = "#141210"
+cursor = "#e5c9a0"
+
+[colors.normal]
+black   = "#322d28"
+red     = "#c06c5c"
+green   = "#78997a"
+yellow  = "#c09d59"
+blue    = "#7f91b2"
+magenta = "#b380b0"
+cyan    = "#7b9695"
+white   = "#d8be97"
+
+[colors.bright]
+black   = "#4d463e"
+red     = "#d97a68"
+green   = "#85b695"
+yellow  = "#d8b164"
+blue    = "#a3a9ce"
+magenta = "#cf9bc2"
+cyan    = "#89b3b6"
+white   = "#f2d5a9"

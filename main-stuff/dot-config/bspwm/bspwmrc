@@ -31,8 +31,8 @@ autostart(){
   feh --bg-fill /sdcard/Documents/wallpapers/Mimi.jpg &
   kill -9 $(pgrep -x "eww") > /dev/null
   dunst &
-  picom &
-  # fastcompmgr -cC -r 3 -o 1 -l 5 -t 5 --shadow-red 0.541 --shadow-blue 0.541 --shadow-green 0.4 & # '#8a8a96'
+  # picom &
+  fastcompmgr -cC -r 1 -o 1 -l 5 -t 5 --shadow-color "#8a8a96"  & # 
 }
 
 __main__(){

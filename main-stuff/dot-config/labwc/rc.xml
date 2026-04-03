@@ -1,0 +1,206 @@
+<!--
+  This is a very simple config file with many options missing. For a complete
+  set of options with comments, see docs/rc.xml.all
+-->
+<labwc_config>
+  <core>
+    <decoration>server</decoration>
+    <gap>10</gap>
+    <adaptiveSync>no</adaptiveSync>
+    <allowTearing>no</allowTearing>
+    <reuseOutputMode>no</reuseOutputMode>
+    <xwaylandPersistence>yes</xwaylandPersistence>
+    <backgroundImage>/sdcard/Documents/pixelLab/20260311_004736.png</backgroundImage>
+    <blurSigma>20</blurSigma>
+    <workspaceReportFile>/data/data/com.termux/files/usr/tmp/workspace-data.json</workspaceReportFile>
+  </core>
+  <placement>
+    <policy>cascade</policy>
+    <cascadeOffset x="40" y="30" />
+  </placement>
+  <theme>
+    <name>MacOs</name>
+    <icon>Gruvbox-Plus-Dark</icon>
+    <titlebar>
+      <layout>icon:iconify,max,close</layout>
+      <showTitle>yes</showTitle>
+    </titlebar>
+    <cornerRadius>0</cornerRadius>
+    <keepBorder>yes</keepBorder>
+    <dropShadows>yes</dropShadows>
+    <font place="ActiveWindow">
+      <name>Ioskely Mono</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <font place="InactiveWindow">
+      <name>Ioskely Mono</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <font place="MenuHeader">
+      <name>Ioskely Mono</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <font place="MenuItem">
+      <name>Ioskely Mono</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <font place="OnScreenDisplay">
+      <name>Ioskely Mono</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+  </theme>
+  <windowSwitcher show="yes" preview="yes" outlines="yes" allWorkspaces="no">
+    <fields>
+      <field content="type" width="25%" />
+      <field content="trimmed_identifier" width="25%" />
+      <field content="title" width="50%" />
+    </fields>
+  </windowSwitcher>
+  <resistance>
+    <screenEdgeStrength>20</screenEdgeStrength>
+    <windowEdgeStrength>20</windowEdgeStrength>
+    <!-- resistance for maximized/tiled windows -->
+    <unSnapThreshold>20</unSnapThreshold>
+    <!-- resistance for vertically/horizontally maximized window-->
+    <unMaximizeThreshold>150</unMaximizeThreshold>
+  </resistance>
+  <desktops>
+    <popupTime>1000</popupTime>
+    <names>
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
+      <name>5</name>
+    </names>
+  </desktops>
+  <resize>
+    <!-- Show a simple resize and move indicator -->
+    <popupShow>always</popupShow>
+    <!-- Let client redraw its contents while resizing -->
+    <drawContents>yes</drawContents>
+  </resize>
+  <focus>
+    <followMouse>yes</followMouse>
+    <followMouseRequiresMovement>yes</followMouseRequiresMovement>
+    <raiseOnFocus>no</raiseOnFocus>
+  </focus>
+  <snapping>
+    <!-- Set range to 0 to disable window snapping completely -->
+    <range>1</range>
+    <overlay enabled="yes">
+      <delay inner="500" outer="500" />
+    </overlay>
+    <topMaximize>yes</topMaximize>
+    <notifyClient>always</notifyClient>
+  </snapping>
+  <keyboard>
+    <numlock>on</numlock>
+    <layoutScope>global</layoutScope>
+    <repeatRate>25</repeatRate>
+    <repeatDelay>600</repeatDelay>
+    <keybind key="A-Tab">
+      <action name="NextWindow" />
+    </keybind>
+    <keybind key="A-Return">
+      <action name="Execute" command="foot" />
+    </keybind>
+    <keybind key="A-Space">
+      <action name="Execute" command="~/.config/rofi/launch.sh" />
+    </keybind>
+    <keybind key="W-S-q">
+      <action name="Close" />
+    </keybind>
+    <keybind key="A-f">
+      <action name="ToggleMaximize" />
+    </keybind>
+    <keybind key="A-S-h">
+      <action name="SnapToEdge" direction="left" />
+    </keybind>
+    <keybind key="A-S-l">
+      <action name="SnapToEdge" direction="right" />
+    </keybind>
+    <keybind key="A-S-k">
+      <action name="SnapToEdge" direction="up" />
+    </keybind>
+    <keybind key="A-S-j">
+      <action name="SnapToEdge" direction="down" />
+    </keybind>
+    <!-- Switch to desktop -->
+    <keybind key="W-1">
+      <action name="GoToDesktop">
+        <to>1</to>
+      </action>
+    </keybind>
+    <keybind key="W-2">
+      <action name="GoToDesktop">
+        <to>2</to>
+      </action>
+    </keybind>
+    <keybind key="W-3">
+      <action name="GoToDesktop">
+        <to>3</to>
+      </action>
+    </keybind>
+    <keybind key="W-4">
+      <action name="GoToDesktop">
+        <to>4</to>
+      </action>
+    </keybind>
+    <keybind key="W-5">
+      <action name="GoToDesktop">
+        <to>5</to>
+      </action>
+    </keybind>
+    <!-- Move window to desktop -->
+    <keybind key="W-S-1">
+      <action name="SendToDesktop">
+        <to>1</to>
+        <follow>no</follow>
+      </action>
+    </keybind>
+    <keybind key="W-S-2">
+      <action name="SendToDesktop">
+        <to>2</to>
+        <follow>no</follow>
+      </action>
+    </keybind>
+    <keybind key="W-S-3">
+      <action name="SendToDesktop">
+        <to>3</to>
+        <follow>no</follow>
+      </action>
+    </keybind>
+    <keybind key="W-S-4">
+      <action name="SendToDesktop">
+        <to>4</to>
+        <follow>no</follow>
+      </action>
+    </keybind>
+    <keybind key="W-S-5">
+      <action name="SendToDesktop">
+        <to>5</to>
+        <follow>no</follow>
+      </action>
+    </keybind>
+  </keyboard>
+  <mouse>
+    <default />
+    <!-- Show a custom menu on desktop right click -->
+    <context name="Root">
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu" menu="some-custom-menu" />
+      </mousebind>
+    </context>
+  </mouse>
+</labwc_config>

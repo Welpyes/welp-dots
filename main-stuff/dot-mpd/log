@@ -3311,3 +3311,21 @@ Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fu
 2026-03-31T22:14:01 player: played "main/Elton John - I'm Still Standing.mp3"
 2026-04-02T22:43:56 output: Failed to play on "PulseAudio Output" (pulse): disconnected
 2026-04-03T00:16:52 player: played "main/Nanahira - Ange du Blanc Pur.mp3"
+2026-04-03T11:06:33 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-04-03T11:07:23 player: played "main/02 - ツキナミ.mp3"
+2026-04-03T11:11:30 player: played "main/Linaria.mp3"
+2026-04-03T11:15:56 player: played "main/PSYQUI - Raise Your Hands feat. Such.mp3"
+2026-04-03T11:19:16 player: played "main/THE DU - CRAZY NOISY BIZARRE TOWN.mp3"
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+2026-04-03T11:22:19 player: played "main/19. Hoshimachi Suisei - Bibbidiba.mp3"
+2026-04-03T11:24:41 player: played "main/220 - (Saiba Midori (Maid ver.) L2D Theme) - Blue Archive OST- Off The Tracks!.ogg"
+2026-04-03T11:27:26 exception: Failed to decode "/sdcard/Music/main/03 September.ogg"; Failed to open "/sdcard/Music/main/03 September.ogg": No such file or directory
+2026-04-03T11:28:01 player: played "main/phony.mp3"
+2026-04-03T11:28:01 player: played "main/03 September.ogg"
+2026-04-03T11:28:01 exception: Failed to decode "/sdcard/Music/main/03 September.ogg"; Failed to open "/sdcard/Music/main/03 September.ogg": No such file or directory
+2026-04-03T11:28:01 player: played "main/03 September.ogg"
+2026-04-03T11:28:10 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-04-03T17:25:00 player: played "main/Evan Call - Zoltraak.mp3"
+2026-04-03T17:36:08 output: Failed to play on "PulseAudio Output" (pulse): disconnected
