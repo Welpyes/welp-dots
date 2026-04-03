@@ -3329,3 +3329,9 @@ Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fu
 2026-04-03T11:28:10 output: Failed to play on "PulseAudio Output" (pulse): disconnected
 2026-04-03T17:25:00 player: played "main/Evan Call - Zoltraak.mp3"
 2026-04-03T17:36:08 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-04-03T22:10:04 exception: Failed to decode "/sdcard/Music/main/Elton John - I'm Still Standing.mp3"; Failed to open "/sdcard/Music/main/Elton John - I'm Still Standing.mp3": No such file or directory
+2026-04-03T22:10:04 player: played "main/Elton John - I'm Still Standing.mp3"
+2026-04-03T22:10:04 exception: Failed to decode "/sdcard/Music/main/Elton John - I'm Still Standing.mp3"; Failed to open "/sdcard/Music/main/Elton John - I'm Still Standing.mp3": No such file or directory
+2026-04-03T22:15:27 player: played "main/02 - ツキナミ.mp3"
+2026-04-03T22:18:56 player: played "main/Ave Mujica - KiLLKiSS.mp3"
+2026-04-03T22:38:55 output: Failed to play on "PulseAudio Output" (pulse): disconnected

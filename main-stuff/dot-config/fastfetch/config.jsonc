@@ -3,8 +3,8 @@
     "logo":{
         "type": "Sixel",
         "source": "~/Documents/meme_images/img2-edited.jpg",
-        "height": 11,
-        "width": 25
+        "height": 14,
+        "width": 28
     },
     "modules": [
         {
@@ -22,12 +22,17 @@
             "key": "Model"
         },
         {
+            "type": "os",
+            "key": "Distro",
+            "format": "Archlinux (aarch64)"
+        },
+        {
             "type": "wm",
             "key": "Window Manager"
         },
         {
-            "type": "kernel"
-            // "format": "6.19.2 (aarch64)"
+            "type": "kernel",
+            "format": "6.19.2"
         },
         "uptime",
         "processes",
@@ -51,11 +56,12 @@
         },
         {
             "type": "gpu",
-            "format": "{name}"
+            "format": "{name} [integrated]"
         },
         {
             "type": "memory",
-            "key": "RAM"
+            "key": "RAM",
+            "format": "837MiB/7.92GiB "
         }
     ]
 }
