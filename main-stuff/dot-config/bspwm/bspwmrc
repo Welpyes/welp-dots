@@ -32,7 +32,6 @@ autostart(){
   kill -9 $(pgrep -x "eww") > /dev/null
   dunst &
   picom &
-  bash ~/.config/bspwm/picom-dir.sh &
   # fastcompmgr -c -r 1 -o 1 -l 5 -t 5 --shadow-color "#8a8a96"  & # 
 }
 

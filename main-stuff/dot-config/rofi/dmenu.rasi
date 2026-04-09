@@ -10,17 +10,17 @@
   blue: #56949f;
   purple: #907aa9;
   cyan: #d7827e;
+  grey: #8a8a96;
 
   background-color: transparent;
-  text-color: @fg;
+  text-color: @fg-alt;
   font: "Ioskeley Mono Semibold 12";
 }
 
 window {
   background-color: @bg;
   border: 2px;
-  border-color: @yellow;
-  border-radius: 5px;
+  border-color: @grey;
   padding: 5px;
   width: 40%;
   height: 350px;
@@ -44,14 +44,14 @@ textbox {
 }
 
 prompt {
-    text-color: @yellow;
+    text-color: @fg-alt;
     font: "Ioskeley Mono Bold 12";
 }
 
 textbox-prompt-colon {
     expand: false;
     str: ":";
-    text-color: @yellow;
+    text-color: @fg-alt;
 }
 
 entry {
@@ -108,7 +108,7 @@ element normal.active {
 
 element selected.normal {
     background-color: @bg-alt;
-    text-color: @yellow;
+    text-color: @fg;
     border: 2px;
     border-color: transparent;
 }

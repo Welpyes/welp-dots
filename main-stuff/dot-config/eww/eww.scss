@@ -29,12 +29,16 @@ $selection-fg: #797593;
 .bar {
   font-family: "Ioskeley Mono";
   background-color: $black;
-  margin-top: 5px;
-  margin-left: 5px;
+  padding: 8 0 0 8px;
+}
+
+.shadow {
+  background-color: $selection-fg;
+  padding: 8 0 0 8px;
 }
 
 .clock-widget {
-  background-color: $background;
+  background-color: $black;
   color: $foreground;
-  font-size: 18px;
+  font-size: 20px;
 }

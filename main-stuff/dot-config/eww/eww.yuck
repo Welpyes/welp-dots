@@ -15,6 +15,21 @@
   (bar)
 )
 
+(defwindow shadow
+  :wm-ignore true
+  :monitor 0
+  :windowtype "dock"
+  :stacking "bg"
+  :geometry (geometry
+    :x "20px"
+    :y "10px"
+    :height "70%"
+    :width "40px"
+    :anchor "left center"
+  )
+  (shadow)
+)
+
 (defwidget bar []
   (box
     :class "bar"
@@ -59,7 +74,14 @@
 (defwidget spacer []
   (box :class "spacer" :orientation "v")
 )
+(defwidget shadow []
+  (box :class "shadow" :orientation "v")
+)
 
+(deflisten Min
+  :initial "00:00 AM"
+  `bash -c 'while true; do date "+%M"; sleep $(( 60 - $(date "+%S") )); done'`
+)
 (deflisten Hour
   :initial "00:00 AM"
   `bash -c 'while true; do date "+%I"; sleep $(( 60 - $(date "+%S") )); done'`
@@ -75,6 +97,11 @@
       :class "clock-widget-button"
       :onclick "eww open --toggle simple-calendar"
       (label :text "${Hour}")
+    )
+    (button
+      :class "clock-widget-button"
+      :onclick "eww open --toggle simple-calendar"
+      (label :text "${Min}")
     )
   )
 )
