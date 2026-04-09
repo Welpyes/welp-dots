@@ -1,0 +1,39 @@
+
+--- Disconnect from a signal.
+-- @tparam string name The name of the signal.
+-- @tparam function func The callback that should be disconnected.
+-- @method disconnect_signal
+-- @treturn boolean `true` when the function was disconnected or `false` if it
+--  wasn't found.
+-- @baseclass gears.object
+
+--- Emit a signal.
+--
+-- @tparam string name The name of the signal.
+-- @param ... Extra arguments for the callback functions. Each connected
+--   function receives the object as first argument and then any extra
+--   arguments that are given to emit_signal().
+-- @method emit_signal
+-- @noreturn
+-- @baseclass gears.object
+
+--- Connect to a signal.
+-- @tparam string name The name of the signal.
+-- @tparam function func The callback to call when the signal is emitted.
+-- @method connect_signal
+-- @noreturn
+-- @baseclass gears.object
+
+--- Connect to a signal weakly.
+--
+-- This allows the callback function to be garbage collected and
+-- automatically disconnects the signal when that happens.
+--
+-- **Warning:**
+-- Only use this function if you really, really, really know what you
+-- are doing.
+-- @tparam string name The name of the signal.
+-- @tparam function func The callback to call when the signal is emitted.
+-- @method weak_connect_signal
+-- @noreturn
+-- @baseclass gears.object

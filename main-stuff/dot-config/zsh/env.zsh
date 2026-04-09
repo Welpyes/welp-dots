@@ -14,7 +14,7 @@ export GPG_TTY=$(tty)
 
 export SUDO_PROMPT="passwd: "
 export TERMINAL="st"
-export BROWSER="firefox"
+export BROWSER="librewolf"
 export VISUAL="nvim"
 export EDITOR="nvim"
 

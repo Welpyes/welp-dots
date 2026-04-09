@@ -1,4 +1,3 @@
-swaybg -m fill -i ~/Documents/pixelLab/20260311_004736.png
-xfce4-panel -d &
+swaybg -m fill -i /sdcard/Documents/wallpapers/sui-nice.png
 
 # vim: ft=sh

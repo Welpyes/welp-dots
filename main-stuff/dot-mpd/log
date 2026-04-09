@@ -3335,3 +3335,20 @@ Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fu
 2026-04-03T22:15:27 player: played "main/02 - ツキナミ.mp3"
 2026-04-03T22:18:56 player: played "main/Ave Mujica - KiLLKiSS.mp3"
 2026-04-03T22:38:55 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-04-05T20:53:56 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-04-05T20:54:11 player: played "main/01_02_Walk This Way!_鹿乃.mp3"
+2026-04-05T20:54:15 player: played "英語/George Benson - Nothing's Gonna Change My Love for You.mp3"
+2026-04-05T20:58:17 player: played "英語/Jeffrey Osborne - On The Wings Of Love.mp3"
+2026-04-05T21:02:09 player: played "英語/WHAM! - Wake Me Up Before You Go-Go (Remastered).mp3"
+2026-04-05T21:11:32 player: played "英語/Whitney Houston - Where Do Broken Hearts Go.mp3"
+2026-04-05T21:18:10 player: played "英語/George Michael - Careless Whisper.mp3"
+2026-04-05T21:18:32 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-04-05T22:53:18 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-04-05T22:53:23 player: played "英語/Michael Bolton - How Am I Supposed to Live Without You.mp3"
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+2026-04-05T22:56:14 player: played "main/19. Hoshimachi Suisei - Bibbidiba.mp3"
+2026-04-05T22:57:06 player: played "main/1.19.  - ReI.mp3"

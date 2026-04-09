@@ -135,6 +135,8 @@ theme.icon_theme = nil
 theme.wibar_bg = "#F2E9DE"
 theme.wibar_fg = "#575279"
 
+theme.wibar_radius = 0
+
 theme.launcher_bg = "#459bbd"
 theme.launcher_fg = "#F2E9DE"
 

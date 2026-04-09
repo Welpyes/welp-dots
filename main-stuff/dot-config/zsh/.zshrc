@@ -24,6 +24,7 @@ options
 plugins
 utils
 prompt
+gowall
 EOF
 
 # perms

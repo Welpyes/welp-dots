@@ -32,6 +32,12 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
     vim.bo.filetype = "toml"
   end,
 })
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = { "*.clue" },
+  callback = function()
+    vim.bo.filetype = "rust"
+  end,
+})
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {"lisp", "fennel", "yuck"},

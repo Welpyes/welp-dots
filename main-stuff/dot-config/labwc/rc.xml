@@ -10,24 +10,24 @@
     <allowTearing>no</allowTearing>
     <reuseOutputMode>no</reuseOutputMode>
     <xwaylandPersistence>yes</xwaylandPersistence>
-    <backgroundImage>/sdcard/Documents/pixelLab/20260311_004736.png</backgroundImage>
-    <blurSigma>20</blurSigma>
+    <backgroundImage>/sdcard/Documents/wallpapers/sui-nice.png</backgroundImage>
+    <blurSigma>35</blurSigma>
     <workspaceReportFile>/data/data/com.termux/files/usr/tmp/workspace-data.json</workspaceReportFile>
   </core>
   <placement>
-    <policy>cascade</policy>
+    <policy>automatic</policy>
     <cascadeOffset x="40" y="30" />
   </placement>
   <theme>
-    <name>MacOs</name>
-    <icon>Gruvbox-Plus-Dark</icon>
+    <name>rose-pine-dawn-gtk</name>
+    <icon>rose-pine-dawn-icons</icon>
+    <dropShadows>yes</dropShadows>
     <titlebar>
       <layout>icon:iconify,max,close</layout>
       <showTitle>yes</showTitle>
     </titlebar>
     <cornerRadius>0</cornerRadius>
     <keepBorder>yes</keepBorder>
-    <dropShadows>yes</dropShadows>
     <font place="ActiveWindow">
       <name>Ioskely Mono</name>
       <size>10</size>

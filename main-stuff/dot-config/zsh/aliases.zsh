@@ -17,7 +17,7 @@ alias utar='tar -xvf' # mtar <archive_compress>
 alias mtar='XZ_OPT=-9 tar -cvJf' # utar <archive_decompress> <file_list>
 alias ..="cd .."
 alias psg="ps aux | rg -v rg | rg -i -e VSZ -e"
-alias sr='source ~/.zshenv'
+alias rt="exec zsh"
 alias mkdir="mkdir -p"
 alias ls="eza --color=auto --icons"
 alias l="ls -l"

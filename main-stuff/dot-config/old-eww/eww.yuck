@@ -1,0 +1,296 @@
+; ── Windows ────────────────────────────────────────────────────────
+
+(defwindow bar
+  :wm-ignore false
+  :monitor 0
+  :windowtype "dock"
+  :stacking "bg"
+  :geometry (geometry
+    :x "0"
+    :y "0"
+    :height "40px"
+    :width "100%"
+    :anchor "top center"
+  )
+  (bar)
+)
+
+(defwindow simple-calendar
+  :wm-ignore true
+  :monitor 0
+  :windowtype "dock"
+  :stacking "fg"
+  :geometry (geometry
+    :x "-10"
+    :y "50"
+    :height "60px"
+    :width "220px"
+    :anchor "top right"
+  )
+  (simple-calendar)
+)
+
+(defwindow pallete
+  :wm-ignore true
+  :monitor 0
+  :windowtype "dock"
+  :stacking "fg"
+  :geometry (geometry
+    :x "225"
+    :y "50"
+    :height "60px"
+    :width "100px"
+    :anchor "top left"
+  )
+  (pallete)
+)
+
+; ── Bar layout ─────────────────────────────────────────────────────
+
+(defwidget bar []
+  (box
+    :class "bar"
+    :orientation "h"
+    :vexpand false
+    :hexpand false
+    :space-evenly true
+    (left)
+    (middle)
+    (right)
+  )
+)
+
+(defwidget left []
+  (box
+    :orientation "h"
+    :halign "start"
+    :space-evenly false
+    :spacing 5
+    (launcher)
+    (workspaces)
+    (control-panel)
+    (packages)
+    (weather)
+    (pallete-button)
+  )
+)
+
+(defwidget middle []
+  (box
+    :orientation "h"
+    :halign "center"
+    :space-evenly false
+    (spacer)
+  )
+)
+
+(defwidget right []
+  (box
+    :orientation "h"
+    :halign "end"
+    :space-evenly false
+    :spacing 2
+    (volume)
+    (battery)
+    (clock)
+    (notification-button)
+  )
+)
+
+(defwidget spacer []
+  (box :class "spacer" :orientation "h")
+)
+
+; ── Clock & Calendar ───────────────────────────────────────────────
+
+(deflisten time
+  :initial "00:00 AM"
+  `bash -c 'while true; do date "+%I:%M %p"; sleep $(( 60 - $(date "+%S") )); done'`
+)
+
+(defwidget clock []
+  (box
+    :class "clock-widget"
+    :space-evenly false
+    (button
+      :class "clock-widget-button"
+      :onclick "eww open --toggle simple-calendar"
+      (label :text "")
+    )
+    (label
+      :class "clock-widget-time"
+      :text "${time}"
+    )
+  )
+)
+
+(defpoll cal-info :interval "1h"
+  `./scripts/cal_script.py`
+)
+
+(defwidget simple-calendar []
+  (box :class "simple-calendar-widget"
+    (label :text "${cal-info}" :justify "left")
+  )
+)
+
+; ── Launcher ───────────────────────────────────────────────────────
+
+(defwidget launcher []
+  (button
+    :class "launcher"
+    :onclick "bash ~/.config/rofi/launch.sh drun"
+    (label :text "󰄛")
+  )
+)
+
+; ── Weather ────────────────────────────────────────────────────────
+
+(deflisten weather-icon
+  :initial "󰖙"
+  `bash -c 'while true; do ~/.config/eww/scripts/weather.sh icon; sleep 1500; done'`
+)
+
+(deflisten weather-temp
+  :initial "25°C"
+  `bash -c 'while true; do ~/.config/eww/scripts/weather.sh temp; sleep 1500; done'`
+)
+
+(defwidget weather []
+  (box
+    :class "weather"
+    :space-evenly false
+    :spacing 0
+    (button
+      :class "weather-button"
+      :onclick "./scripts/weather.sh reset"
+      (label :text "${weather-icon}")
+    )
+    (label
+      :class "weather-temp"
+      :text "${weather-temp}"
+    )
+  )
+)
+
+; ── Workspaces ─────────────────────────────────────────────────────
+
+(deflisten workspaces :initial "[]"
+  `./scripts/workspaces.py`
+)
+
+(defwidget workspaces []
+  (box
+    :class "workspaces"
+    :orientation "h"
+    :space-evenly false
+    :halign "start"
+    :spacing 0
+    (for ws in workspaces
+      (button
+        :onclick "bspc desktop -f ${ws.name}"
+        :class {ws.focused ? "workspaces-focused" : "workspaces-${ws.status}"}
+        (label :text {ws.name})
+      )
+    )
+  )
+)
+
+; ── Packages ───────────────────────────────────────────────────────
+
+(defpoll packages-data :initial "100" :interval "1h"
+  `(pacman -Qm && pacman -Qn) | wc -l`
+)
+
+(defwidget packages []
+  (box
+    :class "packages"
+    :space-evenly false
+    :spacing 0
+    (button :class "packages-icon"
+      (label :text "󰏗")
+    )
+    (label
+      :class "packages-text"
+      :text "${packages-data}"
+    )
+  )
+)
+
+; ── Control panel ──────────────────────────────────────────────────
+
+(defwidget control-panel []
+  (button
+    :class "control-panel"
+    :onclick "echo yes"
+    (label :text "󰨚")
+  )
+)
+
+; ── Palette ────────────────────────────────────────────────────────
+
+(defwidget pallete-button []
+  (button
+    :class "pallete-button"
+    :onclick "eww open --toggle pallete"
+    (label :text "󰉦")
+  )
+)
+
+(defpoll pallete-info :interval "1h"
+  `gowall list -p -t Kintsukuroi | pastel format hex`
+)
+
+(defwidget pallete []
+  (box :class "simple-calendar-widget"
+    (label :text "${pallete-info}" :justify "left")
+  )
+)
+
+
+; ── Battery ────────────────────────────────────────────────────────
+
+(defpoll battery-data :initial "100" :interval "30m"
+  `termux-battery-status | jq .level`
+)
+
+(defwidget battery []
+  (box :class "battery"
+    (button :class "battery-button"
+      (label :text "")
+    )
+    (label
+      :class "battery-text"
+      :text "${battery-data}%"
+    )
+  )
+)
+
+; ── Volume ─────────────────────────────────────────────────────────
+
+(deflisten volume-data :initial "100%"
+  `./scripts/get-vol.sh`
+)
+
+(defwidget volume []
+  (box :class "volume"
+    (button :class "volume-button" :onclick "pavucontrol"
+      (label :text "")
+    )
+    (label
+      :class "volume-text"
+      :text "${volume-data}"
+    )
+  )
+)
+
+; ── Notifications ──────────────────────────────────────────────────
+
+(defwidget notification-button []
+  (button
+    :class "notification-button"
+    :onclick "eww open --toggle notification-center"
+    (label :text "󰅸")
+  )
+)
+(include "./nc.yuck")

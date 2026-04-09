@@ -1,6 +1,7 @@
-local awful = require('awful')
-local wibox = require('wibox')
+local awful     = require('awful')
+local wibox     = require('wibox')
 local beautiful = require('beautiful')
+local gears     = require('gears')
 
 local module = require(... .. '.module')
 
@@ -11,9 +12,15 @@ return function(s)
    s.mywibox = awful.wibar({
       position = 'left',
       width    = 40,
+      height   = s.geometry.height - 40,
+      stretch  = false,
+      ontop    = false,
       screen   = s,
       bg       = beautiful.wibar_bg,
       fg       = beautiful.wibar_fg,
+      shape    = function(cr, w, h)
+         gears.shape.rounded_rect(cr, w, h, beautiful.wibar_radius)
+      end,
       widget   = {
          layout = wibox.layout.align.vertical,
          -- Top widgets
@@ -59,5 +66,17 @@ return function(s)
             }
          }
       }
+   })
+
+   -- Place the wibar on the left with margins
+   awful.placement.left(s.mywibox, {
+      margins = { left = 10 },
+      parent  = s
+   })
+
+   -- Set manual struts to reserve space for the floating bar
+   -- 40 (width) + 10 (margin) + 20 (extra) = 70
+   s.mywibox:struts({
+      left = 70
    })
 end
