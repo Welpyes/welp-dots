@@ -6,7 +6,7 @@ apps.editor_cmd = apps.terminal .. ' -e ' .. apps.editor
 
 apps.autostart = {
    'dunst',
-   "fastcompmgr -c -r 1 -o 1 -l 7 -t 7 --shadow-color '#8a8a96'"
+   'picom'
 }
 
 -- Set the terminal for the menubar.

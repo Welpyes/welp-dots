@@ -1,5 +1,7 @@
 -- awesome_mode: api-level=4:screen=on
 pcall(require, 'luarocks.loader')
+
+-- Disable naughty module because dunst is better
 package.loaded["naughty"] = {
   notify = function() end,
   connect_signal = function() end,

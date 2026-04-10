@@ -1,44 +1,177 @@
 * { all: unset; }
 
-/* ------------------ Pallete ------------------ */
+// ── Palette ──────────────────────────────────────────────────────────────────
 
-$background: #F2E9DE;
-$foreground: #575279;
+$background: #141210;
+$foreground: #e5c9a0;
 
-$black:   #faf4ed;
-$red:     #b4637a;
-$green:   #286983;
-$yellow:  #ea9d34;
-$blue:    #56949f;
-$magenta: #907aa9;
-$cyan:    #3e8fb0;
-$white:   #423e5b;
+$black:   #322d28;
+$red:     #c06c5c;
+$green:   #78997a;
+$yellow:  #c09d59;
+$blue:    #7f91b2;
+$magenta: #b380b0;
+$cyan:    #7b9695;
+$white:   #d8be97;
 
-$br-black:   #f2e9e1;
-$br-red:     #eb6f92;
-$br-green:   #3e8fb0;
-$br-yellow:  #f6c177;
-$br-blue:    #459BBD;
-$br-magenta: #c4a7e7;
-$br-cyan:    #56949f;
-$br-white:   #575279;
+$br-black:   #4d463e;
+$br-red:     #d97a68;
+$br-green:   #85b695;
+$br-yellow:  #d8b164;
+$br-blue:    #a3a9ce;
+$br-magenta: #cf9bc2;
+$br-cyan:    #89b3b6;
+$br-white:   #f2d5a9;
 
-$selection-bg: #9893a5;
-$selection-fg: #797593;
+$selection-bg: #4d463e;
+$selection-fg: #e5c9a0;
+
+// ── Derived tokens ─────────────────────────────────────────────────────────────
+// $surface:       #1c1916;   // slightly lifted background for the panel
+$surface:       $background; //rgba(28, 25, 22, 0.6);   // slightly lifted background for the panel
+$surface-2:     #231f1b;   // card background
+$surface-hover: #2b261f;   // card hover
+$border:        $yellow;   // subtle borders
+$muted:         #7a6e62;   // timestamps, secondary text
+$radius:        5px;
+$radius-sm:     5px;
+
+
+// ── Mixins ───────────────────────────────────────────────────────────────────
+
+// Coloured icon button with a hover variant
+@mixin icon-button($bg, $bg-hover, $fg: $background, $size: 16px, $pad: 0 6px) {
+  font-family: "Symbols Nerd Font Mono";
+  font-size: $size;
+  background-color: $bg;
+  color: $fg;
+  padding: $pad;
+  &:hover { background-color: $bg-hover; }
+}
+
+// Plain text readout sitting next to a button
+@mixin readout($size: 12px, $pad: 0 5px) {
+  font-size: $size;
+  background-color: $black;
+  color: $foreground;
+  padding: $pad;
+}
+
+// ── Bar ──────────────────────────────────────────────────────────────────────
 
 .bar {
   font-family: "Ioskeley Mono";
-  background-color: $black;
-  padding: 8 0 0 8px;
+  font-size: 10px;
+  font-weight: bold;
+  background-color: $background;
+  color: $foreground;
+  padding: 4px 2px;
 }
 
-.shadow {
-  background-color: $selection-fg;
-  padding: 8 0 0 8px;
+// ── Calendar ─────────────────────────────────────────────────────────────────
+
+.simple-calendar {
+  background-color: $surface;
+  border: 1px solid $yellow;
+  padding: 20 0px;
+  &-widget {
+    background-color: transparent;
+  }
 }
+
+// ── Clock ────────────────────────────────────────────────────────────────────
 
 .clock-widget {
-  background-color: $black;
-  color: $foreground;
-  font-size: 20px;
+  &-time   { @include readout($size: 10px, $pad: 0 5px); }
+  &-button { @include icon-button($white, $br-white, $black, 16px, 0 6px); }
 }
+
+// ── Launcher ─────────────────────────────────────────────────────────────────
+
+.launcher { @include icon-button($green, $br-green, $background, 25px, 0 5px); }
+
+// ── Weather ──────────────────────────────────────────────────────────────────
+
+.weather {
+  &-temp   { @include readout($size: 10px, $pad: 0 5px); }
+  &-button { @include icon-button($blue, $br-blue, $background, 18px, 0 7px); }
+}
+
+// ── Workspaces ───────────────────────────────────────────────────────────────
+
+%workspace-button {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 0 10px;
+  margin: 0 2px;
+}
+
+.workspaces {
+  background-color: $background;
+
+  &-empty {
+    font-size: 0;
+    background-color: transparent;
+    color: transparent;
+  }
+
+  &-occupied {
+    @extend %workspace-button;
+    background-color: $black;
+    color: $foreground;
+    &:hover { background-color: $br-black; }
+  }
+
+  &-focused {
+    @extend %workspace-button;
+    background-color: $white;
+    color: $background;
+    &:hover { background-color: $br-white; }
+  }
+}
+
+// ── Packages ─────────────────────────────────────────────────────────────────
+
+.packages {
+  &-text { @include readout($size: 10px, $pad: 0 10px); }
+  &-icon { @include icon-button($yellow, $br-yellow, $background, 20px, 0 8px); }
+}
+
+// ── Control panel ────────────────────────────────────────────────────────────
+
+.control-panel { @include icon-button($black, $br-black, $red, 14px, 0 6px); }
+
+// ── Palette button ───────────────────────────────────────────────────────────
+
+.pallete {
+  background-color: $surface;
+  border: 1px solid $yellow;
+  padding: 10 0px;
+  &-button {
+    font-family: "Symbols Nerd Font Mono";
+    font-size: 20px;
+    background-color: $black;
+    color: $background;
+    padding: 0 6px;
+    &:hover { color: $foreground; }
+  }
+}
+
+// ── Notifications ────────────────────────────────────────────────────────────
+
+.notification-button {
+  @include icon-button($magenta, $br-magenta, $background, 16px, 0 6px);
+  margin: 0 2px;
+}
+@import "./nc";
+
+// ── Shared: battery & volume ─────────────────────────────────────────────────
+
+@mixin indicator {
+  margin: 0 2px;
+  &-button { @include icon-button($white, $white, $background, 16px, 0 6px); }
+  &-text   { @include readout(12px, 0 5px); }
+}
+
+.battery { @include indicator; }
+.volume  { @include indicator; }

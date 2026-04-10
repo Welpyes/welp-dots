@@ -43,7 +43,7 @@ return function(s)
             {
                {
                   {
-                     format = '%H\n%M',
+                     format = '%I\n%M',
                      font   = beautiful.clock_font,
                      widget = wibox.widget.textclock
                   },
