@@ -3352,3 +3352,81 @@ Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fu
 Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
 2026-04-05T22:56:14 player: played "main/19. Hoshimachi Suisei - Bibbidiba.mp3"
 2026-04-05T22:57:06 player: played "main/1.19.  - ReI.mp3"
+2026-04-10T23:19:04 player: played "main/1.19.  - ReI.mp3"
+2026-04-10T23:41:05 player: played "main/1.19.  - ReI.mp3"
+2026-04-10T23:42:12 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-04-10T23:42:22 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-10T23:42:33 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-10T23:42:44 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-10T23:42:55 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-10T23:43:06 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-10T23:43:17 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-10T23:43:27 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-10T23:44:53 player: played "main/1.19.  - ReI.mp3"
+2026-04-10T23:47:10 player: played "main/Theme_149.mp3"
+2026-04-10T23:50:02 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-04-11T00:06:37 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-11T00:33:27 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-11T00:33:36 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-11T00:33:46 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-11T00:33:57 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-11T00:38:51 player: played "main/01 - 真夜中のドア - Stay With Me.mp3"
+2026-04-11T00:39:00 player: played "main/01. ムーンライト.ogg"
+2026-04-11T00:39:15 player: played "main/01. ムーンライト.ogg"
+2026-04-11T00:39:55 player: played "main/01. ムーンライト.ogg"
+2026-04-11T00:41:15 player: played "main/01. ムーンライト.ogg"
+2026-04-11T00:41:45 player: played "main/01. ムーンライト.ogg"
+2026-04-11T00:41:59 player: played "main/01. ムーンライト.ogg"
+2026-04-11T00:43:53 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-04-11T00:44:07 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-04-11T00:44:35 player: played "main/sumika - Fiction.mp3"
+2026-04-11T00:46:50 player: played "main/sumika - Fiction.mp3"
+2026-04-11T00:47:18 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-04-11T00:50:14 player: played "main/sumika - Fiction.mp3"
+2026-04-11T00:51:35 player: played "main/01. ツユ — Under Mentality.mp3"
+2026-04-11T00:53:46 player: played "main/01 - 真夜中のドア - Stay With Me.mp3"
+2026-04-11T00:54:08 player: played "main/01 - 真夜中のドア - Stay With Me.mp3"
+2026-04-11T00:55:10 player: played "main/01 - 真夜中のドア - Stay With Me.mp3"
+2026-04-11T00:55:52 player: played "main/01 - 真夜中のドア - Stay With Me.mp3"
+2026-04-11T00:55:57 player: played "main/01 - 真夜中のドア - Stay With Me.mp3"
+2026-04-11T00:57:27 player: played "main/01 - 真夜中のドア - Stay With Me.mp3"
+2026-04-11T00:58:25 player: played "main/84 - PRST Marching - Blue Archive OST- Off The Tracks!.mp3"
+2026-04-11T00:59:42 player: played "main/charon - Seventeen RPG .mp3"
+2026-04-11T00:59:44 player: played "main/charon - Seventeen RPG .mp3"
+2026-04-11T01:00:53 player: played "main/charon - Seventeen RPG .mp3"
+2026-04-11T01:01:50 player: played "main/charon - Seventeen RPG .mp3"
+2026-04-11T01:03:43 player: played "main/charon - Seventeen RPG .mp3"
+2026-04-11T01:09:47 player: played "main/charon - Seventeen RPG .mp3"
+2026-04-11T01:09:48 player: played "main/ブルーアーカイブ Blue Archive OST 133. Goal Wo Nerae! (Get Set, Go! ～キヴォトス晄輪大祭～ Event BGM) [dOH0dXpDbaU].mp3"
+2026-04-11T01:09:50 player: played "main/ブルーアーカイブ Blue Archive OST 133. Goal Wo Nerae! (Get Set, Go! ～キヴォトス晄輪大祭～ Event BGM) [dOH0dXpDbaU].mp3"
+2026-04-11T01:10:59 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-04-11T01:11:10 player: played "main/ブルーアーカイブ Blue Archive OST 133. Goal Wo Nerae! (Get Set, Go! ～キヴォトス晄輪大祭～ Event BGM) [dOH0dXpDbaU].mp3"
+2026-04-11T01:12:01 player: played "英語/05 - ABC (feat. Sophia Black).mp3"
+2026-04-11T01:12:02 player: played "英語/05 - ABC (feat. Sophia Black).mp3"
+2026-04-11T01:12:19 player: played "英語/05 - ABC (feat. Sophia Black).mp3"
+2026-04-11T01:12:33 player: played "英語/05 - ABC (feat. Sophia Black).mp3"
+2026-04-11T01:13:30 player: played "英語/05 - ABC (feat. Sophia Black).mp3"
+2026-04-11T01:15:32 player: played "英語/05 - ABC (feat. Sophia Black).mp3"
+2026-04-11T01:16:31 player: played "英語/05 - ABC (feat. Sophia Black).mp3"
+2026-04-11T01:18:00 player: played "英語/05 - ABC (feat. Sophia Black).mp3"
+2026-04-11T01:18:30 player: played "英語/05 - ABC (feat. Sophia Black).mp3"
+2026-04-11T01:19:27 player: played "英語/Air Supply - Without You.mp3"
+2026-04-11T01:21:57 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-04-11T01:24:27 player: played "英語/Britney Spears - ... Baby One More Time.mp3"
+2026-04-11T01:28:04 player: played "英語/Earth Wind & Fire - September.mp3"
+2026-04-11T01:35:41 player: played "英語/Celine Dion - It's All Coming Back to Me Now.mp3"
+2026-04-11T01:43:04 player: played "英語/Bee Gees - Stayin' Alive (From ＂Saturday Night Fever＂ Soundtrack).mp3"
+2026-04-11T01:43:58 player: played "英語/Bee Gees - Stayin' Alive (From ＂Saturday Night Fever＂ Soundtrack).mp3"
+2026-04-11T01:45:04 player: played "英語/Air Supply - Having You Near Me.mp3"
+2026-04-11T01:46:55 player: played "英語/Air Supply - Having You Near Me.mp3"
+2026-04-11T01:47:47 player: played "英語/Air Supply - Having You Near Me.mp3"
+2026-04-11T01:52:15 player: played "英語/Redbone - Come and Get Your Love.mp3"
+2026-04-11T01:53:05 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-04-11T09:43:38 player: played "英語/Whitney Houston - I Wanna Dance with Somebody (Who Loves Me).mp3"
+2026-04-11T09:45:48 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-04-11T09:45:59 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-11T09:46:09 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-11T09:46:19 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-11T09:46:29 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-11T14:48:42 player: played "英語/Whitney Houston - I Wanna Dance with Somebody (Who Loves Me).mp3"
+2026-04-11T14:49:15 player: played "英語/Whitney Houston - I Wanna Dance with Somebody (Who Loves Me).mp3"

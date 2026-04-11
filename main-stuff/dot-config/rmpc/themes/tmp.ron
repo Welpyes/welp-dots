@@ -22,6 +22,25 @@
     current_item_style: (fg: "black", bg: "blue", modifiers: "Bold"),
     borders_style: (fg: "blue"),
     highlight_border_style: (fg: "blue"),
+
+    cava: (
+        bar_symbols: ['▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'],
+
+        bg_color: "#191724", // background color, defaults to rmpc's bg color if not provided
+        bar_width: 2, // width of a single bar in columns
+        bar_spacing: 1, // free space between bars in columns
+
+        orientation: Bottom,
+        bar_color: Gradient({
+              0: "#286983",
+              16: "#56949f",
+              32: "#907aa9",
+              55: "#d7827e",
+              75: "#ea9d34",
+              100: "#b4637a",
+          })
+    ),
+
     symbols: (
         song: "󰎇",
         dir: "",
@@ -40,11 +59,11 @@
         trace: (fg: "magenta", bg: "black"),
     ),
     progress_bar: (
-        symbols: ["▂", "▂", "▂", " ", " "],
-        track_style: (fg: "#16161e"),
+        symbols: ["[", "━", "━", " ", "]"],
+        track_style: (fg: "magenta"),
         elapsed_style: (fg: "magenta"),
-        thumb_style: (fg: "magenta"),
-        use_track_when_empty: true,
+        thumb_style: (fg: "magenta", bg: "black"),
+        use_track_when_empty: false,
     ),
     scrollbar: (
         symbols: ["│", "█", "", ""],
@@ -83,21 +102,14 @@
     layout: Split(
         direction: Vertical,
         panes: [
-            // (
-            //     pane: Pane(Tabs),
-            //     size: "3",
-            // ),
             (
-                pane: Pane(TabContent),
+                size: "3",
+                pane: Pane(Tabs),
+            ),
+            (
                 size: "100%",
-            ),
-            (
-                pane: Pane(ProgressBar),
-                size: "2",
-            ),
-            (
-                pane: Pane(Header),
-                size: "2",
+                borders: "ALL",
+                pane: Pane(TabContent),
             ),
         ],
     ),
@@ -105,47 +117,48 @@
         rows: [
             (
                 left: [
+                    (kind: Property(Song(Title)), style: (modifiers: "Bold"),
+                        default: (kind: Text("No Song"), style: (modifiers: "Bold"))
+                    ),
+                ],
+                center: [],
+                right: [],
+            ),
+            (
+                left: [
+                    (kind: Property(Song(Artist)), style: (fg: "yellow", modifiers: "Bold"),
+                        default: (kind: Text("Unknown"), style: (fg: "yellow", modifiers: "Bold"))
+                    ),
+                ],
+                center: [],
+                right: [],
+            ),
+            (
+                left: [
+                    (kind: Property(Song(Album)),
+                        default: (kind: Text("Unknown Album"))
+                    ),
+                ],
+                center: [],
+                right: [],
+            ),
+            (
+                left: [
                     (kind: Text("["), style: (fg: "yellow", modifiers: "Bold")),
                     (kind: Property(Status(StateV2(playing_label: "Playing", paused_label: "Paused", stopped_label: "Stopped"))), style: (fg: "yellow", modifiers: "Bold")),
                     (kind: Text("]"), style: (fg: "yellow", modifiers: "Bold"))
                 ],
-                center: [
-                    (kind: Property(Song(Title)), style: (modifiers: "Bold"),
-                        default: (kind: Text("No Song"), style: (modifiers: "Bold"))
-                    )
-                ],
-                right: [
-                    (kind: Property(Widget(ScanStatus)), style: (fg: "blue")),
-                    (kind: Property(Widget(Volume)), style: (fg: "blue"))
-                ]
+                center: [],
+                right: [],
             ),
             (
                 left: [
                     (kind: Property(Status(Elapsed))),
                     (kind: Text(" / ")),
                     (kind: Property(Status(Duration))),
-                    (kind: Text(" (")),
-                    (kind: Property(Status(Bitrate))),
-                    (kind: Text(" kbps)"))
                 ],
-                center: [
-                    (kind: Property(Song(Artist)), style: (fg: "yellow", modifiers: "Bold"),
-                        default: (kind: Text("Unknown"), style: (fg: "yellow", modifiers: "Bold"))
-                    ),
-                    (kind: Text(" - ")),
-                    (kind: Property(Song(Album)),
-                        default: (kind: Text("Unknown Album"))
-                    )
-                ],
-                right: [
-                    (
-                        kind: Property(Widget(States(
-                            active_style: (fg: "green", modifiers: "Bold"),
-                            separator_style: (fg: "white")))
-                        ),
-                        style: (fg: "white")
-                    ),
-                ]
+                center: [],
+                right: [],
             ),
         ],
     ),
@@ -166,6 +179,6 @@
         ),
     ],
     lyrics: (
-        timestamp: true,
+        timestamp: false
     )
 )

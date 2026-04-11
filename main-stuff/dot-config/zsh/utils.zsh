@@ -171,8 +171,18 @@ sudo(){
 
 rmpc(){
   pgrep -x "mpd" || mpd
-  command rmpc
-  kill -9 $(command pgrep -x mpd)
+
+  local TERMINAL=$(ps -p $PPID -o comm=)
+
+  if [[ "${TERMINAL}" == "st" ]]; then
+    command rmpc $@
+  elif [[ "${TERMINAL}" == "com.termux" ]]; then
+    command rmpc -c $HOME/.config/rmpc/config-termux.ron
+  else
+    command rmpc -c $HOME/.config/rmpc/config-ueberzug.ron
+  fi
+
+  mpd --kill
 }
 
 vplay(){

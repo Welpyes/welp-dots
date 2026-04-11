@@ -14,14 +14,12 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <termios.h>
-#include <time.h>
 #include <unistd.h>
 #include <wchar.h>
 
 #include "st.h"
 #include "win.h"
-
-#include "sixel.h"
+#include "graphics.h"
 
 #if   defined(__linux)
  #include <pty.h>
@@ -38,33 +36,30 @@
 #define ESC_ARG_SIZ   16
 #define STR_BUF_SIZ   ESC_BUF_SIZ
 #define STR_ARG_SIZ   ESC_ARG_SIZ
-#define STR_TERM_ST   "\033\\"
-#define STR_TERM_BEL  "\007"
+
+/* PUA character used as an image placeholder */
+#define IMAGE_PLACEHOLDER_CHAR 0x10EEEE
+#define IMAGE_PLACEHOLDER_CHAR_OLD 0xEEEE
 
 /* macros */
-#define IS_SET(flag)    ((term.mode & (flag)) != 0)
-#define ISCONTROLC0(c)  (BETWEEN(c, 0, 0x1f) || (c) == 0x7f)
-#define ISCONTROLC1(c)  (BETWEEN(c, 0x80, 0x9f))
-#define ISCONTROL(c)    (ISCONTROLC0(c) || ISCONTROLC1(c))
-#define ISDELIM(u)      (u && wcschr(worddelimiters, u))
+#define IS_SET(flag)		((term.mode & (flag)) != 0)
+#define ISCONTROLC0(c)		(BETWEEN(c, 0, 0x1f) || (c) == 0x7f)
+#define ISCONTROLC1(c)		(BETWEEN(c, 0x80, 0x9f))
+#define ISCONTROL(c)		(ISCONTROLC0(c) || ISCONTROLC1(c))
+#define ISDELIM(u)		(u && wcschr(worddelimiters, u))
+
+#define TSCREEN term.screen[IS_SET(MODE_ALTSCREEN)]
+#define TLINEOFFSET(y) (((y) + TSCREEN.cur - TSCREEN.off + TSCREEN.size) % TSCREEN.size)
+#define TLINE(y) (TSCREEN.buffer[TLINEOFFSET(y)])
 
 enum term_mode {
-	MODE_WRAP         = 1 << 0,
-	MODE_INSERT       = 1 << 1,
-	MODE_ALTSCREEN    = 1 << 2,
-	MODE_CRLF         = 1 << 3,
-	MODE_ECHO         = 1 << 4,
-	MODE_PRINT        = 1 << 5,
-	MODE_UTF8         = 1 << 6,
-	MODE_SIXEL        = 1 << 7,
-	MODE_SIXEL_CUR_RT = 1 << 8,
-	MODE_SIXEL_SDM    = 1 << 9
-};
-
-enum scroll_mode {
-	SCROLL_RESIZE = -1,
-	SCROLL_NOSAVEHIST = 0,
-	SCROLL_SAVEHIST = 1
+	MODE_WRAP        = 1 << 0,
+	MODE_INSERT      = 1 << 1,
+	MODE_ALTSCREEN   = 1 << 2,
+	MODE_CRLF        = 1 << 3,
+	MODE_ECHO        = 1 << 4,
+	MODE_PRINT       = 1 << 5,
+	MODE_UTF8        = 1 << 6,
 };
 
 enum cursor_movement {
@@ -96,8 +91,14 @@ enum escape_state {
 	ESC_STR_END    = 16, /* a final string was encountered */
 	ESC_TEST       = 32, /* Enter in test mode */
 	ESC_UTF8       = 64,
-	ESC_DCS        =128,
 };
+
+typedef struct {
+	Glyph attr; /* current char attributes */
+	int x;
+	int y;
+	char state;
+} TCursor;
 
 typedef struct {
 	int mode;
@@ -116,6 +117,38 @@ typedef struct {
 
 	int alt;
 } Selection;
+
+/* Screen lines */
+typedef struct {
+	Line* buffer;  /* ring buffer */
+	int size;      /* size of buffer */
+	int cur;       /* start of active screen */
+	int off;       /* scrollback line offset */
+	TCursor sc;    /* saved cursor */
+} LineBuffer;
+
+/* Internal representation of the screen */
+typedef struct {
+	int row;      /* nb row */
+	int col;      /* nb col */
+	int pixw;     /* width of the text area in pixels */
+	int pixh;     /* height of the text area in pixels */
+	LineBuffer screen[2]; /* screen and alternate screen */
+	int linelen;  /* allocated line length */
+	int *dirty;   /* dirtyness of lines */
+	TCursor c;    /* cursor */
+	int ocx;      /* old cursor col */
+	int ocy;      /* old cursor row */
+	int top;      /* top    scroll limit */
+	int bot;      /* bottom scroll limit */
+	int mode;     /* terminal mode flags */
+	int esc;      /* escape state flags */
+	char trantbl[4]; /* charset table translation */
+	int charset;  /* current charset */
+	int icharset; /* selected charset for sequence */
+	int *tabs;
+	Rune lastc;   /* last printed char outside of sequence, 0 if control */
+} Term;
 
 /* CSI Escape sequence structs */
 /* ESC '[' [[ [<priv>] <arg> [;]] <mode> [<mode>]] */
@@ -137,7 +170,6 @@ typedef struct {
 	size_t len;            /* raw string length */
 	char *args[STR_ARG_SIZ];
 	int narg;              /* nb of args */
-    char *term;            /* terminator: ST or BEL */
 } STREscape;
 
 static void execsh(char *, char **);
@@ -147,7 +179,6 @@ static void ttywriteraw(const char *, size_t);
 
 static void csidump(void);
 static void csihandle(void);
-static void dcshandle(void);
 static void csiparse(void);
 static void csireset(void);
 static void osc_color_response(int, int, int);
@@ -161,61 +192,97 @@ static void tprinter(char *, size_t);
 static void tdumpsel(void);
 static void tdumpline(int);
 static void tdump(void);
+static void tclearregion(int, int, int, int);
 static void tcursor(int);
-static void tresetcursor(void);
-static void tdeleteimages(void);
+static void tdeletechar(int);
 static void tdeleteline(int);
 static void tinsertblank(int);
 static void tinsertblankline(int);
+static int tlinelen(int);
 static void tmoveto(int, int);
 static void tmoveato(int, int);
 static void tnewline(int);
 static void tputtab(int);
 static void tputc(Rune);
 static void treset(void);
+static void tscrollup(int, int);
 static void tscrolldown(int, int);
 static void tsetattr(const int *, int);
 static void tsetchar(Rune, const Glyph *, int, int);
 static void tsetdirt(int, int);
 static void tsetscroll(int, int);
-static inline void tsetsixelattr(Line line, int x1, int x2);
 static void tswapscreen(void);
 static void tsetmode(int, int, const int *, int);
 static int twrite(const char *, int, int);
+static void tfulldirt(void);
 static void tcontrolcode(uchar );
 static void tdectest(char );
 static void tdefutf8(char);
 static int32_t tdefcolor(const int *, int *, int);
 static void tdeftran(char);
 static void tstrsequence(uchar);
+
+static void drawregion(int, int, int, int);
+static void clearline(Line, Glyph, int, int);
+static Line ensureline(Line);
+
 static void selnormalize(void);
+static void selscroll(int, int);
 static void selsnap(int *, int *, int);
 
 static size_t utf8decode(const char *, Rune *, size_t);
-static inline Rune utf8decodebyte(char, size_t *);
-static inline char utf8encodebyte(Rune, size_t);
-static inline size_t utf8validate(Rune *, size_t);
+static Rune utf8decodebyte(char, size_t *);
+static char utf8encodebyte(Rune, size_t);
+static size_t utf8validate(Rune *, size_t);
 
-static char *base64dec(const char *);
 static char base64dec_getc(const char **);
 
 static ssize_t xwrite(int, const char *, size_t);
 
 /* Globals */
+static Term term;
 static Selection sel;
 static CSIEscape csiescseq;
 static STREscape strescseq;
 static int iofd = 1;
 static int cmdfd;
 static pid_t pid;
-sixel_state_t sixel_st;
 
 static const uchar utfbyte[UTF_SIZ + 1] = {0x80,    0, 0xC0, 0xE0, 0xF0};
 static const uchar utfmask[UTF_SIZ + 1] = {0xC0, 0x80, 0xE0, 0xF0, 0xF8};
 static const Rune utfmin[UTF_SIZ + 1] = {       0,    0,  0x80,  0x800,  0x10000};
 static const Rune utfmax[UTF_SIZ + 1] = {0x10FFFF, 0x7F, 0x7FF, 0xFFFF, 0x10FFFF};
 
-#include "patch/st_include.h"
+/* Converts a diacritic to a row/column/etc number. The result is 1-base, 0
+ * means "couldn't convert". Defined in rowcolumn_diacritics_helpers.c */
+uint16_t diacritic_to_num(uint32_t code);
+
+#include <time.h>
+static int su = 0;
+struct timespec sutv;
+
+static void
+tsync_begin()
+{
+	clock_gettime(CLOCK_MONOTONIC, &sutv);
+	su = 1;
+}
+
+static void
+tsync_end()
+{
+	su = 0;
+}
+
+int
+tinsync(uint timeout)
+{
+	struct timespec now;
+	if (su && !clock_gettime(CLOCK_MONOTONIC, &now)
+	       && TIMEDIFF(now, sutv) >= timeout)
+		su = 0;
+	return su;
+}
 
 ssize_t
 xwrite(int fd, const char *s, size_t len)
@@ -258,6 +325,7 @@ char *
 xstrdup(const char *s)
 {
 	char *p;
+
 	if ((p = strdup(s)) == NULL)
 		die("strdup: %s\n", strerror(errno));
 
@@ -267,27 +335,24 @@ xstrdup(const char *s)
 size_t
 utf8decode(const char *c, Rune *u, size_t clen)
 {
-	size_t i, len;
+	size_t i, j, len, type;
 	Rune udecoded;
 
 	*u = UTF_INVALID;
 	if (!clen)
 		return 0;
 	udecoded = utf8decodebyte(c[0], &len);
-	if (!BETWEEN(len, 2, UTF_SIZ)) {
-		*u = (len == 1) ? udecoded : UTF_INVALID;
+	if (!BETWEEN(len, 1, UTF_SIZ))
 		return 1;
+	for (i = 1, j = 1; i < clen && j < len; ++i, ++j) {
+		udecoded = (udecoded << 6) | utf8decodebyte(c[i], &type);
+		if (type != 0)
+			return j;
 	}
-	clen = MIN(clen, len);
-	for (i = 1; i < clen; ++i) {
-		if ((c[i] & 0xC0) != 0x80)
-			return i;
-		udecoded = (udecoded << 6) | (c[i] & 0x3F);
-	}
-	if (i < len)
+	if (j < len)
 		return 0;
-	*u = (!BETWEEN(udecoded, utfmin[len], utfmax[len]) || BETWEEN(udecoded, 0xD800, 0xDFFF))
-	        ? UTF_INVALID : udecoded;
+	*u = udecoded;
+	utf8validate(u, len);
 
 	return len;
 }
@@ -391,6 +456,21 @@ selinit(void)
 	sel.ob.x = -1;
 }
 
+int
+tlinelen(int y)
+{
+	int i = term.col;
+	Line line = TLINE(y);
+
+	if (line[i - 1].mode & ATTR_WRAP)
+		return i;
+
+	while (i > 0 && line[i - 1].u == ' ')
+		--i;
+
+	return i;
+}
+
 void
 selstart(int col, int row, int snap)
 {
@@ -428,8 +508,8 @@ selextend(int col, int row, int type, int done)
 
 	sel.oe.x = col;
 	sel.oe.y = row;
-	sel.type = type;
 	selnormalize();
+	sel.type = type;
 
 	if (oldey != sel.oe.y || oldex != sel.oe.x || oldtype != sel.type || sel.mode == SEL_EMPTY)
 		tsetdirt(MIN(sel.nb.y, oldsby), MAX(sel.ne.y, oldsey));
@@ -458,12 +538,161 @@ selnormalize(void)
 	/* expand selection over line breaks */
 	if (sel.type == SEL_RECTANGULAR)
 		return;
-
-	i = tlinelen(TLINE(sel.nb.y));
-	if (sel.nb.x > i)
+	i = tlinelen(sel.nb.y);
+	if (i < sel.nb.x)
 		sel.nb.x = i;
-	if (sel.ne.x >= tlinelen(TLINE(sel.ne.y)))
+	if (tlinelen(sel.ne.y) <= sel.ne.x)
 		sel.ne.x = term.col - 1;
+}
+
+int
+selected(int x, int y)
+{
+	if (sel.mode == SEL_EMPTY || sel.ob.x == -1 ||
+			sel.alt != IS_SET(MODE_ALTSCREEN))
+		return 0;
+
+	if (sel.type == SEL_RECTANGULAR)
+		return BETWEEN(y, sel.nb.y, sel.ne.y)
+		    && BETWEEN(x, sel.nb.x, sel.ne.x);
+
+	return BETWEEN(y, sel.nb.y, sel.ne.y)
+	    && (y != sel.nb.y || x >= sel.nb.x)
+	    && (y != sel.ne.y || x <= sel.ne.x);
+}
+
+void
+selsnap(int *x, int *y, int direction)
+{
+	int newx, newy, xt, yt;
+	int delim, prevdelim;
+	const Glyph *gp, *prevgp;
+
+	switch (sel.snap) {
+	case SNAP_WORD:
+		/*
+		 * Snap around if the word wraps around at the end or
+		 * beginning of a line.
+		 */
+		prevgp = &TLINE(*y)[*x];
+		prevdelim = ISDELIM(prevgp->u);
+		for (;;) {
+			newx = *x + direction;
+			newy = *y;
+			if (!BETWEEN(newx, 0, term.col - 1)) {
+				newy += direction;
+				newx = (newx + term.col) % term.col;
+				if (!BETWEEN(newy, 0, term.row - 1))
+					break;
+
+				if (direction > 0)
+					yt = *y, xt = *x;
+				else
+					yt = newy, xt = newx;
+				if (!(TLINE(yt)[xt].mode & ATTR_WRAP))
+					break;
+			}
+
+			if (newx >= tlinelen(newy))
+				break;
+
+			gp = &TLINE(newy)[newx];
+			delim = ISDELIM(gp->u);
+			if (!(gp->mode & ATTR_WDUMMY) && (delim != prevdelim
+					|| (delim && gp->u != prevgp->u)))
+				break;
+
+			*x = newx;
+			*y = newy;
+			prevgp = gp;
+			prevdelim = delim;
+		}
+		break;
+	case SNAP_LINE:
+		/*
+		 * Snap around if the the previous line or the current one
+		 * has set ATTR_WRAP at its end. Then the whole next or
+		 * previous line will be selected.
+		 */
+		*x = (direction < 0) ? 0 : term.col - 1;
+		if (direction < 0) {
+			for (; *y > 0; *y += direction) {
+				if (!(TLINE(*y-1)[term.col-1].mode
+						& ATTR_WRAP)) {
+					break;
+				}
+			}
+		} else if (direction > 0) {
+			for (; *y < term.row-1; *y += direction) {
+				if (!(TLINE(*y)[term.col-1].mode
+						& ATTR_WRAP)) {
+					break;
+				}
+			}
+		}
+		break;
+	}
+}
+
+char *
+getsel(void)
+{
+	char *str, *ptr;
+	int y, bufsize, lastx, linelen;
+	const Glyph *gp, *last;
+
+	if (sel.ob.x == -1)
+		return NULL;
+
+	bufsize = (term.col+1) * (sel.ne.y-sel.nb.y+1) * UTF_SIZ;
+	ptr = str = xmalloc(bufsize);
+
+	/* append every set & selected glyph to the selection */
+	for (y = sel.nb.y; y <= sel.ne.y; y++) {
+		if ((linelen = tlinelen(y)) == 0) {
+			*ptr++ = '\n';
+			continue;
+		}
+
+		if (sel.type == SEL_RECTANGULAR) {
+			gp = &TLINE(y)[sel.nb.x];
+			lastx = sel.ne.x;
+		} else {
+			gp = &TLINE(y)[sel.nb.y == y ? sel.nb.x : 0];
+			lastx = (sel.ne.y == y) ? sel.ne.x : term.col-1;
+		}
+		last = &TLINE(y)[MIN(lastx, linelen-1)];
+		while (last >= gp && last->u == ' ')
+			--last;
+
+		for ( ; gp <= last; ++gp) {
+			if (gp->mode & ATTR_WDUMMY)
+				continue;
+
+			if (gp->mode & ATTR_IMAGE) {
+				// TODO: Copy diacritics as well
+				ptr += utf8encode(IMAGE_PLACEHOLDER_CHAR, ptr);
+				continue;
+			}
+
+			ptr += utf8encode(gp->u, ptr);
+		}
+
+		/*
+		 * Copy and pasting of line endings is inconsistent
+		 * in the inconsistent terminal and GUI world.
+		 * The best solution seems like to produce '\n' when
+		 * something is copied from st and convert '\n' to
+		 * '\r', when something to be pasted is received by
+		 * st.
+		 * FIXME: Fix the computer world.
+		 */
+		if ((y < sel.ne.y || lastx >= linelen) &&
+		    (!(last->mode & ATTR_WRAP) || sel.type == SEL_RECTANGULAR))
+			*ptr++ = '\n';
+	}
+	*ptr = 0;
+	return str;
 }
 
 void
@@ -471,15 +700,9 @@ selclear(void)
 {
 	if (sel.ob.x == -1)
 		return;
-	selremove();
-	tsetdirt(sel.nb.y, sel.ne.y);
-}
-
-void
-selremove(void)
-{
 	sel.mode = SEL_IDLE;
 	sel.ob.x = -1;
+	tsetdirt(sel.nb.y, sel.ne.y);
 }
 
 void
@@ -533,7 +756,6 @@ execsh(char *cmd, char **args)
 	setenv("SHELL", sh, 1);
 	setenv("HOME", pw->pw_dir, 1);
 	setenv("TERM", termname, 1);
-	setenv("COLORTERM", "truecolor", 1);
 
 	signal(SIGCHLD, SIG_DFL);
 	signal(SIGHUP, SIG_DFL);
@@ -552,16 +774,20 @@ sigchld(int a)
 	int stat;
 	pid_t p;
 
-	while ((p = waitpid(-1, &stat, WNOHANG)) > 0) {
-		if (p == pid) {
+	if ((p = waitpid(-1, &stat, WNOHANG)) < 0)
+		die("waiting for pid %hd failed: %s\n", pid, strerror(errno));
 
-			if (WIFEXITED(stat) && WEXITSTATUS(stat))
-				die("child exited with status %d\n", WEXITSTATUS(stat));
-			else if (WIFSIGNALED(stat))
-				die("child terminated due to signal %d\n", WTERMSIG(stat));
-			_exit(0);
-		}
+	if (pid != p) {
+		/* reinstall sigchld handler */
+		signal(SIGCHLD, sigchld);
+		return;
 	}
+
+	if (WIFEXITED(stat) && WEXITSTATUS(stat))
+		die("child exited with status %d\n", WEXITSTATUS(stat));
+	else if (WIFSIGNALED(stat))
+		die("child terminated due to signal %d\n", WTERMSIG(stat));
+	_exit(0);
 }
 
 void
@@ -592,7 +818,6 @@ int
 ttynew(const char *line, char *cmd, const char *out, char **args)
 {
 	int m, s;
-	struct sigaction sa;
 
 	if (out) {
 		term.mode |= MODE_PRINT;
@@ -631,7 +856,7 @@ ttynew(const char *line, char *cmd, const char *out, char **args)
 		if (ioctl(s, TIOCSCTTY, NULL) < 0)
 			die("ioctl TIOCSCTTY failed: %s\n", strerror(errno));
 		if (s > 2)
-				close(s);
+			close(s);
 #ifdef __OpenBSD__
 		if (pledge("stdio getpw proc exec", NULL) == -1)
 			die("pledge\n");
@@ -645,21 +870,25 @@ ttynew(const char *line, char *cmd, const char *out, char **args)
 #endif
 		close(s);
 		cmdfd = m;
-		memset(&sa, 0, sizeof(sa));
-		sigemptyset(&sa.sa_mask);
-		sa.sa_handler = sigchld;
-		sigaction(SIGCHLD, &sa, NULL);
+		signal(SIGCHLD, sigchld);
 		break;
 	}
 	return cmdfd;
 }
+
+static int twrite_aborted = 0;
+int ttyread_pending() { return twrite_aborted; }
 
 size_t
 ttyread(void)
 {
 	static char buf[BUFSIZ];
 	static int buflen = 0;
-	int ret, written;
+	static int already_processing = 0;
+	int ret, written = 0;
+
+	if (buflen >= LEN(buf))
+		return 0;
 
 	/* append read bytes to unprocessed bytes */
 	ret = twrite_aborted ? 1 : read(cmdfd, buf+buflen, LEN(buf)-buflen);
@@ -671,7 +900,24 @@ ttyread(void)
 		die("couldn't read from shell: %s\n", strerror(errno));
 	default:
 		buflen += twrite_aborted ? 0 : ret;
-		written = twrite(buf, buflen, 0);
+		if (already_processing) {
+			/* Avoid recursive call to twrite() */
+			return ret;
+		}
+		already_processing = 1;
+		while (1) {
+			int buflen_before_processing = buflen;
+			written += twrite(buf + written, buflen - written, 0);
+			// If buflen changed during the call to twrite, there is
+			// new data, and we need to keep processing, otherwise
+			// we can exit. This will not loop forever because the
+			// buffer is limited, and we don't clean it in this
+			// loop, so at some point ttywrite will have to drop
+			// some data.
+			if (buflen_before_processing == buflen)
+				break;
+		}
+		already_processing = 0;
 		buflen -= written;
 		/* keep any incomplete UTF-8 byte sequence for the next call */
 		if (buflen > 0)
@@ -684,7 +930,6 @@ void
 ttywrite(const char *s, size_t n, int may_echo)
 {
 	const char *next;
-	kscrolldown(&((Arg){ .i = term.scr }));
 
 	if (may_echo && IS_SET(MODE_ECHO))
 		twrite(s, n, 1);
@@ -715,6 +960,7 @@ ttywriteraw(const char *s, size_t n)
 	fd_set wfd, rfd;
 	ssize_t r;
 	size_t lim = 256;
+	int retries_left = 100;
 
 	/*
 	 * Remember that we are using a pty, which might be a modem line.
@@ -723,6 +969,9 @@ ttywriteraw(const char *s, size_t n)
 	 * FIXME: Migrate the world to Plan 9.
 	 */
 	while (n > 0) {
+		if (retries_left-- <= 0)
+			goto too_many_retries;
+
 		FD_ZERO(&wfd);
 		FD_ZERO(&rfd);
 		FD_SET(cmdfd, &wfd);
@@ -764,11 +1013,16 @@ ttywriteraw(const char *s, size_t n)
 
 write_error:
 	die("write error on tty: %s\n", strerror(errno));
+too_many_retries:
+	fprintf(stderr, "Could not write %zu bytes to tty\n", n);
 }
 
 void
 ttyresize(int tw, int th)
 {
+	term.pixw = tw;
+	term.pixh = th;
+
 	struct winsize w;
 
 	w.ws_row = term.row;
@@ -790,21 +1044,18 @@ int
 tattrset(int attr)
 {
 	int i, j;
+	int y = TLINEOFFSET(0);
 
 	for (i = 0; i < term.row-1; i++) {
+		Line line = TSCREEN.buffer[y];
 		for (j = 0; j < term.col-1; j++) {
-			if (term.line[i][j].mode & attr)
+			if (line[j].mode & attr)
 				return 1;
 		}
+		y = (y+1) % TSCREEN.size;
 	}
 
 	return 0;
-}
-
-int
-tisaltscr(void)
-{
-	return IS_SET(MODE_ALTSCREEN);
 }
 
 void
@@ -823,60 +1074,46 @@ void
 tsetdirtattr(int attr)
 {
 	int i, j;
+	int y = TLINEOFFSET(0);
 
 	for (i = 0; i < term.row-1; i++) {
+		Line line = TSCREEN.buffer[y];
 		for (j = 0; j < term.col-1; j++) {
-			if (term.line[i][j].mode & attr) {
-				term.dirty[i] = 1;
+			if (line[j].mode & attr) {
+				tsetdirt(i, i);
 				break;
 			}
 		}
+		y = (y+1) % TSCREEN.size;
 	}
-}
-
-void
-tsetsixelattr(Line line, int x1, int x2)
-{
-	for (; x1 <= x2; x1++)
-		line[x1].mode |= ATTR_SIXEL;
 }
 
 void
 tfulldirt(void)
 {
 	tsync_end();
-	for (int i = 0; i < term.row; i++)
-		term.dirty[i] = 1;
+	tsetdirt(0, term.row-1);
 }
 
 void
 tcursor(int mode)
 {
-	static TCursor c[2];
-	int alt = IS_SET(MODE_ALTSCREEN);
-
 	if (mode == CURSOR_SAVE) {
-		c[alt] = term.c;
+		TSCREEN.sc = term.c;
 	} else if (mode == CURSOR_LOAD) {
-		term.c = c[alt];
-		tmoveto(c[alt].x, c[alt].y);
+		term.c = TSCREEN.sc;
+		tmoveto(term.c.x, term.c.y);
 	}
-}
-
-void
-tresetcursor(void)
-{
-	term.c = (TCursor){ { .mode = ATTR_NULL, .fg = defaultfg, .bg = defaultbg },
-	                    .x = 0, .y = 0, .state = CURSOR_DEFAULT };
 }
 
 void
 treset(void)
 {
-	uint i;
-	int x, y;
-
-	tresetcursor();
+	int i, j;
+	Glyph g = (Glyph){.mode = ATTR_NULL,
+			  .fg = defaultfg,
+			  .bg = defaultbg,
+			  .decor = DECOR_DEFAULT_COLOR};
 
 	memset(term.tabs, 0, term.col * sizeof(*term.tabs));
 	for (i = tabspaces; i < term.col; i += tabspaces)
@@ -886,20 +1123,174 @@ treset(void)
 	term.mode = MODE_WRAP|MODE_UTF8;
 	memset(term.trantbl, CS_USA, sizeof(term.trantbl));
 	term.charset = 0;
-	term.histf = 0;
-	term.histi = 0;
-	term.scr = 0;
-	selremove();
 
 	for (i = 0; i < 2; i++) {
-		tcursor(CURSOR_SAVE); /* reset saved cursor */
-		for (y = 0; y < term.row; y++)
-			for (x = 0; x < term.col; x++)
-				tclearglyph(&term.line[y][x], 0);
-		tdeleteimages();
-		tswapscreen();
+		term.screen[i].sc = (TCursor){{
+			.fg = defaultfg,
+			.bg = defaultbg,
+			.decor = DECOR_DEFAULT_COLOR
+		}};
+		term.screen[i].cur = 0;
+		term.screen[i].off = 0;
+		for (j = 0; j < term.row; ++j) {
+			if (term.col != term.linelen)
+				term.screen[i].buffer[j] = xrealloc(term.screen[i].buffer[j], term.col * sizeof(Glyph));
+			clearline(term.screen[i].buffer[j], g, 0, term.col);
+		}
+		for (j = term.row; j < term.screen[i].size; ++j) {
+			free(term.screen[i].buffer[j]);
+			term.screen[i].buffer[j] = NULL;
+		}
 	}
+	tcursor(CURSOR_LOAD);
+	term.linelen = term.col;
 	tfulldirt();
+}
+
+void
+tnew(int col, int row)
+{
+	int i;
+	term = (Term){};
+	term.screen[0].buffer = xmalloc(HISTSIZE * sizeof(Line));
+	term.screen[0].size = HISTSIZE;
+	term.screen[1].buffer = NULL;
+	for (i = 0; i < HISTSIZE; ++i) term.screen[0].buffer[i] = NULL;
+
+	tresize(col, row);
+	treset();
+}
+
+int tisaltscr(void)
+{
+	return IS_SET(MODE_ALTSCREEN);
+}
+
+void
+tswapscreen(void)
+{
+	term.mode ^= MODE_ALTSCREEN;
+	tfulldirt();
+}
+
+void
+kscrollup(const Arg *a)
+{
+	int n = a->i;
+
+	if (IS_SET(MODE_ALTSCREEN))
+		return;
+
+	if (n < 0) n = (-n) * term.row;
+	if (n > TSCREEN.size - term.row - TSCREEN.off) n = TSCREEN.size - term.row - TSCREEN.off;
+	while (!TLINE(-n)) --n;
+	TSCREEN.off += n;
+	selscroll(0, n);
+	tfulldirt();
+}
+
+void
+kscrolldown(const Arg *a)
+{
+
+	int n = a->i;
+
+	if (IS_SET(MODE_ALTSCREEN))
+		return;
+
+	if (n < 0) n = (-n) * term.row;
+	if (n > TSCREEN.off) n = TSCREEN.off;
+	TSCREEN.off -= n;
+	selscroll(0, -n);
+	tfulldirt();
+}
+
+void
+tscrolldown(int orig, int n)
+{
+	int i;
+	Line temp;
+
+	LIMIT(n, 0, term.bot-orig+1);
+
+	/* Ensure that lines are allocated */
+	for (i = -n; i < 0; i++) {
+		TLINE(i) = ensureline(TLINE(i));
+	}
+
+	/* Shift non-scrolling areas in ring buffer */
+	for (i = term.bot+1; i < term.row; i++) {
+		temp = TLINE(i);
+		TLINE(i) = TLINE(i-n);
+		TLINE(i-n) = temp;
+	}
+	for (i = 0; i < orig; i++) {
+		temp = TLINE(i);
+		TLINE(i) = TLINE(i-n);
+		TLINE(i-n) = temp;
+	}
+
+	/* Scroll buffer */
+	TSCREEN.cur = (TSCREEN.cur + TSCREEN.size - n) % TSCREEN.size;
+	/* Clear lines that have entered the view */
+	tclearregion(0, orig, term.linelen-1, orig+n-1);
+	/* Redraw portion of the screen that has scrolled */
+	tsetdirt(orig+n-1, term.bot);
+	selscroll(orig, n);
+}
+
+void
+tscrollup(int orig, int n)
+{
+	int i;
+	Line temp;
+
+	LIMIT(n, 0, term.bot-orig+1);
+
+	/* Ensure that lines are allocated */
+	for (i = term.row; i < term.row + n; i++) {
+		TLINE(i) = ensureline(TLINE(i));
+	}
+
+	/* Shift non-scrolling areas in ring buffer */
+	for (i = orig-1; i >= 0; i--) {
+		temp = TLINE(i);
+		TLINE(i) = TLINE(i+n);
+		TLINE(i+n) = temp;
+	}
+	for (i = term.row-1; i >term.bot; i--) {
+		temp = TLINE(i);
+		TLINE(i) = TLINE(i+n);
+		TLINE(i+n) = temp;
+	}
+
+	/* Scroll buffer */
+	TSCREEN.cur = (TSCREEN.cur + n) % TSCREEN.size;
+	/* Clear lines that have entered the view */
+	tclearregion(0, term.bot-n+1, term.linelen-1, term.bot);
+	/* Redraw portion of the screen that has scrolled */
+	tsetdirt(orig, term.bot-n+1);
+	selscroll(orig, -n);
+}
+
+void
+selscroll(int orig, int n)
+{
+	if (sel.ob.x == -1 || sel.alt != IS_SET(MODE_ALTSCREEN))
+		return;
+
+	if (BETWEEN(sel.nb.y, orig, term.bot) != BETWEEN(sel.ne.y, orig, term.bot)) {
+		selclear();
+	} else if (BETWEEN(sel.nb.y, orig, term.bot)) {
+		sel.ob.y += n;
+		sel.oe.y += n;
+		if (sel.ob.y < term.top || sel.ob.y > term.bot ||
+		    sel.oe.y < term.top || sel.oe.y > term.bot) {
+			selclear();
+		} else {
+			selnormalize();
+		}
+	}
 }
 
 void
@@ -908,7 +1299,7 @@ tnewline(int first_col)
 	int y = term.c.y;
 
 	if (y == term.bot) {
-		tscrollup(term.top, term.bot, 1, SCROLL_SAVEHIST);
+		tscrollup(term.top, 1);
 	} else {
 		y++;
 	}
@@ -985,6 +1376,7 @@ tsetchar(Rune u, const Glyph *attr, int x, int y)
 		"⎻", "─", "⎼", "⎽", "├", "┤", "┴", "┬", /* p - w */
 		"│", "≤", "≥", "π", "≠", "£", "·", /* x - ~ */
 	};
+	Line line = TLINE(y);
 
 	/*
 	 * The table is proudly stolen from rxvt.
@@ -993,23 +1385,201 @@ tsetchar(Rune u, const Glyph *attr, int x, int y)
 	   BETWEEN(u, 0x41, 0x7e) && vt100_0[u - 0x41])
 		utf8decode(vt100_0[u - 0x41], &u, UTF_SIZ);
 
-	if (term.line[y][x].mode & ATTR_WIDE) {
+	if (line[x].mode & ATTR_WIDE) {
 		if (x+1 < term.col) {
-			term.line[y][x+1].u = ' ';
-			term.line[y][x+1].mode &= ~ATTR_WDUMMY;
+			line[x+1].u = ' ';
+			line[x+1].mode &= ~ATTR_WDUMMY;
 		}
-	} else if (term.line[y][x].mode & ATTR_WDUMMY) {
-		term.line[y][x-1].u = ' ';
-		term.line[y][x-1].mode &= ~ATTR_WIDE;
+	} else if (line[x].mode & ATTR_WDUMMY) {
+		line[x-1].u = ' ';
+		line[x-1].mode &= ~ATTR_WIDE;
+	}
+
+	if (u == ' ' && line[x].mode & ATTR_IMAGE &&
+	    tgetisclassicplaceholder(&line[x])) {
+		// This is a workaround: don't overwrite classic placement
+		// placeholders with space symbols (unlike Unicode placeholders
+		// which must be overwritten by anything).
+		line[x].bg = attr->bg;
+		term.dirty[y] = 1;
+		return;
 	}
 
 	term.dirty[y] = 1;
-	term.line[y][x] = *attr;
-	term.line[y][x].u = u;
-	term.line[y][x].mode |= ATTR_SET;
+	line[x] = *attr;
+	line[x].u = u;
+
+	if (u == IMAGE_PLACEHOLDER_CHAR || u == IMAGE_PLACEHOLDER_CHAR_OLD) {
+		line[x].u = 0;
+		line[x].mode |= ATTR_IMAGE;
+	}
 
 	if (isboxdraw(u))
-		term.line[y][x].mode |= ATTR_BOXDRAW;
+		line[x].mode |= ATTR_BOXDRAW;
+}
+
+void
+tclearregion(int x1, int y1, int x2, int y2)
+{
+	int x, y, L, S, temp;
+	Glyph *gp;
+
+	if (x1 > x2)
+		temp = x1, x1 = x2, x2 = temp;
+	if (y1 > y2)
+		temp = y1, y1 = y2, y2 = temp;
+
+	LIMIT(x1, 0, term.linelen-1);
+	LIMIT(x2, 0, term.linelen-1);
+	LIMIT(y1, 0, term.row-1);
+	LIMIT(y2, 0, term.row-1);
+
+	L = TLINEOFFSET(y1);
+	for (y = y1; y <= y2; y++) {
+		term.dirty[y] = 1;
+		for (x = x1; x <= x2; x++) {
+			gp = &TSCREEN.buffer[L][x];
+			if (selected(x, y))
+				selclear();
+			gp->fg = term.c.attr.fg;
+			gp->bg = term.c.attr.bg;
+			gp->decor = term.c.attr.decor;
+			gp->mode = 0;
+			gp->u = ' ';
+		}
+		L = (L + 1) % TSCREEN.size;
+	}
+}
+
+/// Fills a rectangle area with an image placeholder. The starting point is the
+/// cursor. Adds empty lines if needed. The placeholder will be marked as
+/// classic.
+void tcreateimgplaceholder(uint32_t image_id, uint32_t placement_id, int cols,
+			   int rows, char do_not_move_cursor,
+			   Glyph *text_underneath) {
+	for (int row = 0; row < rows; ++row) {
+		int y = term.c.y;
+		term.dirty[y] = 1;
+		for (int col = 0; col < cols; ++col) {
+			int x = term.c.x + col;
+			if (x >= term.col)
+				break;
+			Glyph *gp = &TLINE(y)[x];
+			if (selected(x, y))
+				selclear();
+			if (text_underneath) {
+				Glyph *to_save = gp;
+				// If there is already a classic placeholder,
+				// use the text underneath it. This will leave
+				// holes in images, but at least we are
+				// guaranteed to restore the original text.
+				if (gp->mode & ATTR_IMAGE &&
+				    tgetisclassicplaceholder(gp)) {
+					Glyph *under =
+						gr_get_glyph_underneath_image(
+							tgetimgid(gp),
+							tgetimgplacementid(gp),
+							tgetimgcol(gp),
+							tgetimgrow(gp));
+					if (under)
+						to_save = under;
+				}
+				text_underneath[cols * row + col] = *to_save;
+			}
+			gp->mode = ATTR_IMAGE;
+			gp->u = 0;
+			tsetimgrow(gp, row + 1);
+			tsetimgcol(gp, col + 1);
+			tsetimgid(gp, image_id);
+			tsetimgplacementid(gp, placement_id);
+			tsetimgdiacriticcount(gp, 3);
+			tsetisclassicplaceholder(gp, 1);
+		}
+		// If moving the cursor is not allowed and this is the last line
+		// of the terminal, we are done.
+		if (do_not_move_cursor && y == term.row - 1)
+			break;
+		// Move the cursor down, maybe creating a new line. The x is
+		// preserved (we never change term.c.x in the loop above).
+		if (row != rows - 1)
+			tnewline(/*first_col=*/0);
+	}
+	if (do_not_move_cursor) {
+		// Return the cursor to the original position.
+		tmoveto(term.c.x, term.c.y - rows + 1);
+	} else {
+		// Move the cursor beyond the last column, as required by the
+		// protocol. If the cursor goes beyond the screen edge, insert a
+		// newline to match the behavior of kitty.
+		if (term.c.x + cols >= term.col)
+			tnewline(/*first_col=*/1);
+		else
+			tmoveto(term.c.x + cols, term.c.y);
+	}
+}
+
+void gr_for_each_image_cell(int (*callback)(void *data, Glyph *gp),
+			    void *data) {
+	for (int row = 0; row < term.row; ++row) {
+		for (int col = 0; col < term.col; ++col) {
+			Glyph *gp = &TLINE(row)[col];
+			if (gp->mode & ATTR_IMAGE) {
+				if (callback(data, gp))
+					term.dirty[row] = 1;
+			}
+		}
+	}
+}
+
+void gr_schedule_image_redraw_by_id(uint32_t image_id) {
+	for (int row = 0; row < term.row; ++row) {
+		if (term.dirty[row])
+			continue;
+		for (int col = 0; col < term.col; ++col) {
+			Glyph *gp = &TLINE(row)[col];
+			if (gp->mode & ATTR_IMAGE) {
+				uint32_t cell_image_id = tgetimgid(gp);
+				if (cell_image_id == image_id) {
+					term.dirty[row] = 1;
+					break;
+				}
+			}
+		}
+	}
+}
+
+void
+tdeletechar(int n)
+{
+	int dst, src, size;
+	Glyph *line;
+
+	LIMIT(n, 0, term.col - term.c.x);
+
+	dst = term.c.x;
+	src = term.c.x + n;
+	size = term.col - src;
+	line = TLINE(term.c.y);
+
+	memmove(&line[dst], &line[src], size * sizeof(Glyph));
+	tclearregion(term.col-n, term.c.y, term.col-1, term.c.y);
+}
+
+void
+tinsertblank(int n)
+{
+	int dst, src, size;
+	Glyph *line;
+
+	LIMIT(n, 0, term.col - term.c.x);
+
+	dst = term.c.x + n;
+	src = term.c.x;
+	size = term.col - dst;
+	line = TLINE(term.c.y);
+
+	memmove(&line[dst], &line[src], size * sizeof(Glyph));
+	tclearregion(src, term.c.y, dst - 1, term.c.y);
 }
 
 void
@@ -1020,22 +1590,10 @@ tinsertblankline(int n)
 }
 
 void
-tdeleteimages(void)
-{
-	ImageList *im, *next;
-
-	for (im = term.images; im; im = next) {
-		next = im->next;
-		delete_image(im);
-	}
-}
-
-void
 tdeleteline(int n)
 {
-	if (BETWEEN(term.c.y, term.top, term.bot)) {
-		tscrollup(term.c.y, term.bot, n, SCROLL_NOSAVEHIST);
-	}
+	if (BETWEEN(term.c.y, term.top, term.bot))
+		tscrollup(term.c.y, n);
 }
 
 int32_t
@@ -1108,6 +1666,7 @@ tsetattr(const int *attr, int l)
 				ATTR_STRUCK     );
 			term.c.attr.fg = defaultfg;
 			term.c.attr.bg = defaultbg;
+			term.c.attr.decor = DECOR_DEFAULT_COLOR;
 			break;
 		case 1:
 			term.c.attr.mode |= ATTR_BOLD;
@@ -1120,6 +1679,20 @@ tsetattr(const int *attr, int l)
 			break;
 		case 4:
 			term.c.attr.mode |= ATTR_UNDERLINE;
+			if (i + 1 < l) {
+				idx = attr[++i];
+				if (BETWEEN(idx, 1, 5)) {
+					tsetdecorstyle(&term.c.attr, idx);
+				} else if (idx == 0) {
+					term.c.attr.mode &= ~ATTR_UNDERLINE;
+					tsetdecorstyle(&term.c.attr, 0);
+				} else {
+					fprintf(stderr,
+						"erresc: unknown underline "
+						"style %d\n",
+						idx);
+				}
+			}
 			break;
 		case 5: /* slow blink */
 			/* FALLTHROUGH */
@@ -1143,6 +1716,7 @@ tsetattr(const int *attr, int l)
 			break;
 		case 24:
 			term.c.attr.mode &= ~ATTR_UNDERLINE;
+			tsetdecorstyle(&term.c.attr, 0);
 			break;
 		case 25:
 			term.c.attr.mode &= ~ATTR_BLINK;
@@ -1160,21 +1734,22 @@ tsetattr(const int *attr, int l)
 			if ((idx = tdefcolor(attr, &i, l)) >= 0)
 				term.c.attr.fg = idx;
 			break;
-		case 39: /* set foreground color to default */
+		case 39:
 			term.c.attr.fg = defaultfg;
 			break;
 		case 48:
 			if ((idx = tdefcolor(attr, &i, l)) >= 0)
 				term.c.attr.bg = idx;
 			break;
-		case 49: /* set background color to default */
+		case 49:
 			term.c.attr.bg = defaultbg;
 			break;
 		case 58:
-			/* This starts a sequence to change the color of
-			 * "underline" pixels. We don't support that and
-			 * instead eat up a following "5;n" or "2;r;g;b". */
-			tdefcolor(attr, &i, l);
+			if ((idx = tdefcolor(attr, &i, l)) >= 0)
+				tsetdecorcolor(&term.c.attr, idx);
+			break;
+		case 59:
+			tsetdecorcolor(&term.c.attr, DECOR_DEFAULT_COLOR);
 			break;
 		default:
 			if (BETWEEN(attr[i], 30, 37)) {
@@ -1215,8 +1790,7 @@ tsetscroll(int t, int b)
 void
 tsetmode(int priv, int set, const int *args, int narg)
 {
-	int alt;
-	const int *lim;
+	int alt; const int *lim;
 
 	for (lim = args + narg; args < lim; ++args) {
 		if (priv) {
@@ -1273,7 +1847,7 @@ tsetmode(int priv, int set, const int *args, int narg)
 			case 1006: /* 1006: extended reporting mode */
 				xsetmode(set, MODE_MOUSESGR);
 				break;
-			case 1034: /* 1034: enable 8-bit mode for keyboard input */
+			case 1034:
 				xsetmode(set, MODE_8BIT);
 				break;
 			case 1049: /* swap screen & set/restore cursor as xterm */
@@ -1281,18 +1855,21 @@ tsetmode(int priv, int set, const int *args, int narg)
 					break;
 				tcursor((set) ? CURSOR_SAVE : CURSOR_LOAD);
 				/* FALLTHROUGH */
-			case 47: /* swap screen buffer */
-			case 1047: /* swap screen buffer */
+			case 47: /* swap screen */
+			case 1047:
 				if (!allowaltscreen)
 					break;
-				if (set)
-					tloadaltscreen(*args != 47, *args == 1049);
-				else
-					tloaddefscreen(*args != 47, *args == 1049);
-				break;
-			case 1048: /* save/restore cursor (like DECSC/DECRC) */
-				if (!allowaltscreen)
+				alt = IS_SET(MODE_ALTSCREEN);
+				if (alt) {
+					tclearregion(0, 0, term.col-1,
+							term.row-1);
+				}
+				if (set ^ alt) /* set is always 1 or 0 */
+					tswapscreen();
+				if (*args != 1049)
 					break;
+				/* FALLTHROUGH */
+			case 1048:
 				tcursor((set) ? CURSOR_SAVE : CURSOR_LOAD);
 				break;
 			case 2004: /* 2004: bracketed paste mode */
@@ -1307,19 +1884,6 @@ tsetmode(int priv, int set, const int *args, int narg)
 			case 1015: /* urxvt mangled mouse mode; incompatible
 				      and can be mistaken for other control
 				      codes. */
-				break;
-			case 80: /* DECSDM -- Sixel Display Mode */
-				MODBIT(term.mode, set, MODE_SIXEL_SDM);
-				break;
-			case 8452: /* sixel scrolling leaves cursor to right of graphic */
-				MODBIT(term.mode, set, MODE_SIXEL_CUR_RT);
-				break;
-			case 2026:
-				if (set) {
-					tsync_begin();
-				} else {
-					tsync_end();
-				}
 				break;
 			default:
 				fprintf(stderr,
@@ -1356,12 +1920,8 @@ tsetmode(int priv, int set, const int *args, int narg)
 void
 csihandle(void)
 {
-	char buffer[40];
-	int n = 0, len;
-	ImageList *im, *next;
-	int pi, pa;
-	int x;
-	int maxcol = term.col;
+	char buf[40];
+	int len;
 
 	switch (csiescseq.mode[0]) {
 	default:
@@ -1459,49 +2019,19 @@ csihandle(void)
 	case 'J': /* ED -- Clear screen */
 		switch (csiescseq.arg[0]) {
 		case 0: /* below */
-			tclearregion(term.c.x, term.c.y, term.col-1, term.c.y, 1);
-			if (term.c.y < term.row-1)
-				tclearregion(0, term.c.y+1, term.col-1, term.row-1, 1);
+			tclearregion(term.c.x, term.c.y, term.col-1, term.c.y);
+			if (term.c.y < term.row-1) {
+				tclearregion(0, term.c.y+1, term.col-1,
+						term.row-1);
+			}
 			break;
 		case 1: /* above */
 			if (term.c.y > 0)
-				tclearregion(0, 0, term.col-1, term.c.y-1, 1);
-			tclearregion(0, term.c.y, term.c.x, term.c.y, 1);
+				tclearregion(0, 0, term.col-1, term.c.y-1);
+			tclearregion(0, term.c.y, term.c.x, term.c.y);
 			break;
-		case 2: /* screen */
-			if (IS_SET(MODE_ALTSCREEN)) {
-				tclearregion(0, 0, term.col-1, term.row-1, 1);
-				tdeleteimages();
-				break;
-			}
-			/* vte does this:
-			tscrollup(0, term.row-1, term.row, SCROLL_SAVEHIST); */
-			/* alacritty does this: */
-			for (n = term.row-1; n >= 0 && tlinelen(term.line[n]) == 0; n--)
-				;
-			for (im = term.images; im; im = im->next)
-				n = MAX(im->y - term.scr, n);
-			if (n >= 0)
-				tscrollup(0, term.row-1, n+1, SCROLL_SAVEHIST);
-			tscrollup(0, term.row-1, term.row-n-1, SCROLL_NOSAVEHIST);
-			break;
-			break;
-		case 3: /* scrollback */
-			if (IS_SET(MODE_ALTSCREEN))
-				break;
-			kscrolldown(&((Arg){ .i = term.scr }));
-			term.scr = 0;
-			term.histi = 0;
-			term.histf = 0;
-			for (im = term.images; im; im = next) {
-				next = im->next;
-				if (im->y < 0)
-					delete_image(im);
-			}
-			break;
-		case 6: /* sixels */
-			tdeleteimages();
-			tfulldirt();
+		case 2: /* all */
+			tclearregion(0, 0, term.col-1, term.row-1);
 			break;
 		default:
 			goto unknown;
@@ -1510,46 +2040,21 @@ csihandle(void)
 	case 'K': /* EL -- Clear line */
 		switch (csiescseq.arg[0]) {
 		case 0: /* right */
-			tclearregion(term.c.x, term.c.y, term.col-1, term.c.y, 1);
+			tclearregion(term.c.x, term.c.y, term.col-1,
+					term.c.y);
 			break;
 		case 1: /* left */
-			tclearregion(0, term.c.y, term.c.x, term.c.y, 1);
+			tclearregion(0, term.c.y, term.c.x, term.c.y);
 			break;
 		case 2: /* all */
-			tclearregion(0, term.c.y, term.col-1, term.c.y, 1);
+			tclearregion(0, term.c.y, term.col-1, term.c.y);
 			break;
 		}
 		break;
-	case 'S': /* SU -- Scroll <n> line up ; XTSMGRAPHICS */
-		if (csiescseq.priv) {
-			if (csiescseq.narg > 1) {
-				/* XTSMGRAPHICS */
-				pi = csiescseq.arg[0];
-				pa = csiescseq.arg[1];
-				if (pi == 1 && (pa == 1 || pa == 2 || pa == 4)) {
-					/* number of sixel color registers */
-					/* (read, reset and read the maximum value give the same response) */
-					n = snprintf(buffer, sizeof buffer, "\033[?1;0;%dS", DECSIXEL_PALETTE_MAX);
-					ttywrite(buffer, n, 1);
-					break;
-				} else if (pi == 2 && (pa == 1 || pa == 2 || pa == 4)) {
-					/* sixel graphics geometry (in pixels) */
-					/* (read, reset and read the maximum value give the same response) */
-					n = snprintf(buffer, sizeof buffer, "\033[?2;0;%d;%dS",
-					             MIN(term.col * win.cw, DECSIXEL_WIDTH_MAX),
-					             MIN(term.row * win.ch, DECSIXEL_HEIGHT_MAX));
-					ttywrite(buffer, n, 1);
-					break;
-				}
-				/* the number of color registers and sixel geometry can't be changed */
-				n = snprintf(buffer, sizeof buffer, "\033[?%d;3;0S", pi); /* failure */
-				ttywrite(buffer, n, 1);
-			}
-			goto unknown;
-		}
+	case 'S': /* SU -- Scroll <n> line up */
+		if (csiescseq.priv) break;
 		DEFAULT(csiescseq.arg[0], 1);
-		/* xterm, urxvt, alacritty save this in history */
-		tscrollup(term.top, term.bot, csiescseq.arg[0], SCROLL_SAVEHIST);
+		tscrollup(term.top, csiescseq.arg[0]);
 		break;
 	case 'T': /* SD -- Scroll <n> line down */
 		DEFAULT(csiescseq.arg[0], 1);
@@ -1567,11 +2072,9 @@ csihandle(void)
 		tdeleteline(csiescseq.arg[0]);
 		break;
 	case 'X': /* ECH -- Erase <n> char */
-		if (csiescseq.arg[0] < 0)
-			return;
 		DEFAULT(csiescseq.arg[0], 1);
-		x = MIN(term.c.x + csiescseq.arg[0], term.col) - 1;
-		tclearregion(term.c.x, term.c.y, x, term.c.y, 1);
+		tclearregion(term.c.x, term.c.y,
+				term.c.x + csiescseq.arg[0] - 1, term.c.y);
 		break;
 	case 'P': /* DCH -- Delete <n> char */
 		DEFAULT(csiescseq.arg[0], 1);
@@ -1597,37 +2100,14 @@ csihandle(void)
 			ttywrite("\033[0n", sizeof("\033[0n") - 1, 0);
 			break;
 		case 6: /* Report Cursor Position (CPR) "<row>;<column>R" */
-			len = snprintf(buffer, sizeof(buffer), "\033[%i;%iR",
+			len = snprintf(buf, sizeof(buf), "\033[%i;%iR",
 			               term.c.y+1, term.c.x+1);
-			ttywrite(buffer, len, 0);
+			ttywrite(buf, len, 0);
 			break;
 		default:
 			goto unknown;
 		}
 		break;
-	case '$': /* DECRQM -- DEC Request Mode (private) */
-		if (csiescseq.mode[1] == 'p' && csiescseq.priv) {
-			switch (csiescseq.arg[0]) {
-			case 80:
-				/* Sixel Display Mode  */
-				ttywrite(IS_SET(MODE_SIXEL_SDM) ? "\033[?80;1$y"
-				                                : "\033[?80;2$y", 9, 0);
-				break;
-			case 8452:
-				/* Sixel scrolling leaves cursor to right of graphic */
-				ttywrite(IS_SET(MODE_SIXEL_CUR_RT) ? "\033[?8452;1$y"
-				                                   : "\033[?8452;2$y", 11, 0);
-				break;
-			case 2026:
-				/* https://gist.github.com/christianparpart/d8a62cc1ab659194337d73e399004036 */
-				ttywrite(su ? "\033[?2026;1$y" : "\033[?2026;2$y", 11, 0);
-				break;
-			default:
-				goto unknown;
-			}
-			break;
-		}
-		goto unknown;
 	case 'r': /* DECSTBM -- Set Scrolling Region */
 		if (csiescseq.priv) {
 			goto unknown;
@@ -1641,27 +2121,6 @@ csihandle(void)
 	case 's': /* DECSC -- Save cursor position (ANSI.SYS) */
 		tcursor(CURSOR_SAVE);
 		break;
-	case 't': /* title stack operations ; XTWINOPS */
-		switch (csiescseq.arg[0]) {
-		case 14: /* text area size in pixels */
-			if (csiescseq.narg > 1)
-				goto unknown;
-			n = snprintf(buffer, sizeof buffer, "\033[4;%d;%dt",
-			             term.row * win.ch, term.col * win.cw);
-			ttywrite(buffer, n, 1);
-			break;
-		case 16: /* character cell size in pixels */
-			n = snprintf(buffer, sizeof buffer, "\033[6;%d;%dt", win.ch, win.cw);
-			ttywrite(buffer, n, 1);
-			break;
-		case 18: /* size of the text area in characters */
-			n = snprintf(buffer, sizeof buffer, "\033[8;%d;%dt", term.row, term.col);
-			ttywrite(buffer, n, 1);
-			break;
-		default:
-			goto unknown;
-		}
-		break;
 	case 'u': /* DECRC -- Restore cursor position (ANSI.SYS) */
 		if (csiescseq.priv) {
 			goto unknown;
@@ -1674,6 +2133,39 @@ csihandle(void)
 		case 'q': /* DECSCUSR -- Set Cursor Style */
 			if (xsetcursor(csiescseq.arg[0]))
 				goto unknown;
+			break;
+		default:
+			goto unknown;
+		}
+		break;
+	case '>':
+		switch (csiescseq.mode[1]) {
+		case 'q': /* XTVERSION -- Print terminal name and version */
+			len = snprintf(buf, sizeof(buf),
+				       "\033P>|st-graphics(%s)\033\\", VERSION);
+			ttywrite(buf, len, 0);
+			break;
+		default:
+			goto unknown;
+		}
+		break;
+	case 't': /* XTWINOPS -- Window manipulation */
+		switch (csiescseq.arg[0]) {
+		case 14: /* Report text area size in pixels. */
+			len = snprintf(buf, sizeof(buf), "\033[4;%i;%it",
+					term.pixh, term.pixw);
+			ttywrite(buf, len, 0);
+			break;
+		case 16: /* Report character cell size in pixels. */
+			len = snprintf(buf, sizeof(buf), "\033[6;%i;%it",
+					term.pixh / term.row,
+					term.pixw / term.col);
+			ttywrite(buf, len, 0);
+			break;
+		case 18: /* Report the size of the text area in characters. */
+			len = snprintf(buf, sizeof(buf), "\033[8;%i;%it",
+					term.row, term.col);
+			ttywrite(buf, len, 0);
 			break;
 		default:
 			goto unknown;
@@ -1726,8 +2218,8 @@ osc_color_response(int num, int index, int is_osc4)
 		return;
 	}
 
-	n = snprintf(buf, sizeof buf, "\033]%s%d;rgb:%02x%02x/%02x%02x/%02x%02x%s",
-	             is_osc4 ? "4;" : "", num, r, r, g, g, b, b, strescseq.term);
+	n = snprintf(buf, sizeof buf, "\033]%s%d;rgb:%02x%02x/%02x%02x/%02x%02x\007",
+	             is_osc4 ? "4;" : "", num, r, r, g, g, b, b);
 	if (n < 0 || n >= sizeof(buf)) {
 		fprintf(stderr, "error: %s while printing %s response\n",
 		        n < 0 ? "snprintf failed" : "truncation occurred",
@@ -1747,11 +2239,6 @@ strhandle(void)
 		{ defaultbg, "background" },
 		{ defaultcs, "cursor" }
 	};
-	ImageList *im, *newimages, *next, *tail = NULL;
-	int i, x1, y1, x2, y2, y, numimages;
-	int cx, cy;
-	Line line;
-	int scr = IS_SET(MODE_ALTSCREEN) ? 0 : term.scr;
 
 	term.esc &= ~(ESC_STR_END|ESC_STR);
 	strparse();
@@ -1774,7 +2261,7 @@ strhandle(void)
 			if (narg > 1)
 				xsettitle(strescseq.args[1]);
 			return;
-		case 52: /* manipulate selection data */
+		case 52:
 			if (narg > 2 && allowwindowops) {
 				dec = base64dec(strescseq.args[2]);
 				if (dec) {
@@ -1785,11 +2272,9 @@ strhandle(void)
 				}
 			}
 			return;
-		case 8: /* Clear Hyperlinks */
-			return;
-		case 10: /* set dynamic VT100 text foreground color */
-		case 11: /* set dynamic VT100 text background color */
-		case 12: /* set dynamic text cursor color */
+		case 10:
+		case 11:
+		case 12:
 			if (narg < 2)
 				break;
 			p = strescseq.args[1];
@@ -1830,121 +2315,38 @@ strhandle(void)
 				tfulldirt();
 			}
 			return;
-		case 110: /* reset dynamic VT100 text foreground color */
-		case 111: /* reset dynamic VT100 text background color */
-		case 112: /* reset dynamic text cursor color */
-			if (narg != 1)
-				break;
-			if ((j = par - 110) < 0 || j >= LEN(osc_table))
-				break; /* shouldn't be possible */
-			if (xsetcolorname(osc_table[j].idx, NULL)) {
-				fprintf(stderr, "erresc: %s color not found\n", osc_table[j].str);
-			} else {
-				tfulldirt();
-			}
-			return;
 		}
 		break;
 	case 'k': /* old title set compatibility */
 		xsettitle(strescseq.args[0]);
 		return;
-	case 'P': /* DCS -- Device Control String */
-		if (IS_SET(MODE_SIXEL)) {
-			term.mode &= ~MODE_SIXEL;
-			if (!sixel_st.image.data) {
-				sixel_parser_deinit(&sixel_st);
-				return;
+	case '_': /* APC -- Application Program Command */
+		if (gr_parse_command(strescseq.buf, strescseq.len)) {
+			GraphicsCommandResult *res = &graphics_command_result;
+			if (res->create_placeholder) {
+				tcreateimgplaceholder(
+					res->placeholder.image_id,
+					res->placeholder.placement_id,
+					res->placeholder.columns,
+					res->placeholder.rows,
+					res->placeholder.do_not_move_cursor,
+					res->placeholder.text_underneath);
 			}
-			cx = IS_SET(MODE_SIXEL_SDM) ? 0 : term.c.x;
-			cy = IS_SET(MODE_SIXEL_SDM) ? 0 : term.c.y;
-			if ((numimages = sixel_parser_finalize(&sixel_st, &newimages,
-					cx, cy + scr, win.cw, win.ch)) <= 0) {
-				sixel_parser_deinit(&sixel_st);
-				perror("sixel_parser_finalize() failed");
-				return;
-			}
-			sixel_parser_deinit(&sixel_st);
-			x1 = newimages->x;
-			y1 = newimages->y;
-			x2 = x1 + newimages->cols;
-			y2 = y1 + numimages;
-			/* Delete the old images that are covered by the new image(s). We also need
-			 * to check if they have already been deleted before adding the new ones. */
-			if (term.images) {
-				char transparent[numimages];
-				for (i = 0, im = newimages; im; im = im->next, i++) {
-					transparent[i] = im->transparent;
-				}
-				for (im = term.images; im; im = next) {
-					next = im->next;
-					if (im->y >= y1 && im->y < y2) {
-						y = im->y - scr;
-						if (y >= 0 && y < term.row && term.dirty[y]) {
-							line = term.line[y];
-							j = MIN(im->x + im->cols, term.col);
-							for (i = im->x; i < j; i++) {
-								if (line[i].mode & ATTR_SIXEL)
-									break;
-							}
-							if (i == j) {
-								delete_image(im);
-								continue;
-							}
-						}
-						if (im->x >= x1 && im->x + im->cols <= x2 && !transparent[im->y - y1]) {
-							delete_image(im);
-							continue;
-						}
-					}
-					tail = im;
-				}
-			}
-			if (tail) {
-				tail->next = newimages;
-				newimages->prev = tail;
-			} else {
-				term.images = newimages;
-			}
-			x2 = MIN(x2, term.col) - 1;
-			if (IS_SET(MODE_SIXEL_SDM)) {
-				/* Sixel display mode: put the sixel in the upper left corner of
-				 * the screen, disable scrolling (the sixel will be truncated if
-				 * it is too long) and do not change the cursor position. */
-				for (i = 0, im = newimages; im; im = next, i++) {
-					next = im->next;
-					if (i >= term.row) {
-						delete_image(im);
-						continue;
-					}
-					im->y = i + scr;
-					tsetsixelattr(term.line[i], x1, x2);
-					term.dirty[MIN(im->y, term.row-1)] = 1;
-				}
-			} else {
-				for (i = 0, im = newimages; im; im = next, i++) {
-					next = im->next;
-					scr = IS_SET(MODE_ALTSCREEN) ? 0 : term.scr;
-					im->y = term.c.y + scr;
-					tsetsixelattr(term.line[term.c.y], x1, x2);
-					term.dirty[MIN(im->y, term.row-1)] = 1;
-					if (i < numimages-1) {
-						im->next = NULL;
-						tnewline(0);
-						im->next = next;
-					}
-				}
-				/* if mode 8452 is set, sixel scrolling leaves cursor to right of graphic */
-				if (IS_SET(MODE_SIXEL_CUR_RT))
-					term.c.x = MIN(term.c.x + newimages->cols, term.col-1);
-			}
+			if (res->response[0])
+				ttywrite(res->response, strlen(res->response),
+					 0);
+			if (res->redraw)
+				tfulldirt();
+			return;
 		}
+		return;
+	case 'P': /* DCS -- Device Control String */
 		/* https://gitlab.com/gnachman/iterm2/-/wikis/synchronized-updates-spec */
 		if (strstr(strescseq.buf, "=1s") == strescseq.buf)
 			tsync_begin();  /* BSU */
 		else if (strstr(strescseq.buf, "=2s") == strescseq.buf)
 			tsync_end();  /* ESU */
-		return;
-	case '_': /* APC -- Application Program Command */
+		return;		
 	case '^': /* PM -- Privacy Message */
 		return;
 	}
@@ -1964,16 +2366,6 @@ strparse(void)
 
 	if (*p == '\0')
 		return;
-
-	/* preserve semicolons in window titles, icon names and OSC 7 sequences */
-	if (strescseq.type == ']' && (
-		p[0] <= '2'
-	) && p[1] == ';') {
-		strescseq.args[strescseq.narg++] = p;
-		strescseq.args[strescseq.narg++] = p + 2;
-		p[1] = '\0';
-		return;
-	}
 
 	while (strescseq.narg < STR_ARG_SIZ) {
 		strescseq.args[strescseq.narg++] = p;
@@ -2009,7 +2401,7 @@ strdump(void)
 			fprintf(stderr, "(%02x)", c);
 		}
 	}
-	fprintf(stderr, (strescseq.term[0] == 0x1b) ? "ESC\\\n" : "BEL\n");
+	fprintf(stderr, "ESC\\\n");
 }
 
 void
@@ -2065,6 +2457,21 @@ tdumpsel(void)
 		tprinter(ptr, strlen(ptr));
 		free(ptr);
 	}
+}
+
+void
+tdumpline(int n)
+{
+	char buf[UTF_SIZ];
+	const Glyph *bp, *end;
+
+	bp = &TLINE(n)[0];
+	end = &bp[MIN(tlinelen(n), term.col) - 1];
+	if (bp != end || bp->u != ' ') {
+		for ( ; bp <= end; ++bp)
+			tprinter(buf, utf8encode(bp->u, buf));
+	}
+	tprinter("\n", 1);
 }
 
 void
@@ -2132,12 +2539,9 @@ tdectest(char c)
 void
 tstrsequence(uchar c)
 {
-	strreset();
-
 	switch (c) {
 	case 0x90:   /* DCS -- Device Control String */
 		c = 'P';
-		term.esc |= ESC_DCS;
 		break;
 	case 0x9f:   /* APC -- Application Program Command */
 		c = '_';
@@ -2149,6 +2553,7 @@ tstrsequence(uchar c)
 		c = ']';
 		break;
 	}
+	strreset();
 	strescseq.type = c;
 	term.esc |= ESC_STR;
 }
@@ -2175,7 +2580,6 @@ tcontrolcode(uchar ascii)
 	case '\a':   /* BEL */
 		if (term.esc & ESC_STR_END) {
 			/* backwards compatibility to xterm */
-			strescseq.term = STR_TERM_BEL;
 			strhandle();
 		} else {
 			xbell();
@@ -2251,47 +2655,6 @@ tcontrolcode(uchar ascii)
 	term.esc &= ~(ESC_STR_END|ESC_STR);
 }
 
-void
-dcshandle(void)
-{
-	int bgcolor, transparent;
-	unsigned char r, g, b, a = 255;
-
-	switch (csiescseq.mode[0]) {
-	default:
-	unknown:
-		fprintf(stderr, "erresc: unknown csi ");
-		csidump();
-		/* die(""); */
-		break;
-	case '=':
-		/* https://gitlab.com/gnachman/iterm2/-/wikis/synchronized-updates-spec */
-		if (csiescseq.buf[2] == 's' && csiescseq.buf[1] == '1')
-			tsync_begin();  /* BSU */
-		else if (csiescseq.buf[2] == 's' && csiescseq.buf[1] == '2')
-			tsync_end();  /* ESU */
-		else
-			goto unknown;
-		break;
-	case 'q': /* DECSIXEL */
-		transparent = (csiescseq.narg >= 2 && csiescseq.arg[1] == 1);
-		if (IS_TRUECOL(term.c.attr.bg)) {
-			r = term.c.attr.bg >> 16 & 255;
-			g = term.c.attr.bg >> 8 & 255;
-			b = term.c.attr.bg >> 0 & 255;
-		} else {
-			xgetcolor(term.c.attr.bg, &r, &g, &b);
-			if (term.c.attr.bg == defaultbg)
-				a = dc.col[defaultbg].pixel >> 24 & 255;
-		}
-		bgcolor = a << 24 | r << 16 | g << 8 | b;
-		if (sixel_parser_init(&sixel_st, transparent, (255 << 24), bgcolor, 1, win.cw, win.ch) != 0)
-			perror("sixel_parser_init() failed");
-		term.mode |= MODE_SIXEL;
-		break;
-	}
-}
-
 /*
  * returns 1 when the sequence is finished and it hasn't to read
  * more characters for this sequence, otherwise 0
@@ -2310,7 +2673,6 @@ eschandle(uchar ascii)
 		term.esc |= ESC_UTF8;
 		return 0;
 	case 'P': /* DCS -- Device Control String */
-		term.esc |= ESC_DCS;
 	case '_': /* APC -- Application Program Command */
 	case '^': /* PM -- Privacy Message */
 	case ']': /* OSC -- Operating System Command */
@@ -2330,7 +2692,7 @@ eschandle(uchar ascii)
 		return 0;
 	case 'D': /* IND -- Linefeed */
 		if (term.c.y == term.bot) {
-			tscrollup(term.top, term.bot, 1, SCROLL_SAVEHIST);
+			tscrollup(term.top, 1);
 		} else {
 			tmoveto(term.c.x, term.c.y+1);
 		}
@@ -2370,10 +2732,8 @@ eschandle(uchar ascii)
 		tcursor(CURSOR_LOAD);
 		break;
 	case '\\': /* ST -- String Terminator */
-		if (term.esc & ESC_STR_END) {
-			strescseq.term = STR_TERM_ST;
+		if (term.esc & ESC_STR_END)
 			strhandle();
-		}
 		break;
 	default:
 		fprintf(stderr, "erresc: unknown sequence ESC 0x%02X '%c'\n",
@@ -2392,8 +2752,7 @@ tputc(Rune u)
 	Glyph *gp;
 
 	control = ISCONTROL(u);
-	if (u < 127 || !IS_SET(MODE_UTF8))
-	{
+	if (u < 127 || !IS_SET(MODE_UTF8)) {
 		c[0] = u;
 		width = len = 1;
 	} else {
@@ -2414,13 +2773,10 @@ tputc(Rune u)
 	if (term.esc & ESC_STR) {
 		if (u == '\a' || u == 030 || u == 032 || u == 033 ||
 		   ISCONTROLC1(u)) {
-			term.esc &= ~(ESC_START|ESC_STR|ESC_DCS);
+			term.esc &= ~(ESC_START|ESC_STR);
 			term.esc |= ESC_STR_END;
 			goto check_control_code;
 		}
-
-		if (term.esc & ESC_DCS)
-			goto check_control_code;
 
 		if (strescseq.len+len >= strescseq.siz) {
 			/*
@@ -2475,15 +2831,6 @@ check_control_code:
 				csihandle();
 			}
 			return;
-		} else if (term.esc & ESC_DCS) {
-			csiescseq.buf[csiescseq.len++] = u;
-			if (BETWEEN(u, 0x40, 0x7E)
-					|| csiescseq.len >= \
-					sizeof(csiescseq.buf)-1) {
-				csiparse();
-				dcshandle();
-			}
-			return;
 		} else if (term.esc & ESC_UTF8) {
 			tdefutf8(u);
 		} else if (term.esc & ESC_ALTCHARSET) {
@@ -2502,16 +2849,49 @@ check_control_code:
 		 */
 		return;
 	}
-
-	/* selected() takes relative coordinates */
-	if (selected(term.c.x, term.c.y + term.scr))
+	if (selected(term.c.x, term.c.y))
 		selclear();
 
-	gp = &term.line[term.c.y][term.c.x];
+	// wcwidth is broken on some systems, set the width to 0 if it's a known
+	// diacritic used for images.
+	uint16_t num = diacritic_to_num(u);
+	if (num != 0)
+		width = 0;
+	// Set the width to 1 if it's an image placeholder character.
+	if (u == IMAGE_PLACEHOLDER_CHAR || u == IMAGE_PLACEHOLDER_CHAR_OLD)
+		width = 1;
+
+	if (width == 0) {
+		// It's probably a combining char. Combining characters are not
+		// supported, so we just ignore them, unless it denotes the row and
+		// column of an image character.
+		if (term.c.y <= 0 && term.c.x <= 0)
+			return;
+		else if (term.c.x == 0)
+			gp = &TLINE(term.c.y-1)[term.col-1];
+		else if (term.c.state & CURSOR_WRAPNEXT)
+			gp = &TLINE(term.c.y)[term.c.x];
+		else
+			gp = &TLINE(term.c.y)[term.c.x-1];
+		if (num && (gp->mode & ATTR_IMAGE)) {
+			unsigned diaccount = tgetimgdiacriticcount(gp);
+			if (diaccount == 0)
+				tsetimgrow(gp, num);
+			else if (diaccount == 1)
+				tsetimgcol(gp, num);
+			else if (diaccount == 2)
+				tsetimg4thbyteplus1(gp, num);
+			tsetimgdiacriticcount(gp, diaccount + 1);
+		}
+		term.lastc = u;
+		return;
+	}
+
+	gp = &TLINE(term.c.y)[term.c.x];
 	if (IS_SET(MODE_WRAP) && (term.c.state & CURSOR_WRAPNEXT)) {
 		gp->mode |= ATTR_WRAP;
 		tnewline(1);
-		gp = &term.line[term.c.y][term.c.x];
+		gp = &TLINE(term.c.y)[term.c.x];
 	}
 
 	if (IS_SET(MODE_INSERT) && term.c.x+width < term.col) {
@@ -2524,7 +2904,7 @@ check_control_code:
 			tnewline(1);
 		else
 			tmoveto(term.col - width, term.c.y);
-		gp = &term.line[term.c.y][term.c.x];
+		gp = &TLINE(term.c.y)[term.c.x];
 	}
 
 	tsetchar(u, &term.c.attr, term.c.x, term.c.y);
@@ -2544,7 +2924,6 @@ check_control_code:
 	if (term.c.x+width < term.col) {
 		tmoveto(term.c.x+width, term.c.y);
 	} else {
-		term.wrapcwidth[IS_SET(MODE_ALTSCREEN)] = width;
 		term.c.state |= CURSOR_WRAPNEXT;
 	}
 }
@@ -2556,15 +2935,16 @@ twrite(const char *buf, int buflen, int show_ctrl)
 	Rune u;
 	int n;
 
+	if (TSCREEN.off) {
+		TSCREEN.off = 0;
+		tfulldirt();
+	}
+
 	int su0 = su;
 	twrite_aborted = 0;
 
 	for (n = 0; n < buflen; n += charsize) {
-		if (IS_SET(MODE_SIXEL) && sixel_st.state != PS_ESC) {
-			charsize = sixel_parser_parse(&sixel_st, (const unsigned char*)buf + n, buflen - n);
-			continue;
-		} else if (IS_SET(MODE_UTF8))
-		{
+		if (IS_SET(MODE_UTF8)) {
 			/* process a complete utf8 char */
 			charsize = utf8decode(buf + n, &u, buflen - n);
 			if (charsize == 0)
@@ -2593,6 +2973,107 @@ twrite(const char *buf, int buflen, int show_ctrl)
 }
 
 void
+clearline(Line line, Glyph g, int x, int xend)
+{
+	int i;
+	g.mode = 0;
+	g.u = ' ';
+	for (i = x; i < xend; ++i) {
+		line[i] = g;
+	}
+}
+
+Line
+ensureline(Line line)
+{
+	if (!line) {
+		line = xmalloc(term.linelen * sizeof(Glyph));
+	}
+	return line;
+}
+
+void
+tresize(int col, int row)
+{
+	int i, j;
+	int minrow = MIN(row, term.row);
+	int mincol = MIN(col, term.col);
+	int linelen = MAX(col, term.linelen);
+	int *bp;
+
+	if (col < 1 || row < 1 || row > HISTSIZE) {
+		fprintf(stderr,
+		        "tresize: error resizing to %dx%d\n", col, row);
+		return;
+	}
+
+	/* Shift buffer to keep the cursor where we expect it */
+	if (row <= term.c.y) {
+		term.screen[0].cur = (term.screen[0].cur - row + term.c.y + 1) % term.screen[0].size;
+	}
+
+	/* Resize and clear line buffers as needed */
+	if (linelen > term.linelen) {
+		for (i = 0; i < term.screen[0].size; ++i) {
+			if (term.screen[0].buffer[i]) {
+				term.screen[0].buffer[i] = xrealloc(term.screen[0].buffer[i], linelen * sizeof(Glyph));
+				clearline(term.screen[0].buffer[i], term.c.attr, term.linelen, linelen);
+			}
+		}
+		for (i = 0; i < minrow; ++i) {
+			term.screen[1].buffer[i] = xrealloc(term.screen[1].buffer[i], linelen * sizeof(Glyph));
+			clearline(term.screen[1].buffer[i], term.c.attr, term.linelen, linelen);
+		}
+	}
+	/* Allocate all visible lines for regular line buffer */
+	for (j = term.screen[0].cur, i = 0; i < row; ++i, j = (j + 1) % term.screen[0].size)
+	{
+		if (!term.screen[0].buffer[j]) {
+			term.screen[0].buffer[j] = xmalloc(linelen * sizeof(Glyph));
+		}
+		if (i >= term.row) {
+			clearline(term.screen[0].buffer[j], term.c.attr, 0, linelen);
+		}
+	}
+	/* Resize alt screen */
+	term.screen[1].cur = 0;
+	term.screen[1].size = row;
+	for (i = row; i < term.row; ++i) {
+		free(term.screen[1].buffer[i]);
+	}
+	term.screen[1].buffer = xrealloc(term.screen[1].buffer, row * sizeof(Line));
+	for (i = term.row; i < row; ++i) {
+		term.screen[1].buffer[i] = xmalloc(linelen * sizeof(Glyph));
+		clearline(term.screen[1].buffer[i], term.c.attr, 0, linelen);
+	}
+
+	/* resize to new height */
+	term.dirty = xrealloc(term.dirty, row * sizeof(*term.dirty));
+	term.tabs = xrealloc(term.tabs, col * sizeof(*term.tabs));
+
+	/* fix tabstops */
+	if (col > term.col) {
+		bp = term.tabs + term.col;
+
+		memset(bp, 0, sizeof(*term.tabs) * (col - term.col));
+		while (--bp > term.tabs && !*bp)
+			/* nothing */ ;
+		for (bp += tabspaces; bp < term.tabs + col; bp += tabspaces)
+			*bp = 1;
+	}
+
+	/* update terminal size */
+	term.col = col;
+	term.row = row;
+	term.linelen = linelen;
+	/* reset scrolling region */
+	tsetscroll(0, row-1);
+	/* make use of the LIMIT in tmoveto */
+	tmoveto(term.c.x, term.c.y);
+	tfulldirt();
+}
+
+void
 resettitle(void)
 {
 	xsettitle(NULL);
@@ -2601,18 +3082,21 @@ resettitle(void)
 void
 drawregion(int x1, int y1, int x2, int y2)
 {
-	int y;
+	int y, L;
 
+	xstartimagedraw(term.dirty, term.row);
+
+	L = TLINEOFFSET(y1);
 	for (y = y1; y < y2; y++) {
-		if (!term.dirty[y])
-			continue;
-
-		term.dirty[y] = 0;
-		xdrawline(TLINE(y), x1, y, x2);
+		if (term.dirty[y]) {
+			term.dirty[y] = 0;
+			xdrawline(TSCREEN.buffer[L], x1, y, x2);
+		}
+		L = (L + 1) % TSCREEN.size;
 	}
-}
 
-#include "patch/st_include.c"
+	xfinishimagedraw();
+}
 
 void
 draw(void)
@@ -2625,17 +3109,16 @@ draw(void)
 	/* adjust cursor position */
 	LIMIT(term.ocx, 0, term.col-1);
 	LIMIT(term.ocy, 0, term.row-1);
-	if (term.line[term.ocy][term.ocx].mode & ATTR_WDUMMY)
+	if (TLINE(term.ocy)[term.ocx].mode & ATTR_WDUMMY)
 		term.ocx--;
-	if (term.line[term.c.y][cx].mode & ATTR_WDUMMY)
+	if (TLINE(term.c.y)[cx].mode & ATTR_WDUMMY)
 		cx--;
 
 	drawregion(0, 0, term.col, term.row);
-
-	if (term.scr == 0)
-	xdrawcursor(cx, term.c.y, term.line[term.c.y][cx],
-			term.ocx, term.ocy, term.line[term.ocy][term.ocx],
-			term.line[term.ocy], term.col);
+	if (TSCREEN.off == 0)
+		xdrawcursor(cx, term.c.y, TLINE(term.c.y)[cx],
+				term.ocx, term.ocy, TLINE(term.ocy)[term.ocx],
+				TLINE(term.ocy), term.col);
 	term.ocx = cx;
 	term.ocy = term.c.y;
 	xfinishdraw();
@@ -2648,4 +3131,10 @@ redraw(void)
 {
 	tfulldirt();
 	draw();
+}
+
+Glyph
+getglyphat(int col, int row)
+{
+	return TLINE(row)[col];
 }

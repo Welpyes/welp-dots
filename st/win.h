@@ -21,8 +21,24 @@ enum win_mode {
 	MODE_NUMLOCK     = 1 << 17,
 	MODE_MOUSE       = MODE_MOUSEBTN|MODE_MOUSEMOTION|MODE_MOUSEX10\
 	                  |MODE_MOUSEMANY,
-	MODE_PLACEHOLDER = 1 << 18,
 };
+
+/* types used in config.h */
+typedef struct {
+	uint mod;
+	uint_least32_t keysym;
+	void (*func)(const Arg *);
+	const Arg arg;
+} Shortcut;
+
+typedef struct {
+	uint mod;
+	uint button;
+	void (*func)(const Arg *);
+	const Arg arg;
+	uint release;
+	int altscrn;
+} MouseShortcut;
 
 void xbell(void);
 void xclipcopy(void);
@@ -31,6 +47,7 @@ void xdrawline(Line, int, int, int);
 void xfinishdraw(void);
 void xloadcols(void);
 int xsetcolorname(int, const char *);
+int xgetcolor(int, unsigned char *, unsigned char *, unsigned char *);
 void xseticontitle(char *);
 void xsettitle(char *);
 int xsetcursor(int);
@@ -39,4 +56,6 @@ void xsetpointermotion(int);
 void xsetsel(char *);
 int xstartdraw(void);
 void xximspot(int, int);
-void xclearwin(void);
+
+void xstartimagedraw(int *dirty, int rows);
+void xfinishimagedraw();

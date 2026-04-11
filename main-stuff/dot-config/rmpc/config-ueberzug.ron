@@ -5,7 +5,7 @@
     address: "127.0.0.1:8600",
     password: None,
     theme: "rose-pine",
-    cache_dir: "/data/data/com.termux/files/usr/tmp",
+    cache_dir: "~/prefix/tmp/rmpc",
     lyrics_dir: "~/Music",
     lyrics_offset_ms: 100,
     on_song_change: None,
@@ -24,7 +24,7 @@
     browser_song_sort: [Title, Disc, Track, Artist],
     directories_sort: SortFormat(group_by_type: true, reverse: false),
     album_art: (
-        method: Kitty,
+        method: UeberzugX11,
         max_size_px: (width: 400, height: 400),
         disabled_protocols: ["http://", "https://"],
         vertical_align: Center,
@@ -162,8 +162,29 @@
                             direction: Vertical,
                             panes: [
                                 (
-                                    size: "100%",
-                                    pane: Pane(AlbumArt),
+                                  pane: Pane(Empty()),
+                                  size: "10%",
+                                ),
+                                (
+                                  size: "80%",
+                                  align: Center,
+                                  pane: Split(
+                                    direction: Horizontal,
+                                    panes: [
+                                      (
+                                        size: "2",
+                                        pane: Pane(Empty()),
+                                      ),
+                                      (
+                                        size: "100%",
+                                        pane: Pane(AlbumArt),
+                                      ),
+                                      (
+                                        size: "4",
+                                        pane: Pane(Empty()),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                             ],
                         ),
@@ -174,7 +195,7 @@
                             direction: Vertical,
                             panes: [
                                 (
-                                    size: "100%",
+                                    size: "80%",
                                     pane: Pane(Queue),
                                     align: Center
                                 ),

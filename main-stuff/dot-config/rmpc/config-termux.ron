@@ -4,8 +4,8 @@
 (
     address: "127.0.0.1:8600",
     password: None,
-    theme: "rose-pine",
-    cache_dir: "/data/data/com.termux/files/usr/tmp",
+    theme: "default",
+    cache_dir: "~/prefix/tmp/rmpc",
     lyrics_dir: "~/Music",
     lyrics_offset_ms: 100,
     on_song_change: None,
@@ -24,7 +24,7 @@
     browser_song_sort: [Title, Disc, Track, Artist],
     directories_sort: SortFormat(group_by_type: true, reverse: false),
     album_art: (
-        method: Kitty,
+        method: Block,
         max_size_px: (width: 400, height: 400),
         disabled_protocols: ["http://", "https://"],
         vertical_align: Center,
@@ -178,11 +178,11 @@
                                     pane: Pane(Queue),
                                     align: Center
                                 ),
-                                (
-                                    size: "20%",
+                                /* (
+                                    size: "10%",
                                     pane: Pane(Cava),
                                     align: Center
-                                ),
+                                ),*/
                             ],
                         ),
                     ), 
