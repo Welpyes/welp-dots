@@ -18,8 +18,9 @@ INCS = -I$(X11INC) \
        `$(PKG_CONFIG) --cflags imlib2` \
        `$(PKG_CONFIG) --cflags fontconfig` \
        `$(PKG_CONFIG) --cflags freetype2` \
+       `$(PKG_CONFIG) --cflags shmemu` \
        `$(PKG_CONFIG) --cflags harfbuzz`
-LIBS = -L$(X11LIB) -lm -lX11 -lutil -lXft -lXrender \
+LIBS = -L$(X11LIB) -lm -lX11 -lutil -lXft -lXrender -lshmemu \
        `$(PKG_CONFIG) --libs imlib2` \
        `$(PKG_CONFIG) --libs zlib` \
        `$(PKG_CONFIG) --libs fontconfig` \
@@ -27,7 +28,7 @@ LIBS = -L$(X11LIB) -lm -lX11 -lutil -lXft -lXrender \
        `$(PKG_CONFIG) --libs harfbuzz`
 
 # flags
-STCPPFLAGS = -DVERSION=\"$(VERSION)\" -D_XOPEN_SOURCE=600
+STCPPFLAGS = -DVERSION=\"$(VERSION)\" -D_XOPEN_SOURCE=600 -include shmemu.h
 STCFLAGS = $(INCS) $(STCPPFLAGS) $(CPPFLAGS) $(CFLAGS)
 STLDFLAGS = $(LIBS) $(LDFLAGS)
 
