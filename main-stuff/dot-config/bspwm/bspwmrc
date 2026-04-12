@@ -26,10 +26,9 @@ clients(){
 }
 
 autostart(){
-  kill -9 $(pgrep -x "sxhkd") > /dev/null 
+  kill -9 $(pgrep -x "sxhkd") > /dev/null
   sxhkd -c ~/.config/bspwm/sxhkdrc &
   feh --bg-fill /sdcard/Documents/wallpapers/man-i-love-suisei.jpg &
-  kill -9 $(pgrep -x "eww") > /dev/null
   dunst &
   picom &
   # fastcompmgr -c -r 1 -o 1 -l 5 -t 5 --shadow-color "#8a8a96"  & # 

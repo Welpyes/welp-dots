@@ -3430,3 +3430,6 @@ Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fu
 2026-04-11T09:46:29 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
 2026-04-11T14:48:42 player: played "英語/Whitney Houston - I Wanna Dance with Somebody (Who Loves Me).mp3"
 2026-04-11T14:49:15 player: played "英語/Whitney Houston - I Wanna Dance with Somebody (Who Loves Me).mp3"
+2026-04-11T16:23:50 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-04-11T16:24:11 player: played "英語/Michael Learns To Rock - 25 Minutes (2014 Remaster).mp3"
+2026-04-11T16:25:03 player: played "英語/Michael Learns To Rock - 25 Minutes (2014 Remaster).mp3"

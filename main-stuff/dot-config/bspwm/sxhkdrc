@@ -2,12 +2,6 @@
 #   Applications   #
 ####################
 
-# calendar
-alt + shift + c
-  eww open --toggle simple-calendar
-# notification center
-alt + shift + n
-  eww open --toggle notification-center
 # Terminal
 alt + Return
   st &> /dev/null
