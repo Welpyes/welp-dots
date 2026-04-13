@@ -33,7 +33,7 @@ autostart(){
   eww open bar &
   dunst &
   # picom &
-  fastcompmgr -cC -r 1 -o 1 -l 3 -t 3 --shadow-red 0.898 --shadow-blue 0.788 --shadow-green 627 &
+  fastcompmgr -cC -r 12 -o 0.5 -i 0.9 -l -15 -t -15 --shadow-color "#010101" &
 }
 
 __main__(){
