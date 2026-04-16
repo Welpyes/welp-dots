@@ -1,3 +1,4 @@
+! === Xft stuff ===
 Xft.antialias:	1
 Xft.hinting:	1
 Xft.autohint:	1
@@ -5,44 +6,106 @@ Xft.hintstyle:	hintslight
 Xft.rgba:       rgb
 Xft.lcdfilter:	lcddefault
 
+! --- Fonts & Terminal ---
+st.font:                Ioskeley Mono:style:regular:pixelsize=18
+st.font2.0:             Symbols Nerd Font Mono:pixelsize=18
+st.termname:            st-256color
+st.borderpx:            1
 
-! --- st values ---
-st.font:        Ioskeley Mono:style:regular:pixelsize=14
-st.font2:       Symbols Nerd Font Mono:pixelsize=14
-st.borderpx:    1
+! --- Behavior & Performance ---
+st.alpha:               1.0
+st.tabspaces:           4
+st.blinktimeout:        500
+st.bellvolume:          0
+st.cursorstyle:         1
+st.minlatency:          2
+st.maxlatency:          33
+st.doubleclicktimeout:  300
+st.tripleclicktimeout:  600
+st.boxdraw:             1
+st.boxdraw_bold:        1
 
-! --- St colours ---
-*background: #14171c
-*foreground: #abb2bf
+! --- st colors (Tokyo Night style) ---
+st.background:          #1a1b26
+st.foreground:          #c0caf5
+st.cursorColor:         #c0caf5
 
 ! Black + DarkGrey
-*color0:  #181b21
-*color8:  #5c6370
+st.color0:              #15161e
+st.color8:              #414868
 
 ! DarkRed + Red
-*color1:  #be5046
-*color9:  #e06c75
+st.color1:              #f7768e
+st.color9:              #f7768e
 
 ! DarkGreen + Green
-*color2:  #81ae5f
-*color10: #98c379
+st.color2:              #9ece6a
+st.color10:             #9ece6a
 
 ! DarkYellow + Yellow
-*color3:  #d19a66
-*color11: #e5c07b
+st.color3:              #e0af68
+st.color11:             #e0af68
 
 ! DarkBlue + Blue
-*color4:  #4889be
-*color12: #61afef
+st.color4:              #7aa2f7
+st.color12:             #7aa2f7
 
 ! DarkMagenta + Magenta
-*color5:  #7560d3
-*color13: #8677cf
+st.color5:              #bb9af7
+st.color13:             #bb9af7
 
 ! DarkCyan + Cyan
-*color6:  #49919a
-*color14: #56b6c2
+st.color6:              #7dcfff
+st.color14:             #7dcfff
 
 ! LightGrey + White
-*color7:  #abb2bf
-*color15: #b8bfe5
+st.color7:              #a9b1d6
+st.color15:             #c0caf5
+
+! === Tokyo Night Dark ===
+
+! Backgrounds
+tokyo.black:          #11121D
+tokyo.darker_black:   #0c0d18
+tokyo.black2:         #171823
+tokyo.one_bg:         #1d1e29
+tokyo.one_bg2:        #252631
+tokyo.one_bg3:        #252631
+tokyo.statusline_bg:  #161722
+tokyo.lightbg:        #2a2b36
+tokyo.line:           #252631
+
+! Foreground / Whites
+tokyo.white:          #A0A8CD
+
+! Greys
+tokyo.grey:           #474853
+tokyo.grey_fg:        #474853
+tokyo.grey_fg2:       #4e4f5a
+tokyo.light_grey:     #545560
+
+! Reds / Pinks
+tokyo.red:            #ee6d85
+tokyo.baby_pink:      #fd7c94
+tokyo.pink:           #fe6D85
+tokyo.pmenu_bg:       #ee6d85
+
+! Blues
+tokyo.blue:           #7199ee
+tokyo.nord_blue:      #648ce1
+tokyo.folder_bg:      #7199ee
+
+! Greens
+tokyo.green:          #98c379
+tokyo.vibrant_green:  #95c561
+tokyo.teal:           #519aba
+tokyo.cyan:           #38a89d
+
+! Yellows / Oranges
+tokyo.yellow:         #d7a65f
+tokyo.sun:            #dfae67
+tokyo.orange:         #f6955b
+
+! Purples
+tokyo.purple:         #a485dd
+tokyo.dark_purple:    #9071c9

@@ -4,8 +4,8 @@ audio_device_state:0:OpenSLES output
 audio_device_state:0:OpenAL output
 audio_device_state:1:my_fifo
 state: play
-current: 16
-time: 28.488
+current: 2
+time: 44.872
 random: 1
 repeat: 0
 single: 0

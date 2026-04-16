@@ -2943,6 +2943,29 @@ xrdb_load(void)
 
 		XRESOURCE_LOAD_FLOAT("cwscale", cwscale);
 		XRESOURCE_LOAD_FLOAT("chscale", chscale);
+
+		XRESOURCE_LOAD_FLOAT("alpha", alpha);
+		XRESOURCE_LOAD_INTEGER("tabspaces", tabspaces);
+		XRESOURCE_LOAD_FLOAT("minlatency", minlatency);
+		XRESOURCE_LOAD_FLOAT("maxlatency", maxlatency);
+		XRESOURCE_LOAD_INTEGER("doubleclicktimeout", doubleclicktimeout);
+		XRESOURCE_LOAD_INTEGER("tripleclicktimeout", tripleclicktimeout);
+		XRESOURCE_LOAD_INTEGER("boxdraw", boxdraw);
+		XRESOURCE_LOAD_INTEGER("boxdraw_bold", boxdraw_bold);
+
+		for (i = 0; i < LEN(font2); i++) {
+			sprintf(loadValue, "st.font2.%d", i);
+			if (XrmGetResource(xrdb, loadValue, loadValue, &type, &ret)) {
+				if (ret.addr != NULL && !strncmp("String", type, 64))
+					font2[i] = xstrdup(ret.addr);
+			} else {
+				sprintf(loadValue, "*.font2.%d", i);
+				if (XrmGetResource(xrdb, loadValue, loadValue, &type, &ret)) {
+					if (ret.addr != NULL && !strncmp("String", type, 64))
+						font2[i] = xstrdup(ret.addr);
+				}
+			}
+		}
 	}
 	XFlush(dpy);
 }

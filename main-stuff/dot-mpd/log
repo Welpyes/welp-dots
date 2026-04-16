@@ -3434,3 +3434,5 @@ Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fu
 2026-04-11T16:24:11 player: played "英語/Michael Learns To Rock - 25 Minutes (2014 Remaster).mp3"
 2026-04-11T16:25:03 player: played "英語/Michael Learns To Rock - 25 Minutes (2014 Remaster).mp3"
 2026-04-17T00:10:09 player: played "英語/Air Supply - Every Woman in the World.mp3"
+2026-04-17T01:26:42 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-04-17T01:27:21 player: played "英語/05 - ABC (feat. Sophia Black).mp3"

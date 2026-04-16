@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "rosepine-dawn",
+  theme = "tokyodark",
 
   hl_override = {
     -- Transparency: Make these groups fully transparent (bg = "NONE")

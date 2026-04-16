@@ -162,7 +162,7 @@ extern unsigned int tabspaces;
 extern unsigned int defaultfg;
 extern unsigned int defaultbg;
 extern unsigned int defaultcs;
-extern const int boxdraw, boxdraw_bold, boxdraw_braille;
+extern int boxdraw, boxdraw_bold, boxdraw_braille;
 
 // Accessors to decoration properties stored in `decor`.
 // The 25-th bit is used to indicate if it's a 24-bit color.
