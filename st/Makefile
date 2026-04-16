@@ -8,6 +8,7 @@ SRC = st.c x.c rowcolumn_diacritics_helpers.c graphics.c boxdraw.c hb.c
 OBJ = $(SRC:.c=.o)
 
 all: st st-icat
+MAKEFLAGS += -j$(shell nproc)
 
 config.h:
 	cp config.def.h config.h

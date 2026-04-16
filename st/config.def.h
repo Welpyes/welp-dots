@@ -5,8 +5,13 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "JetBrainsMono Nerd Font:pixelsize=13:antialias=true:autohint=true";
-static int borderpx = 15;
+static char *font = "Liberation Mono:pixelsize=13:antialias=true:autohint=true";
+
+static char *font2[] = {
+	"Symbols Nerd Font Mono:pixelsize=14:antialias=true:autohint=true",
+};
+
+static int borderpx = 0;
 
 /* How to align the content in the window when the size of the terminal
  * doesn't perfectly match the size of the window. The values are percentages.
@@ -119,6 +124,9 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 4;
 
+/* bg opacity */
+float alpha = 1.0;
+
 /*
  * drag and drop escape characters
  *
@@ -129,32 +137,32 @@ char *xdndescchar = " !\"#$&'()*;<>?[\\]^`{|}~";
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"#45475A",
-	"#F38BA8",
-	"#A6E3A1",
-	"#F9E2AF",
-	"#89B4FA",
-	"#F5C2E7",
-	"#94E2D5",
-	"#BAC2DE",
+	"black",
+	"red3",
+	"green3",
+	"yellow3",
+	"blue2",
+	"magenta3",
+	"cyan3",
+	"gray90",
 
 	/* 8 bright colors */
-	"#585B70",
-	"#F38BA8",
-	"#A6E3A1",
-	"#F9E2AF",
-	"#89B4FA",
-	"#F5C2E7",
-	"#94E2D5",
-	"#A6ADC8",
+	"gray50",
+	"red",
+	"green",
+	"yellow",
+	"#5c5cff",
+	"magenta",
+	"cyan",
+	"white",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
-	"#CDD6F4", /* default foreground colour */
-	"#181825", /* default background colour */
+	"gray90", /* default foreground colour */
+	"black", /* default background colour */
 };
 
 
@@ -208,7 +216,11 @@ static unsigned int defaultattr = 11;
  */
 
 /// The template for the cache directory.
+#ifdef __ANDROID__
+const char graphics_cache_dir_template[] = "/data/data/com.termux/files/usr/tmp/st-images-XXXXXX";
+#else
 const char graphics_cache_dir_template[] = "/tmp/st-images-XXXXXX";
+#endif
 /// The max size of a single image file, in bytes.
 unsigned graphics_max_single_image_file_size = 20 * 1024 * 1024;
 /// The max size of the cache, in bytes.
@@ -259,9 +271,10 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ MODKEY,               XK_comma,       zoom,           {.f = +1} },
-    { MODKEY,               XK_period,      zoom,           {.f = -1} },
-    { MODKEY,               XK_g,           zoomreset,      {.f =  0} },
+	{ TERMMOD,              XK_plus,        zoom,           {.f = +1} },
+	{ ControlMask,          XK_equal,       zoom,           {.f = +1} },
+  { ControlMask,          XK_minus,       zoom,           {.f = -1} },
+  { ControlMask,          XK_g,           zoomreset,      {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },

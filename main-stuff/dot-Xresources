@@ -1,15 +1,17 @@
 Xft.antialias:	1
 Xft.hinting:	1
-Xft.autohint:	0
+Xft.autohint:	1
 Xft.hintstyle:	hintslight
 Xft.rgba:       rgb
 Xft.lcdfilter:	lcddefault
 
-st.font:        JetBrainsMono Nerd Font:style:regular:pixelsize=13
-st.borderpx:    15
 
-! OneDark Colorscheme for Isabel Rice
+! --- st values ---
+st.font:        Ioskeley Mono:style:regular:pixelsize=14
+st.font2:       Symbols Nerd Font Mono:pixelsize=14
+st.borderpx:    1
 
+! --- St colours ---
 *background: #14171c
 *foreground: #abb2bf
 
