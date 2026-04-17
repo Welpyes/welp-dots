@@ -1,21 +1,4 @@
-* {
-  bg: #faf4ed;
-  bg-alt: #EDE1D6;
-  fg: #575279;
-  fg-alt: #b0acb9;
-
-  red: #b4637a;
-  green: #286983;
-  yellow: #ea9d34;
-  blue: #56949f;
-  purple: #907aa9;
-  cyan: #d7827e;
-  grey: #8a8a96;
-
-  background-color: transparent;
-  text-color: @fg-alt;
-  font: "Ioskeley Mono Semibold 12";
-}
+@import "theme-generated.rasi"
 
 window {
   background-color: @bg;
@@ -108,7 +91,7 @@ element normal.active {
 
 element selected.normal {
     background-color: @bg-alt;
-    text-color: @fg;
+    text-color: @blue;
     border: 2px;
     border-color: transparent;
 }
