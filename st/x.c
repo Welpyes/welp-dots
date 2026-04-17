@@ -2986,7 +2986,7 @@ reload(int sig)
 	redraw();
 
 	/* triggers re-render if we're visible. */
-	ttywrite("\033[O", 3, 1);
+	// ttywrite("\033[O", 3, 1);
 
 	signal(SIGUSR1, reload);
 }

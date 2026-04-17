@@ -19,7 +19,7 @@ M.base46 = {
     TabLine = { bg = "NONE" },
     TabLineSel = { bg = "NONE" },
     WinSeparator = { bg = "NONE" },
-    Visual = { bg = "#dec7b3" },
+    -- Visual = { bg = "#dec7b3" },
   },
 }
 

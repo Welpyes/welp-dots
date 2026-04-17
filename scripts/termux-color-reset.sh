@@ -6,12 +6,10 @@ OUT="$HOME/.termux/colors.properties"
 declare -A colors
 
 while IFS= read -r line; do
-    # skip comments and empty lines
     [[ "$line" =~ ^[[:space:]]*! ]] && continue
     [[ -z "${line// }" ]] && continue
 
-    # match *colorN, *background, *foreground, *cursor
-    if [[ "$line" =~ ^\*([a-zA-Z0-9]+):[[:space:]]*(#[0-9a-fA-F]+) ]]; then
+    if [[ "$line" =~ ^st\.([a-zA-Z0-9]+):[[:space:]]*(#[0-9a-fA-F]+) ]]; then
         key="${BASH_REMATCH[1]}"
         val="${BASH_REMATCH[2]}"
         colors["$key"]="$val"
@@ -29,5 +27,4 @@ done < "$XRES"
 } > "$OUT"
 
 echo "Written to $OUT"
-# reload termux colors
 termux-reload-settings 2>/dev/null

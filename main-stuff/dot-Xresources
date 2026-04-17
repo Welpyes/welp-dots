@@ -14,7 +14,7 @@ st.borderpx:            1
 
 ! --- Behavior & Performance ---
 st.alpha:               1.0
-st.tabspaces:           4
+st.tabspaces:           2
 st.blinktimeout:        500
 st.bellvolume:          0
 st.cursorstyle:         1

@@ -37,7 +37,7 @@ autostart(){
   feh --bg-fill /sdcard/Documents/wallpapers/sui-nice.png &
   dunst &
   # picom &
-  fastcompmgr -c -r 1 -o 1 -l 5 -t 5 --shadow-color "$(xrdb-wrap tokyo.darker_black)"  &
+  fastcompmgr -c -r 1 -o 0 -l 5 -t 5 --shadow-color "$(xrdb-wrap tokyo.darker_black)"  &
 }
 
 __main__(){
