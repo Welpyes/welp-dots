@@ -3436,3 +3436,463 @@ Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fu
 2026-04-17T00:10:09 player: played "英語/Air Supply - Every Woman in the World.mp3"
 2026-04-17T01:26:42 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
 2026-04-17T01:27:21 player: played "英語/05 - ABC (feat. Sophia Black).mp3"
+2026-04-17T14:16:29 player: played "英語/05 - ABC (feat. Sophia Black).mp3"
+2026-04-17T14:19:51 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-04-17T18:15:35 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+2026-04-17T18:16:07 player: played "英語/Grover Washington, Jr. - Just the Two of Us.mp3"
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+2026-04-17T18:17:47 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-04-17T18:17:58 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:18:08 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:18:19 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:18:22 player: played "main/19. Hoshimachi Suisei - Bibbidiba.mp3"
+2026-04-17T18:18:22 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:18:32 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:18:43 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:18:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:19:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:19:16 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:19:27 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:19:38 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:19:49 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:20:00 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:20:10 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:20:21 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:20:32 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:20:43 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:20:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:21:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:21:16 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:21:27 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:21:38 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:21:48 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:21:51 player: played "main/11 忘れてやらない.mp3"
+2026-04-17T18:21:51 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:22:01 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:22:11 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:22:22 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:22:32 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:22:42 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:22:52 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:23:02 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:23:12 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:23:22 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:23:32 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:23:42 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:23:52 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:24:02 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:24:12 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:24:22 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:24:25 player: played "main/はいよろこんで（第75回 NHK紅白歌合戦 歌唱曲⧸第66回 輝く！日本レコード大賞最優秀新人賞） ⧸ こっちのけんと MV [jzi6RNVEOtA].mp3"
+2026-04-17T18:24:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:24:36 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:24:47 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:24:58 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:25:09 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:25:19 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:25:30 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:25:41 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:25:52 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:26:03 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:26:14 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:26:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:26:36 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:26:46 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:26:57 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:27:08 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:27:19 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:27:30 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:27:41 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:27:52 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:28:03 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:28:14 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:28:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:28:36 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:28:39 player: played "main/01 - Yorushika - Sunny.mp3"
+2026-04-17T18:28:39 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:28:50 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:29:01 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:29:12 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:29:23 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:29:33 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:29:44 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:29:55 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:30:06 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:30:17 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:30:28 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:30:39 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:30:44 player: played "main/165 - Up to 21°C - Blue Archive OST- Off The Tracks!.mp3"
+2026-04-17T18:30:44 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:30:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:31:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:31:15 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:31:26 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:31:36 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:31:47 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:31:58 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:32:08 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:32:19 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:32:29 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:32:40 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:32:50 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:33:01 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:33:11 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:33:22 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:33:32 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:33:43 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:33:53 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:34:04 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:34:14 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:34:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:34:36 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:34:46 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:34:53 player: played "main/09. MONOGATARI Series - Platinum Disco.ogg"
+2026-04-17T18:34:53 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:35:03 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:35:14 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:35:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:35:36 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:35:47 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:35:58 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:36:09 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:36:20 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:36:31 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:36:42 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:36:53 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:37:03 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:37:14 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:37:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:37:36 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:37:47 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:37:58 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:38:09 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:38:20 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:38:30 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:38:41 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:38:52 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:39:03 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:39:14 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:39:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:39:36 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:39:47 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:39:58 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:40:07 player: played "main/Euphoria.mp3"
+2026-04-17T18:40:07 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:40:17 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:40:27 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:40:38 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:40:48 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:40:58 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:41:08 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:41:18 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:41:28 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:41:40 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:41:51 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:42:01 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:42:11 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:42:21 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:42:31 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:42:41 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:42:51 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:43:01 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:43:11 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:43:18 player: played "main/ここで生きてる.MP3"
+2026-04-17T18:43:18 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:43:28 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:43:38 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:43:48 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:43:58 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:44:09 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:44:20 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:44:31 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:44:41 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:44:52 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:45:02 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:45:12 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:45:22 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:45:32 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:45:43 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:45:53 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:46:03 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:46:13 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:46:18 player: played "main/yuikonnu_-_Yume_Chizu.MP3"
+2026-04-17T18:46:18 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:46:27 player: played "main/No Title.ogg"
+2026-04-17T18:46:27 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:46:38 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:46:49 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:47:00 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:47:11 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:47:22 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:47:33 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:47:43 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:47:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:48:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:48:16 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:48:27 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:48:38 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:48:49 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:49:00 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:49:11 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:49:22 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:49:33 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:49:44 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:49:55 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:50:06 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:50:17 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:50:28 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:50:31 player: played "main/1.19.  - ReI.mp3"
+2026-04-17T18:50:31 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:50:41 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:50:51 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:51:01 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:51:11 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:51:21 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:51:31 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:51:41 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:51:51 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:52:01 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:52:11 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:52:21 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:52:33 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:52:44 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:52:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:53:04 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:53:15 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:53:26 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:53:36 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:53:47 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:53:57 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:54:08 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:54:19 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:54:29 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:54:35 player: played "main/ZUTOMAYO - Humanoid.mp3"
+2026-04-17T18:54:35 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:54:46 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:54:57 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:55:08 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:55:19 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:55:30 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:55:41 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:55:51 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:56:02 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:56:13 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:56:24 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:56:35 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:56:46 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:56:57 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:57:08 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:57:19 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:57:29 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:57:40 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:57:51 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:58:02 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:58:13 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:58:24 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:58:35 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:58:46 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:58:56 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:59:07 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:59:18 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:59:29 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:59:33 player: played "main/lullaby.mp3"
+2026-04-17T18:59:33 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:59:43 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T18:59:53 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:00:03 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:00:14 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:00:24 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:00:34 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:00:44 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:00:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:01:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:01:15 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:01:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:01:35 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:01:45 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:01:55 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:02:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:02:16 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:02:26 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:02:36 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:02:46 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:02:56 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:03:01 player: played "main/NOMELON NOLEMON - ミッドナイト・リフレクション.opus"
+2026-04-17T19:03:01 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:03:11 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:03:21 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:03:32 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:03:42 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:03:52 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:04:02 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:04:12 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:04:23 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:04:33 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:04:43 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:04:53 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:05:03 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:05:13 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:05:23 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:05:33 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:05:43 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:05:55 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:06:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:06:15 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:06:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:06:35 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:06:45 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:06:55 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:07:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:07:10 player: played "main/Masayuki Suzuki - Love Dramatic.mp3"
+2026-04-17T19:07:10 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:07:21 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:07:32 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:07:43 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:07:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:08:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:08:16 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:08:26 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:08:37 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:08:48 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:08:59 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:09:10 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:09:21 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:09:32 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:09:43 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:09:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:10:04 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:10:15 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:10:26 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:10:37 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:10:48 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:10:59 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:11:10 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:11:21 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:11:31 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:11:42 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:11:53 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:12:04 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:12:15 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:12:26 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:12:37 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:12:39 player: played "main/ Mami Kawada  Contrail ~Kiseki~ (Epsilon Remix).mp3"
+2026-04-17T19:12:39 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:12:50 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:13:01 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:13:12 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:13:23 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:13:34 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:13:45 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:13:56 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:14:07 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:14:17 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:14:28 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:14:39 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:14:50 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:15:01 player: played "main/Rolling beat.mp3"
+2026-04-17T19:15:01 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:15:11 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:15:22 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:15:33 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:15:44 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:15:55 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:16:06 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:16:17 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:16:28 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:16:38 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:16:49 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:17:00 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:17:11 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:17:22 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:17:24 player: played "main/Silver Forest - Yami no Mahou Shoujo.mp3"
+2026-04-17T19:17:24 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:17:34 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:17:45 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:17:56 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:18:07 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:18:18 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:18:29 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:18:40 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:18:51 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:19:02 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:19:12 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:19:23 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:19:34 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:19:44 player: played "main/ヒロセコミ - Promise.mp3"
+2026-04-17T19:19:44 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:19:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:20:04 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:20:14 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:20:24 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:20:34 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:20:44 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:20:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:21:04 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:21:14 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:21:24 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:21:34 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:21:44 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:21:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:22:04 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:22:14 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:22:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:22:35 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:22:45 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:22:55 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:23:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:23:15 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:23:25 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:23:33 player: played "main/Nanahira - Ange du Blanc Pur.mp3"
+2026-04-17T19:23:33 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:23:44 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:23:55 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:24:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:24:15 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:24:26 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:24:36 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:24:46 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:24:56 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:25:06 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:25:16 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:25:26 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:25:36 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:25:46 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:25:56 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:26:06 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:26:16 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:26:26 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:26:37 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:26:43 player: played "main/BAND-MAID - BAND-MAID ⧸ Ready to Rock (Official Music Video)  TVアニメ「ロックは淑女の嗜みでして」オープニングテーマソング.opus"
+2026-04-17T19:26:43 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:26:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:27:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:27:16 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:27:27 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:27:38 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:27:48 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:27:59 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:28:10 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:28:21 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:28:32 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:28:43 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:28:54 player: played "main/01. もういいかい？.mp3"
+2026-04-17T19:28:54 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:29:05 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:29:16 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:29:27 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:29:38 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-17T19:29:48 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+2026-04-17T20:17:22 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+2026-04-17T20:28:29 exception: Failed to decode "/sdcard/Music/main/Elton John - I'm Still Standing.mp3"; Failed to open "/sdcard/Music/main/Elton John - I'm Still Standing.mp3": No such file or directory
+2026-04-17T20:28:29 player: played "main/Elton John - I'm Still Standing.mp3"
+2026-04-17T20:28:29 exception: Failed to decode "/sdcard/Music/main/Elton John - I'm Still Standing.mp3"; Failed to open "/sdcard/Music/main/Elton John - I'm Still Standing.mp3": No such file or directory
+2026-04-17T20:29:21 player: played "main/sumika - Fiction.mp3"

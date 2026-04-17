@@ -6,6 +6,9 @@ Xft.hintstyle:	hintslight
 Xft.rgba:       rgb
 Xft.lcdfilter:	lcddefault
 
+! --- gtk ---
+gtk.theme:              Tokyonight-Dark
+
 ! --- Fonts & Terminal ---
 st.font:                Ioskeley Mono:style:regular:pixelsize=18
 st.font2.0:             Symbols Nerd Font Mono:pixelsize=18
@@ -13,7 +16,7 @@ st.termname:            st-256color
 st.borderpx:            1
 
 ! --- Behavior & Performance ---
-st.alpha:               1.0
+st.alpha:               1
 st.tabspaces:           2
 st.blinktimeout:        500
 st.bellvolume:          0
@@ -25,7 +28,7 @@ st.tripleclicktimeout:  600
 st.boxdraw:             1
 st.boxdraw_bold:        1
 
-! --- st colors (Tokyo Night style) ---
+! --- st colors ---
 st.background:          #1a1b26
 st.foreground:          #c0caf5
 st.cursorColor:         #c0caf5
@@ -62,50 +65,50 @@ st.color14:             #7dcfff
 st.color7:              #a9b1d6
 st.color15:             #c0caf5
 
-! === Tokyo Night Dark ===
+! === Colour Scheme ===
 
 ! Backgrounds
-tokyo.black:          #11121D
-tokyo.darker_black:   #0c0d18
-tokyo.black2:         #171823
-tokyo.one_bg:         #1d1e29
-tokyo.one_bg2:        #252631
-tokyo.one_bg3:        #252631
-tokyo.statusline_bg:  #161722
-tokyo.lightbg:        #2a2b36
-tokyo.line:           #252631
+colors.black:          #11121D
+colors.darker_black:   #0c0d18
+colors.black2:         #171823
+colors.one_bg:         #1d1e29
+colors.one_bg2:        #252631
+colors.one_bg3:        #252631
+colors.statusline_bg:  #161722
+colors.lightbg:        #2a2b36
+colors.line:           #252631
 
 ! Foreground / Whites
-tokyo.white:          #A0A8CD
+colors.white:          #A0A8CD
 
 ! Greys
-tokyo.grey:           #474853
-tokyo.grey_fg:        #474853
-tokyo.grey_fg2:       #4e4f5a
-tokyo.light_grey:     #545560
+colors.grey:           #474853
+colors.grey_fg:        #474853
+colors.grey_fg2:       #4e4f5a
+colors.light_grey:     #545560
 
 ! Reds / Pinks
-tokyo.red:            #ee6d85
-tokyo.baby_pink:      #fd7c94
-tokyo.pink:           #fe6D85
-tokyo.pmenu_bg:       #ee6d85
+colors.red:            #ee6d85
+colors.baby_pink:      #fd7c94
+colors.pink:           #fe6D85
+colors.pmenu_bg:       #ee6d85
 
 ! Blues
-tokyo.blue:           #7199ee
-tokyo.nord_blue:      #648ce1
-tokyo.folder_bg:      #7199ee
+colors.blue:           #7199ee
+colors.nord_blue:      #648ce1
+colors.folder_bg:      #7199ee
 
 ! Greens
-tokyo.green:          #98c379
-tokyo.vibrant_green:  #95c561
-tokyo.teal:           #519aba
-tokyo.cyan:           #38a89d
+colors.green:          #98c379
+colors.vibrant_green:  #95c561
+colors.teal:           #519aba
+colors.cyan:           #38a89d
 
 ! Yellows / Oranges
-tokyo.yellow:         #d7a65f
-tokyo.sun:            #dfae67
-tokyo.orange:         #f6955b
+colors.yellow:         #d7a65f
+colors.sun:            #dfae67
+colors.orange:         #f6955b
 
 ! Purples
-tokyo.purple:         #a485dd
-tokyo.dark_purple:    #9071c9
+colors.purple:         #a485dd
+colors.dark_purple:    #9071c9

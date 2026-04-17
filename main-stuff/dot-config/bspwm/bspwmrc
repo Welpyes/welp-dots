@@ -4,11 +4,12 @@ xrdb-wrap() {
   local key="$1"
   xrdb -query | awk -v k="$key" '$1 == k":" {print $2}'
 }
-xrdb -merge ~/.Xresources
 
 display(){
   bspc monitor -d 1 2 3 4 5
   xsetroot -cursor_name left_ptr
+  xrdb -merge ~/.Xresources
+  gtk-theme-merge.sh
 }
 
 gaps(){
@@ -26,9 +27,9 @@ clients(){
   bspc config pointer_follows_focus false
   bspc config focus_follows_pointer true
   bspc config border_width 2
-  bspc config normal_border_color "$(xrdb-wrap *background)"
-  bspc config active_border_color "$(xrdb-wrap tokyo.blue)"
-  bspc config focused_border_color "$(xrdb-wrap tokyo.blue)"
+  bspc config normal_border_color "$(xrdb-wrap colors.black2)"
+  bspc config active_border_color "$(xrdb-wrap colors.blue)"
+  bspc config focused_border_color "$(xrdb-wrap colors.blue)"
 }
 
 autostart(){
@@ -37,7 +38,8 @@ autostart(){
   feh --bg-fill /sdcard/Documents/wallpapers/sui-nice.png &
   dunst &
   # picom &
-  fastcompmgr -c -r 1 -o 0 -l 5 -t 5 --shadow-color "$(xrdb-wrap tokyo.darker_black)"  &
+  sleep 0.5
+  fastcompmgr -c -r 1 -o 0 -l 5 -t 5 --shadow-color "$(xrdb-wrap colors.darker_black)"  &
 }
 
 __main__(){
