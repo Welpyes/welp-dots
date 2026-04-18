@@ -52,6 +52,22 @@
         ends_style: (),
         thumb_style: (fg: "blue"),
     ),
+    cava: (
+        bar_symbols: ['▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'],
+
+        bar_width: 1, // width of a single bar in columns
+        bar_spacing: 0, // free space between bars in columns
+
+        orientation: Bottom, /*
+        bar_color: Gradient({
+              0: "#286983",
+              16: "#56949f",
+              32: "#907aa9",
+              55: "#d7827e",
+              75: "#ea9d34",
+              100: "#b4637a",
+          })*/
+    ),
     song_table_format: [
         (
             prop: (kind: Property(Artist),
@@ -166,6 +182,6 @@
         ),
     ],
     lyrics: (
-        timestamp: true,
+        timestamp: false,
     )
 )

@@ -3896,3 +3896,25 @@ Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fu
 2026-04-17T20:28:29 player: played "main/Elton John - I'm Still Standing.mp3"
 2026-04-17T20:28:29 exception: Failed to decode "/sdcard/Music/main/Elton John - I'm Still Standing.mp3"; Failed to open "/sdcard/Music/main/Elton John - I'm Still Standing.mp3": No such file or directory
 2026-04-17T20:29:21 player: played "main/sumika - Fiction.mp3"
+2026-04-18T18:33:04 player: played "main/sumika - Fiction.mp3"
+2026-04-18T18:34:38 player: played "main/MO2 - ブルーアーカイブ Blue Archive OST 299.mp3"
+2026-04-18T18:37:40 player: played "main/Starry Night.mp3"
+2026-04-18T18:37:52 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-04-18T18:42:10 player: played "main/Nanahira - Ange du Blanc Pur.mp3"
+2026-04-18T18:45:34 player: played "main/01 青春コンプレックス.mp3"
+2026-04-18T18:48:47 player: played "main/泥の分際で私だけの大切を奪おうだなんて.MP3"
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+2026-04-18T18:52:32 player: played "main/きゅうくらりん 歌ってみた ⧸ ナナヲアカリ [QMRDrG_4dic].mp3"
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+2026-04-18T18:53:14 exception: Failed to open /data/data/com.termux/files/home/.mpd/playlists: No such file or directory
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!

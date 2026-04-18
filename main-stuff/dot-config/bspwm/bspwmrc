@@ -37,9 +37,8 @@ autostart(){
   sxhkd -c ~/.config/bspwm/sxhkdrc &
   feh --bg-fill /sdcard/Documents/wallpapers/sui-nice.png &
   dunst &
-  # picom &
-  sleep 0.5
-  fastcompmgr -c -r 1 -o 0 -l 5 -t 5 --shadow-color "$(xrdb-wrap colors.darker_black)"  &
+  picom &
+  # fastcompmgr -c -r 1 -o 0 -l 5 -t 5 --shadow-color "$(xrdb-wrap colors.darker_black)"  &
 }
 
 __main__(){
