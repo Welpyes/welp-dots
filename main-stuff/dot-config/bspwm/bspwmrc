@@ -33,7 +33,6 @@ clients(){
 }
 
 autostart(){
-  kill -9 $(pgrep -x "sxhkd") > /dev/null
   sxhkd -c ~/.config/bspwm/sxhkdrc &
   feh --bg-fill /sdcard/Documents/wallpapers/sui-nice.png &
   dunst &

@@ -9,4 +9,9 @@ map("i", "jk", "<ESC>")
 map("i", "jj", "<ESC>")
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+vim.cmd('cnoreabbrev a q')
+vim.cmd('cnoreabbrev aa a')
 
+vim.keymap.set("n", "<leader>lh", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = "Toggle LSP inlay hints" })

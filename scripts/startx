@@ -16,7 +16,7 @@ exports(){
 }
 
 xorg-startup(){
-  termux-x11 :0 & > /dev/null 2>&1
+  termux-x11 :0 > /dev/null 2>&1 &
   am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity > /dev/null 2>&1
 }
 

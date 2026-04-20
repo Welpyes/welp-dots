@@ -3918,3 +3918,84 @@ Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fu
 Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
 Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
 Warning: Xing stream size off by more than 1%, fuzzy seeking may be even more fuzzy than by design!
+2026-04-18T18:55:23 player: played "main/19. Hoshimachi Suisei - Bibbidiba.mp3"
+2026-04-18T18:58:52 player: played "main/17 - K'Naan feat. Adam Levine - Bang Bang.mp3"
+2026-04-18T19:05:12 player: played "英語/Michael Jackson - Billie Jean (Long Version).mp3"
+2026-04-18T19:09:28 player: played "英語/Michael Bolton - How Am I Supposed to Live Without You.mp3"
+2026-04-18T19:13:20 player: played "英語/WHAM! - Wake Me Up Before You Go-Go (Remastered).mp3"
+2026-04-18T19:17:27 player: played "英語/Michael Jackson - Bad (2012 Remaster).mp3"
+2026-04-18T19:22:04 player: played "英語/Elvin Bishop - Fooled Around And Fell In Love.mp3"
+2026-04-18T19:25:44 player: played "英語/hotncold.mp3"
+2026-04-19T20:17:12 player: played "英語/Michael Jackson - Rock with You.mp3"
+2026-04-19T20:20:51 player: played "英語/hotncold.mp3"
+2026-04-19T20:24:20 player: played "英語/Air Supply - Every Woman in the World.mp3"
+2026-04-19T20:33:06 player: played "英語/Whitney Houston - Where Do Broken Hearts Go.mp3"
+2026-04-19T20:36:37 player: played "英語/Britney Spears - ... Baby One More Time.mp3"
+2026-04-19T20:40:38 player: played "英語/Air Supply - Two Less Lonely People In the World.mp3"
+2026-04-19T20:46:29 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-04-19T20:46:40 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:46:43 player: played "英語/Michael Jackson - Don't Stop 'Til You Get Enough.mp3"
+2026-04-19T20:46:43 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:46:53 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:47:03 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:47:13 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:47:23 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:47:33 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:47:43 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:47:53 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:48:03 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:48:14 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:48:24 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:48:34 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:48:44 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:48:56 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:49:07 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:49:17 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:49:27 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:49:37 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:49:48 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:50:00 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:50:10 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:50:20 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:50:31 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:50:42 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:50:52 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:51:01 player: played "英語/Frank Sinatra - My Way (2008 Remastered).mp3"
+2026-04-19T20:51:01 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:51:12 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:51:31 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-04-19T20:52:16 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-04-19T20:52:27 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:52:37 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:52:47 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:52:57 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:53:07 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:53:17 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:53:27 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:53:37 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:53:47 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:53:57 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:54:07 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:54:17 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:54:29 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:54:39 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:54:40 player: played "英語/WHAM! - Wake Me Up Before You Go-Go (Remastered).mp3"
+2026-04-19T20:54:40 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:54:51 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:55:02 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:55:13 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:55:23 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:55:34 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:55:45 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:55:56 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:56:07 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:56:18 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:56:29 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:56:40 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:56:51 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T20:58:55 player: played "英語/Michael Learns To Rock - 25 Minutes (2014 Remaster).mp3"
+2026-04-19T21:00:50 output: Failed to play on "PulseAudio Output" (pulse): disconnected
+2026-04-19T21:00:56 exception: Failed to open "PulseAudio Output" (pulse); failed to connect: Connection refused
+2026-04-19T21:00:58 player: played "英語/George Michael - Careless Whisper.mp3"
+2026-04-19T21:05:36 player: played "英語/George Michael - Careless Whisper.mp3"
+2026-04-19T21:08:12 player: played "英語/Britney Spears - Sometimes.mp3"
