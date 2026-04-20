@@ -11,6 +11,7 @@ map("i", "jj", "<ESC>")
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 vim.cmd('cnoreabbrev a q')
 vim.cmd('cnoreabbrev aa a')
+vim.cmd('cnoreabbrev ew wq')
 
 vim.keymap.set("n", "<leader>lh", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
