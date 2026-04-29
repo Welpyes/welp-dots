@@ -1,0 +1,125 @@
+[global]
+modules = [
+ "logo",
+ "os",
+ "kernel",
+ "user:user",
+ "user:hostname",
+ "host",
+ "cpu",
+ "gpu",
+ "uptime",
+ "shell",
+ "wm",
+ "packages"
+ "memory"
+]
+
+[logo]
+color = "blue"
+format = "Archlinux"
+
+[os]
+key = "OS"
+icon = ""
+key-color = "white"
+icon-color = "blue"
+format-color = "blue"
+format = "Archlinux [rolling] {arch}"
+
+[kernel]
+key = "Kernel"
+icon = ""
+key-color = "white"
+icon-color = "light yellow"
+format-color = "light yellow"
+format = "{name} 6.19.2"
+
+[user:user]
+key = "User"
+icon = ""
+key-color = "white"
+icon-color = "light green"
+format-color = "light green"
+format = "Welpyes"
+
+[user:hostname]
+key = "Hostname"
+icon = "󰒋"
+key-color = "white"
+icon-color = "light magenta"
+format-color = "light magenta"
+format = "Hoshiyomi"
+
+[host]
+key = "Host"
+icon = ""
+key-color = "white"
+icon-color = "light red"
+format-color = "light red"
+format = "{manufacturer} {model}"
+
+[cpu]
+key = "Cpu"
+icon = ""
+key-color = "white"
+icon-color = "cyan"
+format-color = "cyan"
+format = "{cpu}"
+
+[gpu]
+key = "Gpu"
+icon = "󰢮"
+key-color = "white"
+icon-color = "green"
+format-color = "green"
+format = "{name}"
+
+[uptime]
+key = "Uptime"
+icon = ""
+key-color = "white"
+icon-color = "light yellow"
+format-color = "light yellow"
+format = "{time}"
+
+[shell]
+key = "Shell"
+icon = ""
+key-color = "white"
+icon-color = "light magenta"
+format-color = "light magenta"
+format = "{name} {version}"
+
+[de]
+key = "DE"
+icon = ""
+key-color = "white"
+icon-color = "light blue"
+format-color = "light blue"
+format = "{de}"
+
+[wm]
+key = "WM"
+icon = ""
+key-color = "white"
+icon-color = "light blue"
+format-color = "light blue"
+format = "{wm}"
+
+[packages]
+key = "Packages"
+icon = "󰏖"
+key-color = "white"
+icon-color = "light yellow"
+format-color = "light yellow"
+format = "{detailed}"
+
+
+[memory]
+key = "Memory"
+icon = "󰍛"
+key-color = "white"
+icon-color = "light yellow"
+format-color = "light yellow"
+format = "{used} MiB / {total} MiB"

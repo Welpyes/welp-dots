@@ -1,17 +1,18 @@
-require("nvchad.configs.lspconfig").defaults()
+vim.lsp.config("*", {
+  capabilities = require("blink.cmp").get_lsp_capabilities(),
+})
 
 local servers = {
   -- "html",
   "cssls",
   "bashls",
-  "luals",
+  "lua_ls",
   "pyrefly",
   "clangd",
   "gopls",
   "kotlin_language_server",
   -- "rust_analyzer"
 }
-vim.lsp.enable(servers)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
@@ -24,6 +25,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 
 vim.lsp.config("lua_ls", {
+  cmd = { "lua-language-server" },
   settings = {
     Lua = {
       workspace = {
@@ -34,3 +36,5 @@ vim.lsp.config("lua_ls", {
     }
   }
 })
+
+vim.lsp.enable(servers)
