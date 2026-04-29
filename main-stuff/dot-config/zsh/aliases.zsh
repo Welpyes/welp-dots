@@ -2,6 +2,7 @@
 ## Aliases
 ##
 
+alias opencode="exec bash -c 'opencode'"
 alias forcevulkan="VK_ICD_FILENAMES=$PREFIX/share/vulkan/icd.d/wrapper_icd.aarch64.json VK_LOADER_DEVICE_SELECT='13b5:62210010'"
 alias nogpu="GALLIUM_DRIVER=llvmpipe MESA_GL_VERSION_OVERRIDE=4.0 "
 alias cdr="cd -"

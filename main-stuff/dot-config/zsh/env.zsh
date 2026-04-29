@@ -14,7 +14,7 @@ export GPG_TTY=$(tty)
 
 export SUDO_PROMPT="passwd: "
 export TERMINAL="st"
-export BROWSER="librewolf"
+export BROWSER="firefox"
 export VISUAL="nvim"
 export EDITOR="nvim"
 
@@ -33,7 +33,6 @@ export XDG_DOCUMENTS_DIR="$HOME/Documents"
 export XDG_MUSIC_DIR="$HOME/Music"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_VIDEOS_DIR="$HOME/Videos"
-#export LD_LIBRARY_PATH=/data/data/com.termux/files/usr/lib:$LD_LIBRARY_PATH
 export MANPAGER='nvim +Man!'
 
 

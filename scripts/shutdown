@@ -1,3 +1,4 @@
 #!/bin/bash
 
-rm $TMPDIR/** -fr && killall com.termux
+rm $TMPDIR/** -fr 
+killall -15 com.termux

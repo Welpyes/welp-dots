@@ -3,8 +3,8 @@
 ####################
 
 # Terminal
-alt + Return
-  st &> /dev/null
+alt + {shift + Return, Return}
+  {st, bspwm-scratch} > /dev/null 2>&1 &
 # make sxhkd reload its configuration files:
 alt + x
 	pkill -USR1 -x sxhkd

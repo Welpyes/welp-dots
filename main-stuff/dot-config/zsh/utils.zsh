@@ -178,6 +178,8 @@ rmpc(){
     command rmpc $@
   elif [[ "${TERMINAL}" == "com.termux" ]]; then
     command rmpc -c $HOME/.config/rmpc/config-termux.ron
+  elif [[ "${TERMINAL}" == "foot" ]]; then
+    command rmpc -c $HOME/.config/rmpc/config-foot.ron
   else
     command rmpc -c $HOME/.config/rmpc/config-ueberzug.ron
   fi

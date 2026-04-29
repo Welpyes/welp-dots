@@ -119,7 +119,7 @@ convert_file() {
     
     echo "Converting: $file → $output_file"
     
-    GALLIUM_DRIVER=zink ffmpeg -hide_banner -loglevel error -i "$file" \
+    GALLIUM_DRIVER=zink ffmpeg -hide_banner -loglevel error -y -i "$file" \
         $SCALE_FILTER \
         -c:v libwebp \
         -compression_level "$COMPRESSION" \

@@ -3,8 +3,8 @@
 presetup(){
   pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1 port=8080" --exit-idle-time=-1
   export PULSE_SERVER=tcp:127.0.0.1:8080
-  pactl load-module module-sles-source
-  # virgl_test_server_android &
+  pactl load-module module-sles-source > /dev/null 2>&1 &
+  virgl_test_server_android &
 }
 
 exports(){
@@ -12,7 +12,8 @@ exports(){
   export XDG_RUNTIME_DIR=$TMPDIR
   export DISPLAY=:0
   export VK_ICD_FILENAMES=$PREFIX/share/vulkan/icd.d/wrapper_icd.aarch64.json
-  export GALLIUM_DRIVER=zink
+  export GALLIUM_DRIVER=virpipe
+  # export MESA_GL_VERSION_OVERRIDE=3.3
 }
 
 xorg-startup(){
@@ -34,13 +35,14 @@ __main__(){
 
   while IFS= read -r line; do
       [[ -z "$line" || "$line" =~ ^# ]] && continue
-      eval "dbus-launch $line" &
+      eval "dbus-launch sh -c '$line'" &
   done < "$FILE"
     
   read -r 
 
-  kill -9 $(pgrep --list-name /system/bin/app_process | awk '{print $1}') > /dev/null &
-  kill -9 $(pgrep -x "pulseaudio")
+  kill -TERM $(pgrep --list-name /system/bin/app_process | awk '{print $1}') > /dev/null &
+  kill -TERM $(pgrep -x "pulseaudio")
+  pkill -TERM sway
 }
 __main__
 

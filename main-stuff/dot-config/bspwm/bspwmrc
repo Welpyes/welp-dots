@@ -10,6 +10,8 @@ display(){
   xsetroot -cursor_name left_ptr
   xrdb -merge ~/.Xresources
   gtk-theme-merge.sh
+  bspc config pointer_follows_focus false
+  bspc config focus_follows_pointer true
 }
 
 gaps(){
@@ -23,27 +25,49 @@ gaps(){
 clients(){
   bspc rule -a "Xfce4-taskmanager" state=floating layer=above
   bspc rule -a "firefox-default" desktop='^2'
-  bspc rule -a scratchpad state=floating
-  bspc config pointer_follows_focus false
-  bspc config focus_follows_pointer true
+  bspc rule -a "scratchpad" state=floating layer=above
+}
+
+border(){
   bspc config border_width 2
   bspc config normal_border_color "$(xrdb-wrap colors.black2)"
   bspc config active_border_color "$(xrdb-wrap colors.blue)"
   bspc config focused_border_color "$(xrdb-wrap colors.blue)"
 }
 
+launch_compositor(){
+  sleep 1
+  fastcompmgr \
+    -cC \
+    -o 0.5 \
+    -r 12 \
+    -l -15 \
+    -t -15 \
+    -i 0.9 \
+    --shadow-color "$(xrdb-wrap colors.grey)" \
+    --downsample 0.4 \
+    --pseudo-transparency 1 \
+    --bg-blur 20 
+    # --corner-radius 20  \
+    # --border-width 2 \
+    # --border-color-focused "$(xrdb-wrap colors.blue)" \
+    # --border-color "$(xrdb-wrap colors.black2)" 
+    # --border-opacity 1.0
+}
+
 autostart(){
   sxhkd -c ~/.config/bspwm/sxhkdrc &
-  feh --bg-fill /sdcard/Documents/wallpapers/sui-nice.png &
+  feh --bg-fill /sdcard/Documents/wallpapers/plana.jpg &
   dunst &
-  picom &
-  # fastcompmgr -c -r 1 -o 0 -l 5 -t 5 --shadow-color "$(xrdb-wrap colors.darker_black)"  &
+  # picom &
+  launch_compositor &
 }
 
 __main__(){
   display
   gaps
   clients
+  border
   autostart
 }
 __main__

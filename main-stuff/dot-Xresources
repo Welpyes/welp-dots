@@ -16,7 +16,7 @@ st.termname:            st-256color
 st.borderpx:            1
 
 ! --- Behavior & Performance ---
-st.alpha:               1
+st.alpha:               0.92
 st.tabspaces:           2
 st.blinktimeout:        500
 st.bellvolume:          0

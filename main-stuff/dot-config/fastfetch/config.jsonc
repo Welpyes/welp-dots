@@ -1,8 +1,8 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo":{
-        "type": "kitty-icat",
-        "source": "~/Documents/meme_images/sui-ever_cafa947ff7120a7320297c3bfde75d9b.gif",
+        "type": "sixel",
+        "source": "~/Documents/meme_images/the-greatest-technician-thats-ever-lived-v0-2vntn64ay6ed1.jpeg",
         "height": 10,
         "width": 20
     },
