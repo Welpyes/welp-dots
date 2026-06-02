@@ -28,9 +28,7 @@
         max_size_px: (width: 400, height: 400),
         disabled_protocols: ["http://", "https://"],
         vertical_align: Center,
-        horizontal_align: Center,
-    ),
-    cava: (
+        horizontal_align: Center,), cava: (
         framerate: 60, // default 60
         autosens: true, // default true
         sensitivity: 100, // default 100
@@ -163,8 +161,29 @@
                             direction: Vertical,
                             panes: [
                                 (
-                                    size: "100%",
-                                    pane: Pane(AlbumArt),
+                                  pane: Pane(Empty()),
+                                  size: "10%",
+                                ),
+                                (
+                                  size: "80%",
+                                  align: Center,
+                                  pane: Split(
+                                    direction: Horizontal,
+                                    panes: [
+                                      (
+                                        size: "2",
+                                        pane: Pane(Empty()),
+                                      ),
+                                      (
+                                        size: "100%",
+                                        pane: Pane(AlbumArt),
+                                      ),
+                                      (
+                                        size: "4",
+                                        pane: Pane(Empty()),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                             ],
                         ),
@@ -178,12 +197,12 @@
                                     size: "100%",
                                     pane: Pane(Queue),
                                     align: Center
-                                ),
+                                ),/*
                                 (
                                     size: "20%",
                                     pane: Pane(Cava),
                                     align: Center
-                                ),
+                                ),*/
                             ],
                         ),
                     ), 

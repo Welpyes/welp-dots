@@ -20,9 +20,11 @@ lnabs() {
 
 headless() {
   unset PULSE_SERVER
-  killall pulseaudio
-  pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
-  export PULSE_SERVER=127.0.0.1
+  pkill pulse
+  local IP=127.0.0.1
+  sleep 1
+  pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=$IP auth-anonymous=1 port=8080" --exit-idle-time=-1
+  export PULSE_SERVER=$IP:8080
 }
 
 function _smooth_fzf() {
@@ -165,7 +167,7 @@ sudo(){
   elif [[ -f "$PREFIX/bin/tudo" ]]; then
     termux_sudo $@
   else
-    command sudo
+    command sudo $@
   fi
 }
 
@@ -177,14 +179,14 @@ rmpc(){
   if [[ "${TERMINAL}" == "st" ]]; then
     command rmpc $@
   elif [[ "${TERMINAL}" == "com.termux" ]]; then
-    command rmpc -c $HOME/.config/rmpc/config-termux.ron
-  elif [[ "${TERMINAL}" == "foot" ]]; then
-    command rmpc -c $HOME/.config/rmpc/config-foot.ron
+    command rmpc -c $HOME/.config/rmpc/config-termux.ron $@
+  elif [ "${TERMINAL}" == "foot" ] || [ "${TERMINAL}" == "alacritty" ]; then
+    command rmpc -c $HOME/.config/rmpc/config-foot.ron $@
   else
-    command rmpc -c $HOME/.config/rmpc/config-ueberzug.ron
+    command rmpc -c $HOME/.config/rmpc/config-ueberzug.ron $@
   fi
 
-  mpd --kill
+  mpc --host 127.0.0.1 --port 8600 stop
 }
 
 vplay(){

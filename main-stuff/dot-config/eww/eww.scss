@@ -2,37 +2,37 @@
 
 // ── Palette ──────────────────────────────────────────────────────────────────
 
-$background: #141210;
-$foreground: #e5c9a0;
+$background: #1a1b26;
+$foreground: #c0caf5;
 
-$black:   #322d28;
-$red:     #c06c5c;
-$green:   #78997a;
-$yellow:  #c09d59;
-$blue:    #7f91b2;
-$magenta: #b380b0;
-$cyan:    #7b9695;
-$white:   #d8be97;
+$black:   #252631;
+$red:     #f7768e;
+$green:   #9ece6a;
+$yellow:  #e0af68;
+$blue:    #7aa2f7;
+$magenta: #bb9af7;
+$cyan:    #7dcfff;
+$white:   #a9b1d6;
 
-$br-black:   #4d463e;
-$br-red:     #d97a68;
-$br-green:   #85b695;
-$br-yellow:  #d8b164;
-$br-blue:    #a3a9ce;
-$br-magenta: #cf9bc2;
-$br-cyan:    #89b3b6;
-$br-white:   #f2d5a9;
+$br-black:   #15161e;
+$br-red:     #f7768e;
+$br-green:   #9ece6a;
+$br-yellow:  #e0af68;
+$br-blue:    #7aa2f7;
+$br-magenta: #bb9af7;
+$br-cyan:    #7dcfff;
+$br-white:   #c0caf5;
 
-$selection-bg: #4d463e;
-$selection-fg: #e5c9a0;
+$selection-bg: #252631;
+$selection-fg: #474853;
 
 // ── Derived tokens ─────────────────────────────────────────────────────────────
-// $surface:       #1c1916;   // slightly lifted background for the panel
+// $surface:       ;   // slightly lifted background for the panel
 $surface:       $background; //rgba(28, 25, 22, 0.6);   // slightly lifted background for the panel
-$surface-2:     #231f1b;   // card background
-$surface-hover: #2b261f;   // card hover
+$surface-2:     #1d1e29;   // card background
+$surface-hover: #2a2b36;   // card hover
 $border:        $yellow;   // subtle borders
-$muted:         #7a6e62;   // timestamps, secondary text
+$muted:         #252631;   // timestamps, secondary text
 $radius:        5px;
 $radius-sm:     5px;
 
@@ -66,6 +66,8 @@ $radius-sm:     5px;
   background-color: $background;
   color: $foreground;
   padding: 4px 2px;
+  border: 1px solid $blue;
+  border-width: 0 0 1 0px;
 }
 
 // ── Calendar ─────────────────────────────────────────────────────────────────
@@ -94,7 +96,7 @@ $radius-sm:     5px;
 
 .weather {
   &-temp   { @include readout($size: 10px, $pad: 0 5px); }
-  &-button { @include icon-button($blue, $br-blue, $background, 18px, 0 7px); }
+  &-button { @include icon-button($blue, $br-blue, $background, 15px, 0 7px); }
 }
 
 // ── Workspaces ───────────────────────────────────────────────────────────────
@@ -134,7 +136,7 @@ $radius-sm:     5px;
 
 .packages {
   &-text { @include readout($size: 10px, $pad: 0 10px); }
-  &-icon { @include icon-button($yellow, $br-yellow, $background, 20px, 0 8px); }
+  &-icon { @include icon-button($yellow, $br-yellow, $background, 15px, 0 5px); }
 }
 
 // ── Control panel ────────────────────────────────────────────────────────────
@@ -169,9 +171,9 @@ $radius-sm:     5px;
 
 @mixin indicator {
   margin: 0 2px;
-  &-button { @include icon-button($white, $white, $background, 16px, 0 6px); }
-  &-text   { @include readout(12px, 0 5px); }
+  &-text   { @include readout(12px, 0 2px); }
+  &-button { @include icon-button($white, $white, $background, 14px, 0 0px); }
 }
 
-.battery { @include indicator; }
-.volume  { @include indicator; }
+.battery { @include indicator; padding: 0 0px; }
+.volume  { @include indicator; padding: 0 0px; }

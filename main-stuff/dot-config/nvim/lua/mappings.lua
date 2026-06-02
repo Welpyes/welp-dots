@@ -21,6 +21,14 @@ map("n", "<leader>lh", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, { desc = "Toggle LSP inlay hints" })
 
+vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
+  callback = function()
+    if vim.fn.line("$") == 1 and vim.fn.getline(1) == "" then
+      vim.bo.modified = false
+    end
+  end,
+})
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "snacks_picker_list",
   callback = function(args)

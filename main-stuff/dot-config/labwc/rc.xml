@@ -10,9 +10,9 @@
     <allowTearing>no</allowTearing>
     <reuseOutputMode>no</reuseOutputMode>
     <xwaylandPersistence>yes</xwaylandPersistence>
-    <backgroundImage>/sdcard/Documents/wallpapers/sui-nice.png</backgroundImage>
-    <blurSigma>35</blurSigma>
-    <workspaceReportFile>/data/data/com.termux/files/usr/tmp/workspace-data.json</workspaceReportFile>
+    <backgroundImage>/sdcard/Documents/wallpapers/20250529_183834.jpg</backgroundImage>
+    <blurSigma>20</blurSigma>
+    <workspaceReportFile>/data/data/com.termux/files/usr/tmp/labwc-ipc.sock</workspaceReportFile>
   </core>
   <placement>
     <policy>automatic</policy>
@@ -26,7 +26,7 @@
       <layout>icon:iconify,max,close</layout>
       <showTitle>yes</showTitle>
     </titlebar>
-    <cornerRadius>0</cornerRadius>
+    <cornerRadius>10</cornerRadius>
     <keepBorder>yes</keepBorder>
     <font place="ActiveWindow">
       <name>Ioskely Mono</name>

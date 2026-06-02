@@ -1,8 +1,9 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo":{
-        "type": "sixel",
-        "source": "~/Documents/meme_images/the-greatest-technician-thats-ever-lived-v0-2vntn64ay6ed1.jpeg",
+        "type": "kitty-icat",
+        // "source": "/sdcard/Movies/Twitter/output.webp",
+        "source": "/sdcard/Movies/Twitter/output.webp",
         "height": 10,
         "width": 20
     },
@@ -15,7 +16,7 @@
         {
             "type": "title",
             "key": "Hostname",
-            "format": "Hoshiyomi"
+            "format": "{2}"
         },
         {
             "type": "host",
@@ -32,7 +33,7 @@
         },
         {
             "type": "kernel",
-            "format": "6.19.2"
+            "format": "7.0.5-2"
         },
         "uptime",
         "processes",

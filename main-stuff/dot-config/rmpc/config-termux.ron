@@ -2,9 +2,10 @@
 #![enable(unwrap_newtypes)]
 #![enable(unwrap_variant_newtypes)]
 (
+    // address: "100.120.44.64:8600",
     address: "127.0.0.1:8600",
     password: None,
-    theme: "default",
+    theme: "rose-pine",
     cache_dir: "~/prefix/tmp/rmpc",
     lyrics_dir: "~/Music",
     lyrics_offset_ms: 100,
@@ -25,11 +26,11 @@
     directories_sort: SortFormat(group_by_type: true, reverse: false),
     album_art: (
         method: Block,
-        max_size_px: (width: 400, height: 400),
         disabled_protocols: ["http://", "https://"],
         vertical_align: Center,
         horizontal_align: Center,
     ),
+    /*
     cava: (
         framerate: 60, // default 60
         autosens: true, // default true
@@ -51,7 +52,7 @@
         // this is a list of floating point numbers thats directly passed to cava
         // they are passed in order that they are defined
         eq: []
-    ),
+    ),*/
     keybinds: (
         global: {
             ":":       CommandMode,
@@ -157,7 +158,7 @@
                 direction: Horizontal,
                 panes: [
                     (
-                        size: "40%",
+                        size: "100%",
                         pane: Split(
                             direction: Vertical,
                             panes: [
@@ -165,24 +166,11 @@
                                     size: "100%",
                                     pane: Pane(AlbumArt),
                                 ),
-                            ],
-                        ),
-                    ), 
-                    (
-                        size: "100%",
-                        pane: Split(
-                            direction: Vertical,
-                            panes: [
                                 (
                                     size: "100%",
                                     pane: Pane(Queue),
                                     align: Center
                                 ),
-                                /* (
-                                    size: "10%",
-                                    pane: Pane(Cava),
-                                    align: Center
-                                ),*/
                             ],
                         ),
                     ), 

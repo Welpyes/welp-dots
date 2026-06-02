@@ -33,7 +33,7 @@ icon = ""
 key-color = "white"
 icon-color = "light yellow"
 format-color = "light yellow"
-format = "{name} 6.19.2"
+format = "{name} 7.0.10"
 
 [user:user]
 key = "User"

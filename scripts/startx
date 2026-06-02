@@ -1,8 +1,10 @@
 #!/bin/bash
 
+IP=127.0.0.1
+
 presetup(){
-  pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1 port=8080" --exit-idle-time=-1
-  export PULSE_SERVER=tcp:127.0.0.1:8080
+  pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=$IP auth-anonymous=1 port=8080" --exit-idle-time=-1
+  export PULSE_SERVER=$IP:8080
   pactl load-module module-sles-source > /dev/null 2>&1 &
   virgl_test_server_android &
 }
@@ -11,14 +13,15 @@ exports(){
   cd $HOME
   export XDG_RUNTIME_DIR=$TMPDIR
   export DISPLAY=:0
-  export VK_ICD_FILENAMES=$PREFIX/share/vulkan/icd.d/wrapper_icd.aarch64.json
+  # export VK_ICD_FILENAMES=$PREFIX/share/vulkan/icd.d/wrapper_icd.aarch64.json
+  # export GALLIUM_DRIVER=zink
   export GALLIUM_DRIVER=virpipe
   # export MESA_GL_VERSION_OVERRIDE=3.3
 }
 
 xorg-startup(){
   termux-x11 :0 > /dev/null 2>&1 &
-  am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity > /dev/null 2>&1
+  am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity
 }
 
 __main__(){
@@ -33,6 +36,8 @@ __main__(){
       exit 1
   fi
 
+  sleep 2
+
   while IFS= read -r line; do
       [[ -z "$line" || "$line" =~ ^# ]] && continue
       eval "dbus-launch sh -c '$line'" &
@@ -40,9 +45,11 @@ __main__(){
     
   read -r 
 
-  kill -TERM $(pgrep --list-name /system/bin/app_process | awk '{print $1}') > /dev/null &
-  kill -TERM $(pgrep -x "pulseaudio")
+  pkill -TERM com.termux.x11
+  pkill -TERM virgl_test_server_android
+  # pkill -TERM pulseaudio
   pkill -TERM sway
+  pkill -TERM labwc
 }
 __main__
 

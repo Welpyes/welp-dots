@@ -1,7 +1,7 @@
 ; ── Windows ────────────────────────────────────────────────────────
 
 (defwindow bar
-  :wm-ignore false
+  :wm-ignore true
   :monitor 0
   :windowtype "dock"
   :stacking "bg"
@@ -9,7 +9,7 @@
   :geometry (geometry
     :x "0"
     :y "0"
-    :height "40px"
+    :height "32px"
     :width "100%"
     :anchor "top center"
   )
