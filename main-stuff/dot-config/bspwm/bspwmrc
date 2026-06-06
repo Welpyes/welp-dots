@@ -15,10 +15,10 @@ display(){
 
 gaps(){
   bspc config window_gap 10
-  bspc config top_padding 40
+  bspc config top_padding 10
   bspc config bottom_padding 10
-  bspc config right_padding 110
-  bspc config left_padding 110
+  bspc config right_padding 140
+  bspc config left_padding 140
 }
 
 clients(){
@@ -34,28 +34,12 @@ border(){
   bspc config focused_border_color "$(xrdb-wrap colors.blue)"
 }
 
-fastcompmgr_config(){
-  killall fastcompmgr > /dev/null 2>&1 & 
-  sleep 1
-  fastcompmgr \
-    -Ccp \
-    -l -15 \
-    -t -15 \
-    -o 0.5 \
-    -w 2 \
-    -b "$(xrdb-wrap colors.black2)" \
-    -a "$(xrdb-wrap colors.blue)" \
-    --blur 20 \
-    -R 10
-}
-
 autostart(){
   pgrep -x sxhkd || sxhkd -c ~/.config/bspwm/sxhkdrc &
-  feh --bg-fill ~/Pictures/gowall/kisaki-tokyo-night.png &
+  feh --bg-fill ~/Documents/wallpapers/suipose.png &
   eww open bar --toggle &
   dunst &
-  # fastcompmgr_config &
-  # picom &
+  picom &
 }
 
 __main__(){

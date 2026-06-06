@@ -4,7 +4,7 @@ vim.lsp.config("*", {
 
 local servers = {
   -- "html",
-  "cssls",
+  -- "cssls",
   "bashls",
   "lua_ls",
   "pyrefly",
