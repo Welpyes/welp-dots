@@ -19,11 +19,30 @@ require("ibl").setup()
 require("conform").setup({
   formatters_by_ft = {
     lua = { "stylua" },
-    -- Conform will run multiple formatters sequentially
+    yuck = { "yuck" },
     python = { "isort", "black" },
-    -- You can customize some of the format options for the filetype (:help conform.format)
     rust = { "rustfmt", lsp_format = "fallback" },
-    -- Conform will run the first available formatter
     javascript = { "prettierd", "prettier", stop_after_first = true },
+  },
+  formatters = {
+    yuck = {
+      format = function(self, bufnr, lines, callback)
+        local ok, yuck_fmt = pcall(require, "yuck-fmt")
+        if not ok then
+          return callback("Could not load yuck-fmt module")
+        end
+        local sw = vim.bo[bufnr].shiftwidth
+        local success, result = pcall(yuck_fmt.format, lines, sw)
+        if success then
+          callback(nil, result)
+        else
+          callback(result)
+        end
+      end,
+    },
+  },
+  format_on_save = {
+    timeout_ms = 500,
+    lsp_format = "fallback",
   },
 })

@@ -1,22 +1,22 @@
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = ".xinitrc",
   callback = function()
     vim.bo.filetype = "sh"
   end,
 })
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.txt",
   callback = function()
     vim.bo.filetype = "markdown"
   end,
 })
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = { "*.conf", "ini" },
   callback = function()
     vim.bo.filetype = "toml"
   end,
 })
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = { "*.clue" },
   callback = function()
     vim.bo.filetype = "rust"
@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = {"lisp", "fennel", "yuck"},
+  pattern = { "lisp", "fennel", "yuck" },
   callback = function()
     -- Disable lisp indentation
     vim.bo.lisp = false
@@ -36,9 +36,9 @@ vim.api.nvim_create_autocmd("FileType", {
     -- Configure cindent to treat parens like braces
     vim.bo.cinkeys = "0{,0},0),0],:,0#,!^F,o,O,e"
     vim.bo.cinoptions = "(0,u0,U0"
-    -- Set 3-space indentation
-    vim.bo.shiftwidth = 3
-    vim.bo.tabstop = 3
+    -- Set 2-space indentation
+    vim.bo.shiftwidth = 2
+    vim.bo.tabstop = 2
     vim.bo.expandtab = true
     -- Smart Enter: splits closing bracket to new line
     vim.keymap.set("i", "<CR>", function()
@@ -51,7 +51,9 @@ vim.api.nvim_create_autocmd("FileType", {
         -- Get the closing bracket without leading whitespace
         local trimmed_after = after:match("^%s*(.-)%s*$")
         -- Delete the closing bracket from current line and add it on new line
-        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<End><BS><CR>   <CR>" .. trimmed_after .. "<Up><End><BS>", true, false, true), 'n', false)
+        vim.api.nvim_feedkeys(
+          vim.api.nvim_replace_termcodes("<End><BS><CR>   <CR>" .. trimmed_after .. "<Up><End><BS>", true, false, true),
+          'n', false)
         return ""
       else
         return "<CR>"

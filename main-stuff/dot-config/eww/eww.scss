@@ -34,4 +34,18 @@ $muted:         #252631;   // timestamps, secondary text
 
 .bar {
   background: $background;
+  border: 2px solid $br-blue;
+  padding: 5 5 5 5px;
+  font-family: "Ioskeley Mono";
+}
+
+.clock {
+  font-size: 23;
+  font-weight: bold;
+  border: 2px solid $br-magenta;
+  background: $black;
+  &-button:hover {
+    color: $background;
+    background: $br-white;
+  }
 }

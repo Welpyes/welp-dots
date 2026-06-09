@@ -198,11 +198,13 @@
                                     pane: Pane(Queue),
                                     align: Center
                                 ),
+                                /*
                                 (
                                     size: "20%",
                                     pane: Pane(Cava),
                                     align: Center
                                 ),
+                                */
                             ],
                         ),
                     ), 

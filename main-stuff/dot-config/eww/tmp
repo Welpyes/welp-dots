@@ -1,0 +1,44 @@
+
+(defwindow bar
+  :wm-ignore true
+  :monitor 0
+  :windowtype "dock"
+  :stacking "bg"
+  :reserve (struts :distance "40px" :side "top")
+  :geometry (geometry
+    :x "15"
+    :y "0"
+    :height "88%"
+    :width "50px"
+    :anchor "left center"
+  )
+  (bar)
+)
+
+(defwidget bar []
+  (box
+    :class "bar"
+    :orientation "v"
+    :vexpand false
+    :hexpand false
+    :space-evenly true
+    (spacer)
+    (spacer)
+    (bottom)
+  )
+)
+
+(defwidget spacer []
+  (box :class "spacer" :orientation "h")
+)
+
+(defwidget bottom []
+  (box
+    :orientation "v"
+    :halign "end"
+    :space-evenly false
+    :spacing 5
+    (spacer)
+  )
+)
+
