@@ -210,3 +210,4 @@ _gowall()
 if [ "$funcstack[1]" = "_gowall" ]; then
     _gowall
 fi
+
