@@ -1,7 +1,19 @@
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = ".xinitrc",
   callback = function()
-    vim.bo.filetype = "sh"
+    vim.bo.filetype = "bash"
+  end,
+})
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.zsh",
+  callback = function()
+    vim.bo.filetype = "bash"
+  end,
+})
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.sh",
+  callback = function()
+    vim.bo.filetype = "bash"
   end,
 })
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
