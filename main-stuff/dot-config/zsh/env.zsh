@@ -2,7 +2,7 @@
 ## PATH & ENV Var
 ##
 
-export PREFIX="/data/data/com.termux/files/usr"
+export PREFIX="/usr"
 export PNPM_HOME="$HOME/.local/share/pnpm"
 path+=("$HOME/.spicetify")
 path+=("$PNPM_HOME")
@@ -14,7 +14,7 @@ export GPG_TTY=$(tty)
 
 export SUDO_PROMPT="passwd: "
 export TERMINAL="st"
-export BROWSER="firefox"
+export BROWSER="zen-browser"
 export VISUAL="nvim"
 export EDITOR="nvim"
 
@@ -25,7 +25,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CONFIG_DIRS="$PREFIX/etc/xdg"
 export XDG_DATA_DIRS="$PREFIX/usr/share:$PREFIX/share:/var/lib/flatpak/exports/share:$XDG_DATA_HOME/flatpak/exports/share"
 export XDG_DESKTOP_DIR="$HOME/Desktop"
-export XDG_RUNTIME_DIR=$TMPDIR
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
 export XDG_DOWNLOAD_DIR="$HOME/Downloads"
 export XDG_TEMPLATES_DIR="$HOME/Templates"
 export XDG_PUBLICSHARE_DIR="$HOME/Public"

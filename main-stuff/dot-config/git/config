@@ -1,7 +1,7 @@
 [user]
     name = Welpyes
     email = helloilikeoppai@protonmail.com
-    signingKey = /data/data/com.termux/files/home/.ssh/github_sign_ed25519.pub   # note: the .pub file!
+    signingKey = /home/welpyes/.ssh/github_sign_ed25519.pub   # note: the .pub file!
 [gpg]
     format = ssh
 

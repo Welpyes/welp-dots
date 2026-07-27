@@ -25,7 +25,6 @@ icon = ""
 key-color = "white"
 icon-color = "blue"
 format-color = "blue"
-format = "Archlinux [rolling] {arch}"
 
 [kernel]
 key = "Kernel"
@@ -33,7 +32,6 @@ icon = ""
 key-color = "white"
 icon-color = "light yellow"
 format-color = "light yellow"
-format = "{name} 7.0.10"
 
 [user:user]
 key = "User"
@@ -41,7 +39,6 @@ icon = ""
 key-color = "white"
 icon-color = "light green"
 format-color = "light green"
-format = "Welpyes"
 
 [user:hostname]
 key = "Hostname"
@@ -49,7 +46,6 @@ icon = "󰒋"
 key-color = "white"
 icon-color = "light magenta"
 format-color = "light magenta"
-format = "Hoshiyomi"
 
 [host]
 key = "Host"
