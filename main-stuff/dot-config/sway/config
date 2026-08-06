@@ -1,5 +1,5 @@
 ### Variables
-set $mod Mod4
+set $mod Mod1
 set $alt Mod1
 set $left h
 set $down j
@@ -10,21 +10,7 @@ set $menu rofi -show drun -theme ~/.config/rofi/dmenu.rasi
 floating_modifier $mod 
 
 ### Output
-output * bg /sdcard/Documents/wallpapers/kazusa-nice.png fill
-
-### Blur (termux-sway)
-# blur_image /sdcard/Documents/wallpapers/kazusa-nice.png
-# blur_sigma 30
-
-# ### Shadow
-# shadow_enabled on
-# shadow_size 30
-# shadow_color #00000077
-# shadow_inactive_color #00000077
-
-# ### Fade
-# animations on
-# animation_duration_fade 250
+output HDMI-A-2 mode 1366x768@60Hz bg ~/Documents/wallpapers/kazusa-nice.png fill
 
 ### Gaps & Padding
 gaps inner 10
@@ -36,7 +22,7 @@ gaps right 100
 
 ### Borders
 default_floating_border pixel 2
-# default_border pixel 2
+default_border pixel 2
 client.focused          #c0caf5 #c0caf5 #171823 #c0caf5 #c0caf5
 client.unfocused        #171823 #171823 #5c5c5c #171823 #171823
 client.focused_inactive #171823 #171823 #5c5c5c #171823 #171823
@@ -48,12 +34,12 @@ client.focused_inactive #171823 #171823 #5c5c5c #171823 #171823
 bindsym $alt+Return       exec $term
 bindsym $alt+Shift+Return exec $term
 
-bindsym $alt+space       exec rofi -show drun  -theme ~/.config/rofi/dmenu.rasi
+bindsym $alt+space       exec rofi -show drun -theme ~/.config/rofi/dmenu.rasi
 bindsym $alt+Tab         exec rofi -show window -theme ~/.config/rofi/dmenu.rasi
 bindsym $alt+r           exec rofi -show run   -theme ~/.config/rofi/dmenu.rasi
 
 bindsym $alt+e       exec $term -e yazi
-bindsym $alt+Shift+e exec caja
+bindsym $alt+Shift+e exec nautilus
 
 bindsym $alt+Shift+s exec grim ~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S_scrot.png')
 
@@ -61,7 +47,7 @@ bindsym $alt+Shift+s exec grim ~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S
 #   Window mgmt    #
 ####################
 
-bindsym $mod+Shift+q kill
+bindsym $alt+q kill
 bindsym $alt+Shift+r reload
 bindsym $alt+Shift+q exec swaymsg exit
 
@@ -149,7 +135,7 @@ bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp   exec brightnessctl set 5%+
 bindsym Print exec grim
 
-exec sway-setup
+exec autotiling-rs
 
 # vim: ft=bash
 
